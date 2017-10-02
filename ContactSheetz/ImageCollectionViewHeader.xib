@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="ImageCollectionViewHeader" translatesAutoresizingMaskIntoConstraints="NO" id="D28-b0-XEw" customClass="ImageCollectionViewHeader" customModule="ContactSheetz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="800" height="100"/>
+            <subviews>
+                <textField identifier="fileNameHeaderLabel" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" placeholderIntrinsicWidth="760" placeholderIntrinsicHeight="24" translatesAutoresizingMaskIntoConstraints="NO" id="iGP-R5-yrK">
+                    <rect key="frame" x="18" y="67" width="764" height="24"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Test Movie.mkv" id="tbw-gx-us9">
+                        <font key="font" metaFont="system" size="20"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PTI-m8-nq5">
+                    <rect key="frame" x="20" y="42" width="762" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Resolution: 1280x720" id="QHY-fc-nzK">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tbD-5n-hzQ">
+                    <rect key="frame" x="20" y="24" width="762" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Codec: H264" id="aZq-tP-Yqv">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xFY-oh-DsV">
+                    <rect key="frame" x="20" y="6" width="762" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Duration: 53 minutes, 12 seconds" id="oyX-Uv-vQa">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="PTI-m8-nq5" firstAttribute="top" secondItem="D28-b0-XEw" secondAttribute="top" constant="41" id="1b4-SQ-IPe"/>
+                <constraint firstItem="iGP-R5-yrK" firstAttribute="leading" secondItem="D28-b0-XEw" secondAttribute="leading" constant="20" id="6x5-rc-fes"/>
+                <constraint firstItem="PTI-m8-nq5" firstAttribute="leading" secondItem="D28-b0-XEw" secondAttribute="leading" constant="22" id="8sn-cH-vvN"/>
+                <constraint firstItem="iGP-R5-yrK" firstAttribute="top" secondItem="D28-b0-XEw" secondAttribute="top" constant="9" id="FL5-Yq-pFb"/>
+                <constraint firstAttribute="trailing" secondItem="PTI-m8-nq5" secondAttribute="trailing" constant="20" id="Jl9-YQ-BS1"/>
+                <constraint firstItem="xFY-oh-DsV" firstAttribute="leading" secondItem="D28-b0-XEw" secondAttribute="leading" constant="22" id="MKe-V1-ve6"/>
+                <constraint firstAttribute="trailing" secondItem="iGP-R5-yrK" secondAttribute="trailing" constant="20" id="SeE-M1-aKC"/>
+                <constraint firstAttribute="height" priority="900" constant="100" id="fjV-lt-Onk"/>
+                <constraint firstItem="tbD-5n-hzQ" firstAttribute="top" secondItem="D28-b0-XEw" secondAttribute="top" constant="59" id="gQP-Bu-XwC"/>
+                <constraint firstAttribute="trailing" secondItem="xFY-oh-DsV" secondAttribute="trailing" constant="20" id="gZf-8y-9WC"/>
+                <constraint firstItem="xFY-oh-DsV" firstAttribute="top" secondItem="D28-b0-XEw" secondAttribute="top" constant="77" id="kRO-i5-wNU"/>
+                <constraint firstItem="tbD-5n-hzQ" firstAttribute="leading" secondItem="D28-b0-XEw" secondAttribute="leading" constant="22" id="plj-6N-g0q"/>
+                <constraint firstAttribute="trailing" secondItem="tbD-5n-hzQ" secondAttribute="trailing" constant="20" id="xUa-Dg-VS1"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>

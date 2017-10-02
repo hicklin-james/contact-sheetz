@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="BatchTableViewHeader" id="c22-O7-iKe" customClass="BatchTableViewHeader" customModule="ContactSheetz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="34"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y26-pe-1mG">
+                    <rect key="frame" x="10" y="7" width="62" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Clear All" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cCW-UV-Qqy">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clearAllButtonClicked:" target="c22-O7-iKe" id="B3c-yV-U4h"/>
+                    </connections>
+                </button>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="p9d-F8-7yo" customClass="greyBorderView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="1"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="uGC-uq-NsC"/>
+                    </constraints>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="d57-3R-O2I" customClass="greyBorderView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="33" width="480" height="1"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="04h-Rt-wXL"/>
+                    </constraints>
+                </customView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fh1-s8-MmA">
+                    <rect key="frame" x="85" y="7" width="22" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="+" bezelStyle="roundedRect" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Z3I-9i-sz2">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="AddButtonPushed:" target="c22-O7-iKe" id="DWx-Sw-A7y"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Fh1-s8-MmA" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="9Qm-bD-0U9"/>
+                <constraint firstAttribute="bottom" secondItem="Y26-pe-1mG" secondAttribute="bottom" constant="8" id="A6b-Ij-js8"/>
+                <constraint firstAttribute="trailing" secondItem="p9d-F8-7yo" secondAttribute="trailing" id="BbQ-i3-ioE"/>
+                <constraint firstAttribute="trailing" secondItem="d57-3R-O2I" secondAttribute="trailing" id="CzG-3K-rjt"/>
+                <constraint firstItem="Y26-pe-1mG" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="ElO-sv-0vP"/>
+                <constraint firstItem="Y26-pe-1mG" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="W03-ha-tic"/>
+                <constraint firstAttribute="bottom" secondItem="p9d-F8-7yo" secondAttribute="bottom" id="chc-it-V1D"/>
+                <constraint firstAttribute="bottom" secondItem="Fh1-s8-MmA" secondAttribute="bottom" constant="8" id="gBg-XQ-AgW"/>
+                <constraint firstItem="p9d-F8-7yo" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="ikH-wb-vSN"/>
+                <constraint firstItem="d57-3R-O2I" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="uVg-4c-0i9"/>
+                <constraint firstItem="d57-3R-O2I" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="v5U-fP-Bo0"/>
+                <constraint firstItem="Fh1-s8-MmA" firstAttribute="leading" secondItem="Y26-pe-1mG" secondAttribute="trailing" constant="13" id="vLe-GP-bqG"/>
+            </constraints>
+            <connections>
+                <outlet property="clearAllButton" destination="Y26-pe-1mG" id="FFs-QJ-3LC"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="50"/>
+        </customView>
+    </objects>
+</document>

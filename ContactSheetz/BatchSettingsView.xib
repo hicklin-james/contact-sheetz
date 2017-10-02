@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="ParameterAdjustorView" id="rrO-6a-UGE" customClass="BatchSettingsView" customModule="ContactSheetz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="310" height="569"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="F55-mJ-bYw">
+                    <rect key="frame" x="41" y="12" width="228" height="31"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zUW-OC-Hgi">
+                            <rect key="frame" x="66" y="-2" width="96" height="32"/>
+                            <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="n6M-Hj-vFf">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="generateCoverSheet:" target="rrO-6a-UGE" id="iaw-zY-cuG"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="zUW-OC-Hgi" firstAttribute="centerX" secondItem="F55-mJ-bYw" secondAttribute="centerX" id="VzH-we-wdK"/>
+                        <constraint firstAttribute="width" constant="228" id="ZQO-WO-P04"/>
+                        <constraint firstItem="zUW-OC-Hgi" firstAttribute="top" secondItem="F55-mJ-bYw" secondAttribute="top" constant="5" id="pfm-Ut-UMl"/>
+                        <constraint firstAttribute="bottom" secondItem="zUW-OC-Hgi" secondAttribute="bottom" constant="5" id="tqJ-zL-NMh"/>
+                    </constraints>
+                </customView>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y4h-ED-9mT">
+                    <rect key="frame" x="133" y="87" width="123" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="KWG-fS-HjX"/>
+                        <constraint firstAttribute="width" constant="118" id="u4f-fg-daS"/>
+                    </constraints>
+                    <popUpButtonCell key="cell" type="push" title="PNG (*.png)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="3AL-To-Ll1" id="8aS-qf-87b">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="LgN-ni-DXT">
+                            <items>
+                                <menuItem title="PNG (*.png)" state="on" id="3AL-To-Ll1"/>
+                                <menuItem title="JPEG (*.jpg)" id="UfG-Lj-8qY"/>
+                                <menuItem title="TIFF (*.tiff)" id="DXg-Hv-d1y"/>
+                                <menuItem title="BMP (*.bmp)" id="x0n-wF-0bv"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ax5-sF-SVe">
+                    <rect key="frame" x="33" y="92" width="97" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Output Format:" id="BeN-gr-cNj">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zex-w3-xPp">
+                    <rect key="frame" x="7" y="532" width="123" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Horizontal Padding:" id="QHb-fe-giD">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEX-zJ-tEh">
+                    <rect key="frame" x="23" y="505" width="107" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vertical Padding:" id="LhF-zz-o4K">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHM-nq-ewt" customClass="NonNegativeIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="135" y="529" width="51" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="51" id="oGo-ed-iD7"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="2" drawsBackground="YES" id="vGD-J3-McM">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1I-f6-hvA" customClass="NonNegativeIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="135" y="502" width="51" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="51" id="ja5-Fv-2gq"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="2" drawsBackground="YES" id="bh6-VQ-zZd">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RO6-VZ-xhY">
+                    <rect key="frame" x="22" y="145" width="108" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Width Per Image:" id="vWW-vs-mBt">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khW-LH-fuf" customClass="PositiveIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="135" y="142" width="51" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="51" id="Lwg-tL-0JC"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Oxf-zl-7m7">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0c-jr-8SE">
+                    <rect key="frame" x="45" y="172" width="85" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Aspect Ratio:" id="ZRa-uw-KWh">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKh-lf-jeK">
+                    <rect key="frame" x="17" y="119" width="113" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Height Per Image:" id="AOC-kP-spc">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyJ-eg-xkd" customClass="PositiveIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="135" y="116" width="51" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="51" id="Vpm-U0-XaQ"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="gNP-cL-daQ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yew-NZ-K51">
+                    <rect key="frame" x="69" y="478" width="61" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Columns:" id="nUQ-5K-qh8">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52X-p4-Anp" customClass="PositiveIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="135" y="475" width="77" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="77" id="1E9-in-vEp"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="3" drawsBackground="YES" id="gE5-aw-41E">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="DqN-vl-nw5">
+                    <rect key="frame" x="133" y="171" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jKX-aZ-4Bi">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="aspectRatioButtonPushed:" target="rrO-6a-UGE" id="hVr-Yn-vKB"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19y-B5-Frm">
+                    <rect key="frame" x="48" y="199" width="82" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Timestamps:" id="C1M-hp-GDU">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="VIi-UH-e84">
+                    <rect key="frame" x="133" y="198" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kbF-VY-Xum">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="includeTimestampsButtonPushed:" target="rrO-6a-UGE" id="voB-dX-uJT"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkx-YK-R8N">
+                    <rect key="frame" x="13" y="451" width="117" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Background Color:" id="ihC-U6-Cwg">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="ifH-eT-Xwt">
+                    <rect key="frame" x="135" y="447" width="77" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="RpY-Hr-H2f"/>
+                        <constraint firstAttribute="width" constant="77" id="Tgr-M2-Xue"/>
+                    </constraints>
+                    <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="colorChanged:" target="rrO-6a-UGE" id="oHL-Hq-UyQ"/>
+                    </connections>
+                </colorWell>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UQ3-Kz-2HB" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="532" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="18" id="EK6-up-WYp"/>
+                        <constraint firstAttribute="height" constant="17" id="ckd-Vt-P5e"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="D4e-h4-WRq"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zeE-w7-Qjg" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="505" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="18" id="A1p-e6-E38"/>
+                        <constraint firstAttribute="height" constant="17" id="Ur3-T1-q1a"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="cOM-6C-BMN"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfn-56-JLa">
+                    <rect key="frame" x="38" y="424" width="92" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Header Fields:" id="j1C-Pm-hVA">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQA-ZU-SRU">
+                    <rect key="frame" x="87" y="399" width="30" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Title" id="Gx8-Ej-G8S">
+                        <font key="font" metaFont="systemUltraLight" size="13"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <button identifier="includeDuration" translatesAutoresizingMaskIntoConstraints="NO" id="XpH-Vq-SBK" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="66" y="374" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ywa-5i-aHI">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="Lzn-Ie-CkB"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50k-0g-uFF">
+                    <rect key="frame" x="87" y="375" width="56" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Duration" id="OEg-2Q-shE">
+                        <font key="font" metaFont="systemUltraLight" size="13"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <button identifier="includeTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TEr-sC-cKN" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="66" y="398" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fvG-Qz-mWk">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="YOK-qi-NwT"/>
+                    </connections>
+                </button>
+                <button identifier="includeCodec" translatesAutoresizingMaskIntoConstraints="NO" id="l7o-DF-cpV" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="66" y="350" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yOb-DL-vni">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="v4r-yD-e1b"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tba-pN-Lbj">
+                    <rect key="frame" x="87" y="351" width="44" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Codec" id="dQu-ko-x0F">
+                        <font key="font" metaFont="systemUltraLight" size="13"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <button identifier="includeResolution" translatesAutoresizingMaskIntoConstraints="NO" id="lpe-oO-RrQ" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="66" y="326" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="t0h-CD-UWZ">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="CpG-kR-WDs"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40E-Xy-mQH">
+                    <rect key="frame" x="87" y="327" width="67" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resolution" id="3iP-gA-tDs">
+                        <font key="font" metaFont="systemUltraLight" size="13"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <button identifier="includeBitrate" translatesAutoresizingMaskIntoConstraints="NO" id="Svf-6A-sCo" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="66" y="302" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Jrz-wv-E2b">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="RKZ-9X-roq"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oft-Wv-BxM">
+                    <rect key="frame" x="87" y="303" width="44" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bitrate" id="4kJ-G0-sa4">
+                        <font key="font" metaFont="systemUltraLight" size="13"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <button identifier="includeSize" translatesAutoresizingMaskIntoConstraints="NO" id="86h-dC-1RO" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="66" y="278" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="pHX-Co-OFa">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="8z8-Jy-bMF"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rul-E0-pd8">
+                    <rect key="frame" x="87" y="279" width="29" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Size" id="Fdh-2I-zLd">
+                        <font key="font" metaFont="systemUltraLight" size="13"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qff-IU-LFe">
+                    <rect key="frame" x="186" y="529" width="26" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="OnT-pK-qBP"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="px" placeholderString="" drawsBackground="YES" id="j6g-hj-AsJ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTc-WV-Sdo">
+                    <rect key="frame" x="186" y="502" width="26" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="nAc-BN-Rec"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="px" placeholderString="" drawsBackground="YES" id="Rvx-cX-lje">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Qn-Tk-Xoz" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="478" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="Z6y-S2-y6Y"/>
+                        <constraint firstAttribute="width" priority="999" constant="18" id="uAH-5l-SVn"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="K95-ze-rQw"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xYD-Dg-xHW" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="450" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="Of0-JG-Pfy"/>
+                        <constraint firstAttribute="width" priority="999" constant="18" id="f8d-di-Wsl"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="pCW-n7-YmX"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GCc-Y7-Qyy" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="133" y="424" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="C7V-Xo-vyY"/>
+                        <constraint firstAttribute="width" priority="999" constant="18" id="cGo-js-dnf"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="gZm-5N-R8l"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-KX-mTG" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="158" y="199" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="6KN-MH-f7C"/>
+                        <constraint firstAttribute="width" priority="999" constant="18" id="gE0-o9-w16"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="qgb-K2-QqE"/>
+                </imageView>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3zw-PX-Xwn">
+                    <rect key="frame" x="133" y="248" width="152" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="147" id="A89-Ew-14O"/>
+                        <constraint firstAttribute="height" constant="21" id="rjY-Wm-7Jk"/>
+                    </constraints>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" id="BMa-5B-7gX">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="Q8h-OY-H9c"/>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We8-bG-bS0">
+                    <rect key="frame" x="50" y="253" width="80" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Header font:" id="dVY-V4-AZ8">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ki-9y-LTO">
+                    <rect key="frame" x="17" y="226" width="113" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Header text color:" id="tie-xG-5Ov">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="2pz-Gs-JPG">
+                    <rect key="frame" x="135" y="222" width="77" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="LbK-2g-NrU"/>
+                        <constraint firstAttribute="width" constant="77" id="rlJ-pb-7oh"/>
+                    </constraints>
+                    <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="colorChanged:" target="rrO-6a-UGE" id="Hfo-8t-PQM"/>
+                    </connections>
+                </colorWell>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pf6-bp-Yew" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="287" y="253" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" priority="999" constant="18" id="IDu-vG-Hka"/>
+                        <constraint firstAttribute="height" constant="17" id="x70-1p-p28"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="rpo-1O-PFB"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D1C-Gl-do4" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="225" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="Cyw-kh-qf5"/>
+                        <constraint firstAttribute="width" priority="999" constant="18" id="Hfh-Ah-79c"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="uUh-a8-3gB"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lq2-vt-Hjh" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="158" y="172" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="7pk-of-OAD"/>
+                        <constraint firstAttribute="width" priority="999" constant="18" id="u4Y-9j-FON"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="q6A-ho-2wX"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="swk-2e-9Qu" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="145" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="Pla-9V-Iun"/>
+                        <constraint firstAttribute="width" priority="999" constant="18" id="eaE-g3-tn6"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="xdp-Uq-a9s"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UM9-cT-Ief" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="119" width="18" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" priority="999" constant="18" id="YaJ-7M-rj4"/>
+                        <constraint firstAttribute="height" constant="17" id="af9-05-Rza"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="GMn-EZ-VDP"/>
+                </imageView>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejR-R0-1Tt">
+                    <rect key="frame" x="186" y="142" width="26" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="1Ab-ns-XuU"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="px" placeholderString="" drawsBackground="YES" id="qdt-89-TTn">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8S-25-Lua">
+                    <rect key="frame" x="186" y="116" width="26" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="NzA-OG-dU1"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="px" placeholderString="" drawsBackground="YES" id="did-SA-zAu">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Exh-Zl-iTY">
+                    <rect key="frame" x="31" y="51" width="261" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Hdb-sO-qor"/>
+                        <constraint firstAttribute="width" constant="257" id="yjA-dp-DXf"/>
+                    </constraints>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Contact sheets will be saved in the same folder as the input video." id="57j-2y-DG0">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Y4h-ED-9mT" firstAttribute="leading" secondItem="ax5-sF-SVe" secondAttribute="trailing" constant="7" id="00S-67-E3W"/>
+                <constraint firstItem="40E-Xy-mQH" firstAttribute="leading" secondItem="lpe-oO-RrQ" secondAttribute="trailing" constant="3" id="0Ad-ym-Ynh"/>
+                <constraint firstItem="2pz-Gs-JPG" firstAttribute="leading" secondItem="5Ki-9y-LTO" secondAttribute="trailing" constant="7" id="0ya-XI-xzj"/>
+                <constraint firstItem="DqN-vl-nw5" firstAttribute="leading" secondItem="P0c-jr-8SE" secondAttribute="trailing" constant="7" id="0zv-uw-YLF"/>
+                <constraint firstItem="ax5-sF-SVe" firstAttribute="top" secondItem="XKh-lf-jeK" secondAttribute="bottom" constant="10" id="13F-ou-Zry"/>
+                <constraint firstItem="UQ3-Kz-2HB" firstAttribute="leading" secondItem="qff-IU-LFe" secondAttribute="trailing" constant="5" id="14R-2p-AXF"/>
+                <constraint firstItem="86h-dC-1RO" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="68" id="15t-OO-Fwj"/>
+                <constraint firstItem="ejR-R0-1Tt" firstAttribute="leading" secondItem="khW-LH-fuf" secondAttribute="trailing" id="2Le-IA-ev1"/>
+                <constraint firstItem="Y4h-ED-9mT" firstAttribute="centerY" secondItem="ax5-sF-SVe" secondAttribute="centerY" id="3Td-RT-a65"/>
+                <constraint firstItem="l7o-DF-cpV" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="68" id="3mU-kv-Eos"/>
+                <constraint firstItem="19y-B5-Frm" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="50" id="4zE-JX-82z"/>
+                <constraint firstItem="We8-bG-bS0" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="52" id="5I1-h0-I2s"/>
+                <constraint firstItem="GCc-Y7-Qyy" firstAttribute="centerY" secondItem="pfn-56-JLa" secondAttribute="centerY" id="5mF-FF-lAe"/>
+                <constraint firstItem="qff-IU-LFe" firstAttribute="leading" secondItem="rHM-nq-ewt" secondAttribute="trailing" id="7ot-2R-F7a"/>
+                <constraint firstItem="86h-dC-1RO" firstAttribute="top" secondItem="Svf-6A-sCo" secondAttribute="bottom" constant="10" id="8Eo-Qp-15H"/>
+                <constraint firstItem="Y8S-25-Lua" firstAttribute="centerY" secondItem="iyJ-eg-xkd" secondAttribute="centerY" id="9Oc-8a-rCy"/>
+                <constraint firstItem="Svf-6A-sCo" firstAttribute="centerY" secondItem="oft-Wv-BxM" secondAttribute="centerY" id="9P1-TO-rGB"/>
+                <constraint firstItem="tba-pN-Lbj" firstAttribute="centerY" secondItem="l7o-DF-cpV" secondAttribute="centerY" id="AaR-NT-X99"/>
+                <constraint firstItem="ax5-sF-SVe" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="35" id="AyA-MM-Lsr"/>
+                <constraint firstItem="khW-LH-fuf" firstAttribute="baseline" secondItem="RO6-VZ-xhY" secondAttribute="baseline" id="BOm-zS-zq2"/>
+                <constraint firstItem="lpe-oO-RrQ" firstAttribute="top" secondItem="l7o-DF-cpV" secondAttribute="bottom" constant="10" id="Bbv-kJ-mc4"/>
+                <constraint firstItem="D1C-Gl-do4" firstAttribute="centerY" secondItem="2pz-Gs-JPG" secondAttribute="centerY" id="Bkh-CH-fXi"/>
+                <constraint firstItem="2pz-Gs-JPG" firstAttribute="baseline" secondItem="5Ki-9y-LTO" secondAttribute="baseline" constant="7" id="CHR-Zf-yEq"/>
+                <constraint firstItem="yew-NZ-K51" firstAttribute="top" secondItem="VEX-zJ-tEh" secondAttribute="bottom" constant="10" id="CyN-aA-aAg"/>
+                <constraint firstItem="RO6-VZ-xhY" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="24" id="D46-pk-shD"/>
+                <constraint firstItem="52X-p4-Anp" firstAttribute="leading" secondItem="yew-NZ-K51" secondAttribute="trailing" constant="7" id="D4C-PB-Lb2"/>
+                <constraint firstItem="ifH-eT-Xwt" firstAttribute="baseline" secondItem="Rkx-YK-R8N" secondAttribute="baseline" constant="7" id="D4m-fU-vQn"/>
+                <constraint firstItem="We8-bG-bS0" firstAttribute="top" secondItem="86h-dC-1RO" secondAttribute="bottom" constant="10" id="EdE-RO-o98"/>
+                <constraint firstItem="F55-mJ-bYw" firstAttribute="centerX" secondItem="rrO-6a-UGE" secondAttribute="centerX" id="EfK-Ug-EBo"/>
+                <constraint firstItem="ejR-R0-1Tt" firstAttribute="centerY" secondItem="khW-LH-fuf" secondAttribute="centerY" id="ErA-vk-5oP"/>
+                <constraint firstItem="XpH-Vq-SBK" firstAttribute="top" secondItem="TEr-sC-cKN" secondAttribute="bottom" constant="10" id="EvH-VD-qr0"/>
+                <constraint firstItem="oft-Wv-BxM" firstAttribute="leading" secondItem="Svf-6A-sCo" secondAttribute="trailing" constant="3" id="FKL-0U-z3e"/>
+                <constraint firstItem="Svf-6A-sCo" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="68" id="GA7-HV-wXg"/>
+                <constraint firstItem="iyJ-eg-xkd" firstAttribute="leading" secondItem="XKh-lf-jeK" secondAttribute="trailing" constant="7" id="GIi-fw-DeI"/>
+                <constraint firstItem="pfn-56-JLa" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="40" id="GVK-4E-rx4"/>
+                <constraint firstItem="XKh-lf-jeK" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="19" id="GgC-U6-FfS"/>
+                <constraint firstItem="UM9-cT-Ief" firstAttribute="leading" secondItem="Y8S-25-Lua" secondAttribute="trailing" constant="5" id="Jd5-DL-nbr"/>
+                <constraint firstItem="Zex-w3-xPp" firstAttribute="top" secondItem="rrO-6a-UGE" secondAttribute="top" constant="20" id="K2g-7T-UHP"/>
+                <constraint firstItem="zeE-w7-Qjg" firstAttribute="leading" secondItem="qTc-WV-Sdo" secondAttribute="trailing" constant="5" id="LLw-AS-Pnt"/>
+                <constraint firstItem="Y8S-25-Lua" firstAttribute="leading" secondItem="iyJ-eg-xkd" secondAttribute="trailing" id="McC-A1-WZq"/>
+                <constraint firstItem="l7o-DF-cpV" firstAttribute="top" secondItem="XpH-Vq-SBK" secondAttribute="bottom" constant="10" id="NCa-zm-xG1"/>
+                <constraint firstItem="DqN-vl-nw5" firstAttribute="baseline" secondItem="P0c-jr-8SE" secondAttribute="baseline" id="Oqv-EE-dDq"/>
+                <constraint firstItem="GCc-Y7-Qyy" firstAttribute="leading" secondItem="pfn-56-JLa" secondAttribute="trailing" constant="5" id="P2S-n7-k16"/>
+                <constraint firstItem="rHM-nq-ewt" firstAttribute="baseline" secondItem="Zex-w3-xPp" secondAttribute="baseline" id="PES-D0-eXe"/>
+                <constraint firstItem="40E-Xy-mQH" firstAttribute="centerY" secondItem="lpe-oO-RrQ" secondAttribute="centerY" id="PjT-n0-qdn"/>
+                <constraint firstItem="TEr-sC-cKN" firstAttribute="top" secondItem="pfn-56-JLa" secondAttribute="bottom" constant="10" id="QVc-re-aOs"/>
+                <constraint firstItem="UQ3-Kz-2HB" firstAttribute="centerY" secondItem="rHM-nq-ewt" secondAttribute="centerY" id="RkZ-XG-rS4"/>
+                <constraint firstItem="VEX-zJ-tEh" firstAttribute="top" secondItem="Zex-w3-xPp" secondAttribute="bottom" constant="10" id="SSf-ZB-f58"/>
+                <constraint firstItem="pf6-bp-Yew" firstAttribute="leading" secondItem="3zw-PX-Xwn" secondAttribute="trailing" constant="5" id="Sj5-5H-4FR"/>
+                <constraint firstItem="5Qn-Tk-Xoz" firstAttribute="leading" secondItem="52X-p4-Anp" secondAttribute="trailing" constant="5" id="Tc2-QE-94t"/>
+                <constraint firstItem="qTc-WV-Sdo" firstAttribute="centerY" secondItem="A1I-f6-hvA" secondAttribute="centerY" id="Tgm-mJ-NqU"/>
+                <constraint firstItem="ifH-eT-Xwt" firstAttribute="leading" secondItem="Rkx-YK-R8N" secondAttribute="trailing" constant="7" id="UEz-8B-rMz"/>
+                <constraint firstItem="qTc-WV-Sdo" firstAttribute="leading" secondItem="A1I-f6-hvA" secondAttribute="trailing" id="ULn-Wp-N8c"/>
+                <constraint firstItem="A1I-f6-hvA" firstAttribute="leading" secondItem="VEX-zJ-tEh" secondAttribute="trailing" constant="7" id="Ulq-YZ-vOd"/>
+                <constraint firstItem="pf6-bp-Yew" firstAttribute="centerY" secondItem="3zw-PX-Xwn" secondAttribute="centerY" id="UzQ-vq-W1D"/>
+                <constraint firstItem="5Ki-9y-LTO" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="19" id="VWE-tl-e23"/>
+                <constraint firstItem="5Ki-9y-LTO" firstAttribute="top" secondItem="We8-bG-bS0" secondAttribute="bottom" constant="10" id="W4Q-id-28f"/>
+                <constraint firstItem="iyJ-eg-xkd" firstAttribute="baseline" secondItem="XKh-lf-jeK" secondAttribute="baseline" id="WK6-lh-9Qr"/>
+                <constraint firstItem="3zw-PX-Xwn" firstAttribute="leading" secondItem="We8-bG-bS0" secondAttribute="trailing" constant="7" id="WVG-Ry-KXf"/>
+                <constraint firstItem="19y-B5-Frm" firstAttribute="top" secondItem="5Ki-9y-LTO" secondAttribute="bottom" constant="10" id="XtM-RU-ugU"/>
+                <constraint firstItem="lq2-vt-Hjh" firstAttribute="centerY" secondItem="DqN-vl-nw5" secondAttribute="centerY" id="aBH-2u-l88"/>
+                <constraint firstItem="F55-mJ-bYw" firstAttribute="top" secondItem="Exh-Zl-iTY" secondAttribute="bottom" constant="8" id="apG-KH-Jzr"/>
+                <constraint firstItem="xYD-Dg-xHW" firstAttribute="leading" secondItem="ifH-eT-Xwt" secondAttribute="trailing" constant="5" id="bvI-dR-t0J"/>
+                <constraint firstItem="XKh-lf-jeK" firstAttribute="top" secondItem="RO6-VZ-xhY" secondAttribute="bottom" constant="9" id="cks-h1-7wZ"/>
+                <constraint firstItem="EQA-ZU-SRU" firstAttribute="leading" secondItem="TEr-sC-cKN" secondAttribute="trailing" constant="3" id="cyc-L0-g2u"/>
+                <constraint firstItem="VIi-UH-e84" firstAttribute="leading" secondItem="19y-B5-Frm" secondAttribute="trailing" constant="7" id="dYb-jq-DEx"/>
+                <constraint firstItem="YtT-KX-mTG" firstAttribute="centerY" secondItem="VIi-UH-e84" secondAttribute="centerY" id="eQf-px-yVt"/>
+                <constraint firstItem="tba-pN-Lbj" firstAttribute="leading" secondItem="l7o-DF-cpV" secondAttribute="trailing" constant="3" id="f1h-Zr-aGc"/>
+                <constraint firstItem="VIi-UH-e84" firstAttribute="baseline" secondItem="19y-B5-Frm" secondAttribute="baseline" id="f96-i5-B69"/>
+                <constraint firstItem="Rkx-YK-R8N" firstAttribute="top" secondItem="yew-NZ-K51" secondAttribute="bottom" constant="10" id="fPD-L2-mUl"/>
+                <constraint firstItem="XpH-Vq-SBK" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="68" id="fZL-1A-dpw"/>
+                <constraint firstItem="Exh-Zl-iTY" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="33" id="guJ-qp-5u1"/>
+                <constraint firstItem="P0c-jr-8SE" firstAttribute="top" secondItem="19y-B5-Frm" secondAttribute="bottom" constant="10" id="hTi-q6-F2F"/>
+                <constraint firstItem="52X-p4-Anp" firstAttribute="baseline" secondItem="yew-NZ-K51" secondAttribute="baseline" id="hzc-Cq-vh0"/>
+                <constraint firstItem="A1I-f6-hvA" firstAttribute="baseline" secondItem="VEX-zJ-tEh" secondAttribute="baseline" id="isT-52-Fe4"/>
+                <constraint firstItem="Rul-E0-pd8" firstAttribute="centerY" secondItem="86h-dC-1RO" secondAttribute="centerY" id="jHu-gc-ZlX"/>
+                <constraint firstItem="zeE-w7-Qjg" firstAttribute="centerY" secondItem="A1I-f6-hvA" secondAttribute="centerY" id="k73-LC-qEB"/>
+                <constraint firstItem="RO6-VZ-xhY" firstAttribute="top" secondItem="P0c-jr-8SE" secondAttribute="bottom" constant="10" id="lUG-KF-hr7"/>
+                <constraint firstItem="xYD-Dg-xHW" firstAttribute="centerY" secondItem="ifH-eT-Xwt" secondAttribute="centerY" id="mEa-nc-1uI"/>
+                <constraint firstItem="yew-NZ-K51" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="71" id="mQV-mb-rfM"/>
+                <constraint firstItem="5Qn-Tk-Xoz" firstAttribute="centerY" secondItem="52X-p4-Anp" secondAttribute="centerY" id="mnl-r7-uHN"/>
+                <constraint firstItem="rHM-nq-ewt" firstAttribute="leading" secondItem="Zex-w3-xPp" secondAttribute="trailing" constant="7" id="oAi-p4-ieW"/>
+                <constraint firstItem="swk-2e-9Qu" firstAttribute="centerY" secondItem="ejR-R0-1Tt" secondAttribute="centerY" id="oUc-tG-RSV"/>
+                <constraint firstItem="Zex-w3-xPp" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="9" id="pgs-jZ-kqY"/>
+                <constraint firstItem="3zw-PX-Xwn" firstAttribute="centerY" secondItem="We8-bG-bS0" secondAttribute="centerY" id="pnQ-4o-gcW"/>
+                <constraint firstItem="50k-0g-uFF" firstAttribute="leading" secondItem="XpH-Vq-SBK" secondAttribute="trailing" constant="3" id="q2q-rO-qqT"/>
+                <constraint firstItem="swk-2e-9Qu" firstAttribute="leading" secondItem="ejR-R0-1Tt" secondAttribute="trailing" constant="5" id="q6R-kO-kmw"/>
+                <constraint firstItem="lq2-vt-Hjh" firstAttribute="leading" secondItem="DqN-vl-nw5" secondAttribute="trailing" constant="5" id="qjH-nE-je9"/>
+                <constraint firstItem="UM9-cT-Ief" firstAttribute="centerY" secondItem="Y8S-25-Lua" secondAttribute="centerY" id="qls-xx-Rsd"/>
+                <constraint firstItem="XpH-Vq-SBK" firstAttribute="centerY" secondItem="50k-0g-uFF" secondAttribute="centerY" id="ti0-pT-oRZ"/>
+                <constraint firstItem="qff-IU-LFe" firstAttribute="centerY" secondItem="rHM-nq-ewt" secondAttribute="centerY" id="uPe-M2-UDp"/>
+                <constraint firstItem="Rkx-YK-R8N" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="15" id="uoj-oL-s7T"/>
+                <constraint firstItem="Svf-6A-sCo" firstAttribute="top" secondItem="lpe-oO-RrQ" secondAttribute="bottom" constant="10" id="vbD-Za-6mN"/>
+                <constraint firstItem="pfn-56-JLa" firstAttribute="top" secondItem="Rkx-YK-R8N" secondAttribute="bottom" constant="10" id="wGW-Ya-IUC"/>
+                <constraint firstItem="Exh-Zl-iTY" firstAttribute="top" secondItem="ax5-sF-SVe" secondAttribute="bottom" constant="11" id="wZ1-dK-NeE"/>
+                <constraint firstItem="lpe-oO-RrQ" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="68" id="wpw-ye-Ool"/>
+                <constraint firstItem="D1C-Gl-do4" firstAttribute="leading" secondItem="2pz-Gs-JPG" secondAttribute="trailing" constant="5" id="xY3-Fm-rw5"/>
+                <constraint firstItem="VEX-zJ-tEh" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="25" id="y1R-67-RXb"/>
+                <constraint firstItem="P0c-jr-8SE" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="47" id="yCx-1b-Qt0"/>
+                <constraint firstItem="Rul-E0-pd8" firstAttribute="leading" secondItem="86h-dC-1RO" secondAttribute="trailing" constant="3" id="yDI-as-oyx"/>
+                <constraint firstItem="YtT-KX-mTG" firstAttribute="leading" secondItem="VIi-UH-e84" secondAttribute="trailing" constant="5" id="yXi-UJ-BqI"/>
+                <constraint firstItem="EQA-ZU-SRU" firstAttribute="centerY" secondItem="TEr-sC-cKN" secondAttribute="centerY" id="yZn-Si-jdu"/>
+                <constraint firstItem="khW-LH-fuf" firstAttribute="leading" secondItem="RO6-VZ-xhY" secondAttribute="trailing" constant="7" id="zDg-4J-1kn"/>
+                <constraint firstItem="TEr-sC-cKN" firstAttribute="leading" secondItem="rrO-6a-UGE" secondAttribute="leading" constant="68" id="zW0-zS-VTz"/>
+            </constraints>
+            <connections>
+                <outlet property="aspectRatioTooltipView" destination="lq2-vt-Hjh" id="CTl-ZN-WlH"/>
+                <outlet property="backgroundColorField" destination="ifH-eT-Xwt" id="ZQY-5S-nEL"/>
+                <outlet property="backgroundColorTooltipView" destination="xYD-Dg-xHW" id="xKT-GE-gjP"/>
+                <outlet property="columnsField" destination="52X-p4-Anp" id="ZMn-zO-jK7"/>
+                <outlet property="columnsTooltipView" destination="5Qn-Tk-Xoz" id="dCd-Wc-hu6"/>
+                <outlet property="headerBitrateButton" destination="Svf-6A-sCo" id="Ec7-4d-Ge0"/>
+                <outlet property="headerCodecButton" destination="l7o-DF-cpV" id="9Bk-6y-4BU"/>
+                <outlet property="headerDurationButton" destination="XpH-Vq-SBK" id="RLX-bC-4Bv"/>
+                <outlet property="headerFieldsTooltipView" destination="GCc-Y7-Qyy" id="jir-Mi-kRp"/>
+                <outlet property="headerFontField" destination="3zw-PX-Xwn" id="JfH-cj-wNQ"/>
+                <outlet property="headerFontTooltipView" destination="pf6-bp-Yew" id="lGa-0h-we4"/>
+                <outlet property="headerResolutionButton" destination="lpe-oO-RrQ" id="GMi-o7-HBW"/>
+                <outlet property="headerSizeButton" destination="86h-dC-1RO" id="kMC-ph-1dh"/>
+                <outlet property="headerTextColorField" destination="2pz-Gs-JPG" id="awj-J5-W58"/>
+                <outlet property="headerTextColorTooltipView" destination="D1C-Gl-do4" id="1TS-u2-0z7"/>
+                <outlet property="headerTitleButton" destination="TEr-sC-cKN" id="vfo-jg-Z4p"/>
+                <outlet property="heightField" destination="iyJ-eg-xkd" id="9PF-To-bGe"/>
+                <outlet property="heightPerImageTooltipView" destination="UM9-cT-Ief" id="ep8-cT-KWe"/>
+                <outlet property="horizontalPaddingField" destination="rHM-nq-ewt" id="Jv3-8r-TVH"/>
+                <outlet property="horizontalPaddingTooltipView" destination="UQ3-Kz-2HB" id="2Jm-39-NZT"/>
+                <outlet property="keepTimestampsField" destination="VIi-UH-e84" id="Wnp-bu-56W"/>
+                <outlet property="maintainAspectRatioField" destination="DqN-vl-nw5" id="n2v-cc-GB0"/>
+                <outlet property="outputFormatSelector" destination="Y4h-ED-9mT" id="PHb-aH-9CG"/>
+                <outlet property="timestampsTooltipView" destination="YtT-KX-mTG" id="ycV-0X-t7c"/>
+                <outlet property="verticalPaddingField" destination="A1I-f6-hvA" id="IFY-1s-KGV"/>
+                <outlet property="verticalPaddingTooltipView" destination="zeE-w7-Qjg" id="vlN-Qf-SoN"/>
+                <outlet property="widthField" destination="khW-LH-fuf" id="oAq-L0-Mrd"/>
+                <outlet property="widthPerImageTooltipView" destination="swk-2e-9Qu" id="B5Z-xC-GIY"/>
+            </connections>
+            <point key="canvasLocation" x="207" y="142.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="info" width="409.60000610351562" height="409.60000610351562"/>
+    </resources>
+</document>
