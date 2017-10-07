@@ -193,8 +193,6 @@ class VideoFrameExtractor: NSObject {
             return nil
         }
         
-        //av_frame_get_buffer(pFrame, 1)
-        //initFrame(pFrame: &pFrame!, width: usableCtx!.pointee.width, height: usableCtx!.pointee.height)
         initFrame(pFrame: &pFrameRgb!, width: usableCtx!.pointee.width, height: usableCtx!.pointee.height)
         
         // init a few variables to use within the loop
@@ -204,63 +202,47 @@ class VideoFrameExtractor: NSObject {
             NSLog("Packet not initialized properly")
             return nil
         }
-        //var frameFinished = Int32()
-        
-        // pad 10 seconds in
-        let tp = Double(AV_TIME_BASE) * 0.0 // 10.0
+
+        let tp = Double(AV_TIME_BASE) * 10.0 // 10.0
         
         let timeBetweenFrames = (Int64(Double(AV_TIME_BASE) * duration) - pFormatCtx!.pointee.start_time - Int64(tp)) / Int64(numFrames)
         
-        //let tp = (Double(AV_TIME_BASE) * Double(secondsBetweenFrames) * 2.0)
-        
         var seekPos = Int64(tp)
         var tempSeekPos = Int64(tp)
-        // seekPos = (seekPos + (Int64((Double(AV_TIME_BASE) * Double(1)))))
         // seek to first frame we want to grab
         let flag = AVSEEK_FLAG_FRAME
-        //avformat_seek_file(pFormatCtx!, -1, seekPos-Int64(AV_TIME_BASE), Int64(seekPos), Int64(seekPos), flag)
-        //seekPos = (seekPos + (Int64((Double(AV_TIME_BASE) * Double(secondsBetweenFrames)))))
-        avformat_seek_file(pFormatCtx, -1, Int64.min, Int64(seekPos), Int64.max, flag)
+        avformat_seek_file(pFormatCtx, -1, 0, Int64(seekPos), Int64.max, flag)
         avcodec_flush_buffers(usableCtx)
         var last_ts: String? = nil
         var images:[FrameWrapper] = []
         
         // while we haven't reached max frames
         while ind < numFrames {
-            //NSLog(String(seekPos));
-
             // read the current frame
             packet = av_packet_alloc()
-            //let curr_timestamp = pFormatCtx!.pointee.
-            
-            av_read_frame(pFormatCtx, &packet!.pointee)
-            
+            let rfe = av_read_frame(pFormatCtx, &packet!.pointee)
+            if rfe != 0 {
+                NSLog("Error reading frame")
+                av_packet_free(&packet)
+                continue
+            }
             // if the stream index is the right index
             if Int(packet!.pointee.stream_index) == videoStreamIndex {
                 // decode the frame into raw data - save that raw data in pFrame->data
-                
                 avcodec_send_packet(usableCtx, &packet!.pointee)
                 let f = avcodec_receive_frame(usableCtx, pFrame)
+
                 if f == -541478725 {
                     // EOF reached
+                    NSLog("Reached end of file")
                     break
                 }
                 // if the frame has finished decoding, we can process it
                 if f == 0 {
-                    // TODO -- first, check to see if the frame is mostly black. if it is, move the seek_pos forward a little bit
-//                    var args: [char]
-//                    var ret = -1
-//                    var blackFrameCtx: UnsafeMutablePointer<AVFilterContext>
-//                    var blackFrameSrc: UnsafeMutablePointer<AVFilter> = avfilter_get_by_name("blackframe")
-//                    
-                    
-                    
-                    //NSLog(seekPos)
                     // scale the frame from pFrame into pFrameRgb
                     scaleFrame(srcFrame: pFrame!, dstFrame: pFrameRgb!, ctx: swsContext!)
                     // find the png encoder
                     guard let outCodec = avcodec_find_encoder(AV_CODEC_ID_PNG), var usablePngCtx: UnsafeMutablePointer<AVCodecContext>?  = avcodec_alloc_context3(outCodec) else {
-                        //cleanup(srcFrame: pFrame, dstFrame: pFrameRgb, swsContext: swsContext, ctx: usableCtx, origCtx: nil)
                         NSLog("Unable to get PNG codex and context")
                         return nil
                     }
@@ -269,7 +251,6 @@ class VideoFrameExtractor: NSObject {
                     
                     // open the png codec
                     guard avcodec_open2(usablePngCtx, outCodec, nil) >= 0 else {
-                        //cleanup(srcFrame: pFrame, dstFrame: pFrameRgb, swsContext: swsContext, ctx: usableCtx, origCtx: nil)
                         avcodec_close(usablePngCtx)
                         NSLog("Unable to open png codec")
                         return nil
@@ -278,7 +259,6 @@ class VideoFrameExtractor: NSObject {
                     var pngPacket = av_packet_alloc()
                     avcodec_send_frame(usablePngCtx, pFrameRgb)
                     let gotPacket = avcodec_receive_packet(usablePngCtx, &pngPacket!.pointee)
-                    //avcodec_encode_video2(usablePngCtx, &pngPacket, pFrameRgb, &successPtr)
                     
                     guard gotPacket == 0 else {
                         NSLog("Couldn't encode video to PNG")
@@ -288,7 +268,6 @@ class VideoFrameExtractor: NSObject {
                     
                     let image = NSImage.init(data: Data.init(bytes: pngPacket!.pointee.data, count: Int(pngPacket!.pointee.size)))
                     
-                    //av_packet_unref(pngPacket)
                     av_packet_free(&pngPacket)
                     
                     guard let _image = image else {
@@ -302,49 +281,17 @@ class VideoFrameExtractor: NSObject {
                     let roundedSeconds = Int(seconds)
                     let hms = secondsToHoursMinutesSeconds(seconds: roundedSeconds)
                     let timestamp = createSimplifiedVidDurationString(dur: hms)
+                    let frameWrapper = FrameWrapper.init(_image: _image, _timestamp: timestamp)
                     
-                    //NSLog("Stuck here")
-                    if (last_ts == timestamp || _image.isDark) {
-                        var seconds = Double(packet!.pointee.pts) * (Double(origAvStream.pointee.time_base.num) / Double(origAvStream.pointee.time_base.den))
-                        seconds.round()
-                        let roundedSeconds = Int(seconds)
-                        let hms = secondsToHoursMinutesSeconds(seconds: roundedSeconds)
-                        let timestamp = createSimplifiedVidDurationString(dur: hms)
-                        
-                        // current time
-                        //packet!.pointee.dts
-                        //let minsp = (packet!.pointee.dts * Int64(origAvStream.pointee.time_base.num)) + Int64(origAvStream.pointee.time_base.den)
-                        //NSLog("minsp: " + String(minsp))
-                        NSLog("timestamp: " + timestamp)
-                        // current position
-                        let currPos = packet!.pointee.pts * Int64(origAvStream.pointee.time_base.den)
-                        tempSeekPos = currPos
-                        //NSLog("bad timestamp: " + timestamp)
-                        let maxsp = tempSeekPos + Int64(AV_TIME_BASE)
-                        
-                        // should go to next keyframe as minsp is current timestamp + 1
-                        avformat_seek_file(pFormatCtx, -1, tempSeekPos+packet!.pointee.duration, tempSeekPos+packet!.pointee.duration, Int64.max, 0)
-                    }
-                    else {
-                        //NSLog("Unstuck good")
-                        var seconds = Double(packet!.pointee.pts) * (Double(origAvStream.pointee.time_base.num) / Double(origAvStream.pointee.time_base.den))
-                        seconds.round()
-                        let roundedSeconds = Int(seconds)
-                        let hms = secondsToHoursMinutesSeconds(seconds: roundedSeconds)
-                        let timestamp = createSimplifiedVidDurationString(dur: hms)
-                        let frameWrapper = FrameWrapper.init(_image: _image, _timestamp: timestamp)
-                        
-                        images.append(frameWrapper)
-                        
-                        seekPos = (seekPos + timeBetweenFrames)
-                        tempSeekPos = seekPos
-                        avformat_seek_file(pFormatCtx, -1, Int64.min, Int64(seekPos), Int64.max, flag)
-                        //NSLog("seekPos: " + String(seekPos))
-                        NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.NotificationKeys.VideoFrameGenerated), object: self, userInfo: nil)
-                        
-                        ind = ind + 1
-                    }
+                    images.append(frameWrapper)
                     
+                    seekPos = (seekPos + timeBetweenFrames)
+                    tempSeekPos = seekPos
+                    avformat_seek_file(pFormatCtx, -1, 0, Int64(seekPos), Int64.max, flag)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.NotificationKeys.VideoFrameGenerated), object: self, userInfo: nil)
+                    
+                    ind = ind + 1
+                        
                     last_ts = timestamp
                     avcodec_flush_buffers(usableCtx)
                     
@@ -352,11 +299,8 @@ class VideoFrameExtractor: NSObject {
                     avcodec_free_context(&usablePngCtx)
                 }
             }
-            //av_packet_unref(packet)
             av_packet_free(&packet)
         }
-        // send remaining images
-//        NotificationCenter.default.post(name: Notification.Name(rawValue: imageGeneratedNotificationKey), object: self, userInfo: imageInfoBuf)
         
         return images
         

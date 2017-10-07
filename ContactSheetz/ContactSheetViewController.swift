@@ -79,11 +79,25 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
     func startExtractingFrames(extractor: VideoFrameExtractor) {
         // generate the frames in a background thread
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-            let images = extractor.generateFrames()
-            DispatchQueue.main.async {
-                if let _images = images {
-                    self.imageSet = _images
+            guard let images = extractor.generateFrames() else {
+                DispatchQueue.main.async {
+                    self.spinner.stopAnimation(self)
+                    let alertSheet = NSAlert.init()
+                    alertSheet.alertStyle = NSAlertStyle.critical
+                    alertSheet.messageText = "Something bad happened while generating frames!"
+                    alertSheet.beginSheetModal(for: self.view.window!, completionHandler: {(res: NSModalResponse) -> Void in
+                        self.cancelAction(self)
+                    })
+                    //alertSheet.beginSheetModal(for: self.view.window!, {() -> in
+                    //    NSLog("Alert closed")
+                    //})
+                    //self.cancelAction(self)
                 }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.imageSet = images
                 self.completedFrameCreation()
             }
         }
@@ -206,7 +220,7 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
     }
     
     @IBAction func cancelAction(_ sender: AnyObject) {
-        self.dismissViewController(self)
+        self.view.window?.close()
     }
     
     

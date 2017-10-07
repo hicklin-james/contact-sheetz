@@ -84,25 +84,18 @@ class ContactSheetCreator: NSObject {
             let contactSheetWand = NewMagickWand()
             var montageWand: OpaquePointer?
             
-            //throw ContactSheetGenerationError.couldntReadImageBlob
-            
             // defer will only do this after leaving scope
             defer {
                 DestroyDrawingWand(drawingWand)
                 DestroyMagickWand(montageWand)
                 DestroyPixelWand(mainPixelWand)
                 DestroyMagickWand(contactSheetWand)
-                //for var item in imageInfo {
-                //    DestroyImageInfo(item)
-                //}
             }
             
             PixelSetColor(mainPixelWand, backgroundColor)
             MagickSetBackgroundColor(mainWand, mainPixelWand)
             
-            //NSLog("First slowdown")
             montageWand = MagickMontageImage(mainWand, drawingWand, geometryString, sizeString, UnframeMode, frameString)
-            //NSLog("Finished first slowdown")
             NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.NotificationKeys.ContactSheetProgress), object: self, userInfo: nil)
             
             if (checkMagickWandError(wand: mainWand) != UndefinedException || checkMagickWandError(wand: montageWand) != UndefinedException) {
@@ -120,26 +113,17 @@ class ContactSheetCreator: NSObject {
             }
             
             self.drawHeaderInfo(magickWand: contactSheetWand)
-//            if self.includeHeader {
-//                self.drawTitle(magickWand: contactSheetWand)
-//            }
-            
-            //MagickSetImageColor(contactSheetWand, mainPixelWand)
             
             NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.NotificationKeys.ContactSheetProgress), object: self, userInfo: nil)
             
             var contactSheetInt = 0
-            //NSLog("Or is it here?")
-            //MagickQuantizeImages(contactSheetWand, 256, RGBColorspace, 4, NoDitherMethod, MagickFalse)
-            //MagickSetImageFormat(contactSheetWand, "png")
-            //NSLog("Second slowdown")
+            
             let contactSheetImageBlob = MagickGetImageBlob(contactSheetWand, &contactSheetInt)
-            //NSLog("Finished second slowdown")
+
             NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.NotificationKeys.ContactSheetProgress), object: self, userInfo: nil)
             
-            //NSLog("Third slowdown")
             let contactSheet = NSImage.init(data: Data.init(bytes: contactSheetImageBlob!, count: contactSheetInt))
-            //NSLog("Finished third slowdown")
+
             NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.NotificationKeys.ContactSheetProgress), object: self, userInfo: nil)
             
             MagickRelinquishMemory(contactSheetImageBlob)
@@ -148,19 +132,19 @@ class ContactSheetCreator: NSObject {
             
         } catch ContactSheetGenerationError.badImageConversion {
             NSLog("Bad image conversion")
-            fatalError("Bad image conversion")
+            //fatalError("Bad image conversion")
             //NSLog("Bad image conversion")
         } catch ContactSheetGenerationError.couldntReadImageBlob {
             NSLog("Couldnt read image blob")
-            fatalError("Couldnt read image blob")
+            //fatalError("Couldnt read image blob")
             //NSLog("Couldnt read image blob")
         } catch ContactSheetGenerationError.montageWandError {
             NSLog("Montage wand error")
-            fatalError("Montage wand error")
+            //fatalError("Montage wand error")
             //NSLog("Montage wand error")
         } catch {
             NSLog("An unknown error occured")
-            fatalError("An unknown error occured")
+            //fatalError("An unknown error occured")
             //NSLog("An unknown error occured")
         }
         
@@ -322,12 +306,13 @@ class ContactSheetCreator: NSObject {
         
         PixelSetColor(pw, "white")
         DrawSetFillColor(wand, pw)
-        
+        let vertPadToUse = (Int(verticalPadding) % 2 == 0 ? verticalPadding : verticalPadding-1)
         for i in 0..<images.count {
             let img = images[i]
             let row = i / cols
             let col = i % cols
-            let yOrigin = (Double(row) * Double(height)) + (Double(row) * Double(verticalPadding)) + Double(verticalPadding / CGFloat(2))
+            let yOrigin = (Double(row) * (Double(height) + Double(vertPadToUse))) + Double(vertPadToUse / CGFloat(2))
+            //NSLog("y origin: " + String(yOrigin))
             let xOrigin = (Double(col) * Double(width)) + (Double(col) * Double(horizontalPadding)) + Double(horizontalPadding / CGFloat(2))
             
             let xPos = xOrigin + (Double(width) / 2)
@@ -386,15 +371,17 @@ class ContactSheetCreator: NSObject {
     
     func checkMagickWandError(wand: OpaquePointer?) -> ExceptionType {
         var et: ExceptionType = UndefinedException
-        let cStr = MagickGetException(wand, &et)
-        if let _cStr = cStr {
-            let string = String.init(cString: _cStr)
-            NSLog(string)
-        } else {
-            NSLog("cStr was nil!")
+        if let _wand = wand {
+            let cStr = MagickGetException(wand, &et)
+            if let _cStr = cStr {
+                let string = String.init(cString: _cStr)
+                NSLog("MagickWandError: " + string)
+            } else {
+                NSLog("cStr was nil!")
+            }
+            MagickClearException(wand)
+            MagickRelinquishMemory(cStr)
         }
-        MagickClearException(wand)
-        MagickRelinquishMemory(cStr)
         return et
     }
     

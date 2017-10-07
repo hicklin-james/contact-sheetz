@@ -80,9 +80,11 @@ class MainViewController: NSViewController, FileDropViewDelegate {
                     styleMask.insert(.resizable)
                     styleMask.insert(.miniaturizable)
                     styleMask.insert(.titled)
+                    //styleMask.insert(NSWindowStyleMask.)
                     
                     let window = NSWindow.init(contentRect: self.view.frame, styleMask: styleMask, backing: NSBackingStoreType.buffered, defer: true)
                     window.identifier = "PreviewWindow"
+                    window.collectionBehavior = .fullScreenAuxiliary
                     //window.delegate = vc
                     window.title = "Preview"
                     window.setFrameOrigin(NSPoint(x: self.view.window!.frame.origin.x, y: self.view.window!.frame.origin.y + 40))

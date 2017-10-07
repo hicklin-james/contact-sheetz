@@ -15,7 +15,7 @@ struct Constants {
         static let ContactSheetProgress = "com.contactsheets.contactSheetProgressKey"
     }
     
-    static let AcceptedFileTypes = ["mkv", "mp4", "avi", "wmv", "flv", "mov", "asf", "qt", "swf", "mpg", "mpeg", "ogv", "m4v"]
+    static let AcceptedFileTypes = ["mkv", "mp4", "avi", "wmv", "flv", "mov", "asf", "qt", "swf", "mpg", "mpeg", "ogv", "m4v", "webm"]
     
     struct SettingsKeys {
         static let HorizontalPadding = "horizontalPadding"

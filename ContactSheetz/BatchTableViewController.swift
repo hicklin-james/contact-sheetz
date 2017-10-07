@@ -197,6 +197,12 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
                 let vc = NSViewController.init()
                 vc.view = _settingsView
                 self.presentViewControllerAsModalWindow(vc)
+                vc.view.window?.maxSize = NSSize.init(width: 310, height: 591)
+                vc.view.window?.minSize = NSSize.init(width: 310, height: 591)
+                let zoomButton = vc.view.window?.standardWindowButton(NSWindowButton.zoomButton)
+                if let _zb = zoomButton {
+                    _zb.isEnabled = false
+                }
                 vc.view.window?.title = "Batch Settings"
                 self.settingsView = _settingsView
                 let heightConstraint = NSLayoutConstraint.init(item: _settingsView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.greaterThanOrEqual, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 536)
@@ -320,8 +326,8 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
         }
         let e = Date()
         let timeElapsed: Double = e.timeIntervalSince(s)
-        NSLog("Time taken: ")
-        NSLog(String(describing: timeElapsed))
+        //NSLog("Time taken: ")
+        //NSLog(String(describing: timeElapsed))
         
         DispatchQueue.main.async {
             let fp = URL.init(fileURLWithPath: file)
