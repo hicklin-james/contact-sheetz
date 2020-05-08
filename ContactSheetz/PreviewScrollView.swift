@@ -19,26 +19,11 @@ class PreviewScrollView: NSScrollView, NSWindowDelegate {
         // Drawing code here.
         let viewFrame = self.frame
         resizeScrollview(rect: viewFrame)
-        /**
-        if self.inLiveResize {
-            let viewFrame = self.frame
-            resizeScrollview(rect: viewFrame)
-        }
-         **/
     }
     
     override func viewDidEndLiveResize() {
         let viewFrame = self.frame
         resizeScrollview(rect: viewFrame)
-    }
-    
-    func windowDidResize(_ notification: Notification) {
-        //let myWidth = self.frame.size.width
-        let window = notification.object as? NSWindow
-        if let _win = window {
-            let windowFrame = _win.frame
-            //resizeScrollview(rect: windowFrame)
-        }
     }
     
     func resizeScrollview(rect: NSRect) {

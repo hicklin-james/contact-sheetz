@@ -164,6 +164,18 @@ class ContactSheetCreator: NSObject {
         var xPos: Double = 0.0
         var yPos: Double = 0.0
         
+        var titlemetrics: UnsafeMutablePointer<Double>?
+        var textmetrics: UnsafeMutablePointer<Double>?
+        
+        defer {
+            if let _titlemetrics = titlemetrics {
+                MagickRelinquishMemory(_titlemetrics)
+            }
+            if let _textmetrics = textmetrics {
+                MagickRelinquishMemory(_textmetrics)
+            }
+        }
+        
         let pw = NewPixelWand()
         let wand = createDrawingWand()
         
@@ -185,7 +197,7 @@ class ContactSheetCreator: NSObject {
                 DrawSetFontSize(wand, titleFontSize)
                 DrawSetTextAlignment(wand, CenterAlign)
                 
-                let titlemetrics = MagickQueryFontMetrics(magickWand, wand, "test string")
+                titlemetrics = MagickQueryFontMetrics(magickWand, wand, "test string")
                 let titleLineHeight = titlemetrics!.advanced(by: 5).pointee
                 
                 xPos = ((Double(width) * Double(cols)) + (Double(cols) * Double(horizontalPadding))) / 2.0
@@ -196,13 +208,12 @@ class ContactSheetCreator: NSObject {
                     DrawAnnotation(wand, xPos, yPos, r.1)
                     yPos = yPos + (titleLineHeight * Double(r.0))
                 }
-
             }
         }
         DrawSetFontSize(wand, fontPointSize)
         DrawSetTextAlignment(wand, LeftAlign)
         
-        let textmetrics = MagickQueryFontMetrics(magickWand, wand, "test string")
+        textmetrics = MagickQueryFontMetrics(magickWand, wand, "test string")
         let textHeight = textmetrics!.advanced(by: 5).pointee
         
         if (yPos == 0.0) {
@@ -225,28 +236,6 @@ class ContactSheetCreator: NSObject {
         }
         
         spliceHeight = yPos - (textHeight / 2)
-        /**
-        if let info = videoInfo {
-            if let res = info["resolution"] as? String {
-                DrawAnnotation(wand, xPos, yPos, "Resolution: " + res)
-                yPos = yPos + titleFontSize
-            }
-            if let codec = info["codec"] as? String {
-                DrawAnnotation(wand, xPos, yPos, "Codec: " + codec)
-                yPos = yPos + titleFontSize
-            }
-            if let dur = info["duration"] as? String {
-                DrawAnnotation(wand, xPos, yPos, "Duration: " + dur)
-                yPos = yPos + titleFontSize
-            }
-            if let fs = info["size"] as? String {
-                DrawAnnotation(wand, xPos, yPos, "Size: " + fs)
-            }
-            if let br = info["bitrate"] as? String {
-                DrawAnnotation(wand, xPos, yPos, "Bitrate: " + br)
-            }
-        }
-        **/
         
         MagickSpliceImage(magickWand, 0, Int(spliceHeight), 0, 0)
         MagickDrawImage(magickWand, wand)
@@ -257,15 +246,16 @@ class ContactSheetCreator: NSObject {
     
     func adjustTextForWidth(wand: OpaquePointer?, drawingWand: OpaquePointer?, text: String) -> (Int, String) {
         var textCopy = text
+        var metrics: UnsafeMutablePointer<Double>?
         var currTextWidth: Double = 0
         var totalLines = 1
         let totalwidth = ((Double(width) * Double(cols)) + (Double(cols) * Double(horizontalPadding)))
         let padding = totalwidth / 20
         var i = 0
-        while i < textCopy.characters.count {
+        while i < textCopy.count {
             let char = textCopy[textCopy.index(textCopy.startIndex, offsetBy: i)]
             //NSLog("Character: " + String(describing: char))
-            let metrics = MagickQueryFontMetrics(wand, drawingWand, String(describing: char))
+            metrics = MagickQueryFontMetrics(wand, drawingWand, String(describing: char))
             if let _metrics = metrics {
                 let characterWidth = _metrics.advanced(by: 4).pointee
                 currTextWidth = currTextWidth + characterWidth
@@ -291,6 +281,7 @@ class ContactSheetCreator: NSObject {
                     totalLines = totalLines + 1
                 }
             }
+            MagickRelinquishMemory(metrics)
             i = i + 1
         }
 
@@ -329,7 +320,9 @@ class ContactSheetCreator: NSObject {
     
     func createDrawingWand() -> OpaquePointer? {
         let drawingWand = NewDrawingWand()
-        let fontString = "/Library/Fonts/Arial Black.ttf"
+        // TODO default font changed in new Mac OS versions... should dynamically
+        // find the right one.
+        let fontString = "/Library/Fonts/Arial Unicode.ttf"
         DrawSetFont(drawingWand, fontString)
         
         return drawingWand
@@ -354,28 +347,26 @@ class ContactSheetCreator: NSObject {
             let status = MagickReadImageBlob(mainWand, imageBytes, byteifiedImage.count)
             
             if (status == MagickFalse) {
+                checkMagickWandError(wand: mainWand)
                 throw ContactSheetGenerationError.couldntReadImageBlob
             }
             MagickScaleImage(mainWand, Int(width), Int(height))
             MagickSetLastIterator(mainWand)
-            //let imageInfo = AcquireImageInfo()
-            //imageInfoArr.append(imageInfo)
             NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.NotificationKeys.ContactSheetProgress), object: self, userInfo: nil)
         }
-        //MagickSetFirstIterator(mainWand)
-        //MagickQuantizeImages(mainWand, 256, RGBColorspace, 4, NoDitherMethod, MagickFalse)
-        //return imageInfoArr
     }
     
     private
     
     func checkMagickWandError(wand: OpaquePointer?) -> ExceptionType {
         var et: ExceptionType = UndefinedException
-        if let _wand = wand {
+        if wand != nil {
             let cStr = MagickGetException(wand, &et)
             if let _cStr = cStr {
                 let string = String.init(cString: _cStr)
-                NSLog("MagickWandError: " + string)
+                if !string.isEmpty {
+                    NSLog("MagickWandError: " + string)
+                }
             } else {
                 NSLog("cStr was nil!")
             }
@@ -388,8 +379,8 @@ class ContactSheetCreator: NSObject {
     func getPngByteDataFromImage(image: NSImage) -> Data? {
         let reps = image.representations
         let compressionFactor = 1
-        let imageProps = NSDictionary.init(object: compressionFactor, forKey: NSImageCompressionFactor as NSCopying)
-        return NSBitmapImageRep.representationOfImageReps(in: reps, using: NSPNGFileType, properties: imageProps as! [String : Any])
+        let imageProps = NSDictionary.init(object: compressionFactor, forKey: NSBitmapImageRep.PropertyKey.compressionFactor as NSCopying)
+        return NSBitmapImageRep.representationOfImageReps(in: reps, using: NSBitmapImageRep.FileType.png, properties: imageProps as! [NSBitmapImageRep.PropertyKey : Any])
     }
     
 }

@@ -15,7 +15,7 @@ extension NSColor {
         var redInt:Int, greenInt:Int, blueInt:Int
         var redHex:String, greenHex:String, blueHex:String
         
-        let rgbSpaceColor = self.usingColorSpaceName(NSCalibratedRGBColorSpace)
+        let rgbSpaceColor = self.usingColorSpaceName(NSColorSpaceName.calibratedRGB)
         
         if let _rgbSpaceColor = rgbSpaceColor {
             _rgbSpaceColor.getRed(&redFloat, green: &greenFloat, blue: &blueFloat, alpha: nil)
@@ -34,24 +34,24 @@ extension NSColor {
     }
     
     static func colorFromHexString(hexString: String) -> NSColor? {
-        var result: NSColor? = nil
-        var colorCode: UInt32 = 0
-        var redByte, greenByte, blueByte : UInt8
-        
-        //let stringWithoutHash = hexString.
-        let index1 = hexString.index(hexString.startIndex, offsetBy: 1)
-        let substring1 = hexString.substring(from: index1)
-        
-        let scanner = Scanner.init(string: substring1)
-        let success = scanner.scanHexInt32(&colorCode)
-        
-        if success {
-            redByte = UInt8.init(truncatingBitPattern: (colorCode >> 16))
-            greenByte = UInt8.init(truncatingBitPattern: (colorCode >> 8))
-            blueByte = UInt8.init(truncatingBitPattern: colorCode)
-            
-            result = NSColor(calibratedRed: CGFloat(redByte) / 0xff, green: CGFloat(greenByte) / 0xff, blue: CGFloat(blueByte) / 0xff, alpha: 1.0)
-        }
-        return result
+        var cString:String = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+         if (cString.hasPrefix("#")) {
+             cString.remove(at: cString.startIndex)
+         }
+
+         if ((cString.count) != 6) {
+             return NSColor.gray
+         }
+
+         var rgbValue:UInt32 = 0
+         Scanner(string: cString).scanHexInt32(&rgbValue)
+
+         return NSColor(
+             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+             alpha: CGFloat(1.0)
+         )
     }
 }

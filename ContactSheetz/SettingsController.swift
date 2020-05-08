@@ -30,7 +30,7 @@ class SettingsController: NSViewController, ParameterAdjustorViewDelegate, NSWin
             return _field.titleOfSelectedItem as AnyObject
         }
         else if let _field = field as? NSButton {
-            return (_field.state == NSOnState ? true : false) as AnyObject
+            return (_field.state == NSControl.StateValue.on ? true : false) as AnyObject
         }
         else if let _field = field as? NSColorWell {
             return _field.color.hexValue() as AnyObject
@@ -146,7 +146,7 @@ class SettingsController: NSViewController, ParameterAdjustorViewDelegate, NSWin
     func generatePushed() {}
     func inputButtonClicked(enabled: Bool, button: NSButton) {
         if button == parameterAdjustorView.maintainAspectRatioField {
-            if (button.state == NSOnState) {
+            if (button.state == NSControl.StateValue.on) {
                 parameterAdjustorView.heightField.isEnabled = false
             }
             else {

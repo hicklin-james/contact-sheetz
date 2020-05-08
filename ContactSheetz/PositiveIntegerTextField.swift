@@ -11,35 +11,41 @@ import Cocoa
 class PositiveIntegerTextField: AdjustorViewTextField {
     
     override func textShouldEndEditing(_ textObject: NSText) -> Bool {
-        if let _str = textObject.string {
-            if _str == "" {
-                textObject.string = self.lastValidValue
-                return false
+        let _str = textObject.string
+        if _str == "" {
+            if let _v = self.lastValidValue {
+                textObject.string = _v
             }
-            
-            let badCharacters = NSCharacterSet.decimalDigits.inverted
-            
-            if _str.rangeOfCharacter(from: badCharacters) != nil {
-                NSBeep()
-                textObject.string = self.lastValidValue
-                return false
-            }
-            
-            let intValue = Int(_str)
-            if intValue != nil && intValue! <= 0 {
-                NSBeep()
-                textObject.string = self.lastValidValue
-                return false
-            }
-            
-            self.notifyDelegate(newString: textObject.string)
-            self.lastValidValue = textObject.string
-            return true
-        }
-        else {
-            textObject.string = self.lastValidValue
             return false
         }
+        
+        let badCharacters = NSCharacterSet.decimalDigits.inverted
+        
+        if _str.rangeOfCharacter(from: badCharacters) != nil {
+            NSSound.beep()
+            if let _v = self.lastValidValue {
+                textObject.string = _v
+            }
+            return false
+        }
+        
+        let intValue = Int(_str)
+        if intValue != nil && intValue! <= 0 {
+            NSSound.beep()
+            if let _v = self.lastValidValue {
+                textObject.string = _v
+            }
+            return false
+        }
+        
+        self.notifyDelegate(newString: textObject.string)
+        self.lastValidValue = textObject.string
+        return true
+//        }
+//        else {
+//            textObject.string = self.lastValidValue
+//            return false
+//        }
     }
     
     

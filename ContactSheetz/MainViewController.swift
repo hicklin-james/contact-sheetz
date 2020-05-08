@@ -32,6 +32,15 @@ class MainViewController: NSViewController, FileDropViewDelegate {
         super.viewDidLoad()
         //dragViewImage.image = NSImage.init(named: "question_mark.png")!
         numFramesTooltipView.setTooltipValue(value: "The number of individual frames to use in the contact sheet")
+        
+        let style = NSMutableParagraphStyle()
+        style.alignment = NSTextAlignment.center
+
+        fileUploadButton.attributedTitle = NSAttributedString(string: "Select File", attributes: [ NSAttributedStringKey.foregroundColor : NSColor.black, NSAttributedStringKey.paragraphStyle : style ])
+
+        fileNameLabel.textColor = NSColor.black
+        //fileUploadButton.layer?.backgroundColor = NSColor.darkGray.cgColor;
+        //(fileUploadButton.cell! as! NSButtonCell).backgroundColor = NSColor.darkGray;
         fileDropView.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -48,7 +57,7 @@ class MainViewController: NSViewController, FileDropViewDelegate {
         let dialog = NSOpenPanel()
         dialog.title = "Choose a video file"
         dialog.allowedFileTypes = Constants.AcceptedFileTypes
-        if (dialog.runModal() == NSModalResponseOK) {
+        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             let result = dialog.url
             if let path = result?.path {
                 currentFileName = path
@@ -66,24 +75,24 @@ class MainViewController: NSViewController, FileDropViewDelegate {
     @IBAction func openPreview(_ sender: AnyObject) {
         if currentFileName != "" {
             // initialize the frame extractor and pass it into the preview view controller
-            let sb = NSStoryboard(name: "Main", bundle: nil)
-            if let _numFrames = Int(numFrames.stringValue), let vfe = VideoFrameExtractor(filePath: currentFileName, _numFrames: _numFrames), let vc = sb.instantiateController(withIdentifier: "ContactSheetViewController") as? ContactSheetViewController {
-                
+            let sb = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
+            var errorString = ""
+            if let _numFrames = Int(numFrames.stringValue), let vfe = VideoFrameExtractor(filePath: currentFileName, _numFrames: _numFrames, errorString: &errorString), let vc = sb.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ContactSheetViewController")) as? ContactSheetViewController {
                 if _numFrames <= 0 {
-                    displayAlert(message: "You must specify more than 1 frame.", alertStyle: NSAlertStyle.critical)
+                    displayAlert(message: "You must specify more than 1 frame.", alertStyle: NSAlert.Style.critical)
                 }
                 else {
                     vc.vfe = vfe
                     vc.filePath = currentFileName
                     
-                    var styleMask = NSWindowStyleMask.init(rawValue: NSWindowStyleMask.closable.rawValue)
+                    var styleMask = NSWindow.StyleMask.init(rawValue: NSWindow.StyleMask.closable.rawValue)
                     styleMask.insert(.resizable)
                     styleMask.insert(.miniaturizable)
                     styleMask.insert(.titled)
                     //styleMask.insert(NSWindowStyleMask.)
                     
-                    let window = NSWindow.init(contentRect: self.view.frame, styleMask: styleMask, backing: NSBackingStoreType.buffered, defer: true)
-                    window.identifier = "PreviewWindow"
+                    let window = NSWindow.init(contentRect: self.view.frame, styleMask: styleMask, backing: NSWindow.BackingStoreType.buffered, defer: true)
+                    window.identifier = NSUserInterfaceItemIdentifier(rawValue: "PreviewWindow")
                     window.collectionBehavior = .fullScreenAuxiliary
                     //window.delegate = vc
                     window.title = "Preview"
@@ -91,7 +100,7 @@ class MainViewController: NSViewController, FileDropViewDelegate {
                     //window.frame.origin.y = self.view.window!.frame.origin.y + 40
                     let windowController = NSWindowController.init(window: window)
                     
-                    NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.closeModalRequest), name: NSNotification.Name.NSWindowWillClose, object: window)
+                    NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.closeModalRequest), name: NSWindow.willCloseNotification, object: window)
 
                     windowController.contentViewController = vc
                     //tabbedController.contentViewController = pvc
@@ -106,11 +115,11 @@ class MainViewController: NSViewController, FileDropViewDelegate {
                 
             }
             else {
-                displayAlert(message: "An unknown error occured", alertStyle: NSAlertStyle.critical)
+                displayAlert(message: "An unknown error occured", alertStyle: NSAlert.Style.critical)
                 return
             }
         } else {
-            displayAlert(message: "You must select a file", alertStyle: NSAlertStyle.critical)
+            displayAlert(message: "You must select a file", alertStyle: NSAlert.Style.critical)
         }
             
     }
@@ -135,7 +144,7 @@ class MainViewController: NSViewController, FileDropViewDelegate {
             currentFileName = ""
             fileNameLabel.stringValue = currentFileName
             //dragViewImage.image = NSImage.init(named: "cross.png")
-            displayAlert(message: "Only video files are allowed", alertStyle: NSAlertStyle.critical)
+            displayAlert(message: "Only video files are allowed", alertStyle: NSAlert.Style.critical)
         }
     }
     
@@ -143,7 +152,7 @@ class MainViewController: NSViewController, FileDropViewDelegate {
         return (currentFileName != "")
     }
     
-    func closeModalRequest() {
+    @objc func closeModalRequest() {
         self.previewWindow = nil
         if let parentVc = self.parent as? MainTabbedViewController {
             parentVc.setViewEnabled(enabled: true)
@@ -153,7 +162,7 @@ class MainViewController: NSViewController, FileDropViewDelegate {
     
     private
     
-    func displayAlert(message: String, alertStyle: NSAlertStyle) {
+    func displayAlert(message: String, alertStyle: NSAlert.Style) {
         let alertSheet = NSAlert.init()
         alertSheet.alertStyle = alertStyle
         alertSheet.messageText = message

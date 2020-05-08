@@ -19,8 +19,8 @@ class BatchSettingsView: ParameterAdjustorView {
      **/
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        NSColor.white.setFill()
-        NSRectFill(dirtyRect)
+        NSColor.darkGray.setFill()
+        dirtyRect.fill()
     }
     
     override func initializeDefaultsValues() {

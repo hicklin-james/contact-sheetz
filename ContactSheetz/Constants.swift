@@ -15,7 +15,7 @@ struct Constants {
         static let ContactSheetProgress = "com.contactsheets.contactSheetProgressKey"
     }
     
-    static let AcceptedFileTypes = ["mkv", "mp4", "avi", "wmv", "flv", "mov", "asf", "qt", "swf", "mpg", "mpeg", "ogv", "m4v", "webm"]
+    static let AcceptedFileTypes = ["mkv", "mp4", "avi", "wmv", "flv", "mov", "asf", "qt", "swf", "mpg", "mpeg", "ogv", "m4v", "webm", "3gp"]
     
     struct SettingsKeys {
         static let HorizontalPadding = "horizontalPadding"
@@ -39,16 +39,16 @@ struct Constants {
     
     struct DefaultValuesForParameters {
         static let ImageWidth = 300
-        static let MaintainAR = NSOnState
+        static let MaintainAR = NSControl.StateValue.on
         static let HorizontalPadding = 2
         static let VerticalPadding = 2
-        static let IncludeTimestamps = NSOnState
-        static let IncludeTitle = NSOnState
-        static let IncludeResolution = NSOnState
-        static let IncludeCodec = NSOnState
-        static let IncludeSize = NSOnState
-        static let IncludeBitrate = NSOnState
-        static let IncludeDuration = NSOnState
+        static let IncludeTimestamps = NSControl.StateValue.on
+        static let IncludeTitle = NSControl.StateValue.on
+        static let IncludeResolution = NSControl.StateValue.on
+        static let IncludeCodec = NSControl.StateValue.on
+        static let IncludeSize = NSControl.StateValue.on
+        static let IncludeBitrate = NSControl.StateValue.on
+        static let IncludeDuration = NSControl.StateValue.on
         static let NumberOfColumns = 3
         static let BackgroundColor = NSColor.white
         static let HeaderFont = "Arial"

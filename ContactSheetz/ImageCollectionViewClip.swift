@@ -15,7 +15,7 @@ class ImageCollectionViewClip: NSClipView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         color.setFill()
-        NSRectFill(dirtyRect)
+        dirtyRect.fill()
         // Drawing code here.
     }
     

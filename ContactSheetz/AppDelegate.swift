@@ -11,15 +11,15 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    func application(_ application: NSApplication) -> Bool {
         // Insert code here to initialize your application
-        MagickWandGenesis()
-        av_register_all()
-        
-        //let fontFamilyNames = NSFontManager.shared().availableFontFamilies
-        //print("available fonts is \(fontFamilyNames)")
+        if IsMagickWandInstantiated().rawValue == 0 {
+            MagickWandGenesis()
+        }
         
         UserDefaults.standard.set(true, forKey: "NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints")
+        
+        return true
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -28,8 +28,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
     
     @IBAction func PreferencesButtonPushed(_ sender: Any) {
-        let sb = NSStoryboard(name: "Main", bundle: nil)
-        let preferencesView = sb.instantiateController(withIdentifier: "PreferencesView") as? NSViewController
+        let sb = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
+        let preferencesView = sb.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PreferencesView")) as? NSViewController
         if let _prefsView = preferencesView {
             NSApp.keyWindow?.contentViewController?.presentViewControllerAsModalWindow(_prefsView)
         }
@@ -47,8 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         //let windows = sender.windows
         if let window = sender.windows.first {
             if flag {
-                let openWindows = NSApplication.shared().windows
-                if let _previewWindow = openWindows.first(where: { $0.identifier == "PreviewWindow" }) {
+                let openWindows = NSApplication.shared.windows
+                if let _previewWindow = openWindows.first(where: { $0.identifier?.rawValue == "PreviewWindow" }) {
                     _previewWindow.orderFront(nil)
                 } else {
                     window.orderFront(nil)

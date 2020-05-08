@@ -7,51 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CB023D6B1F8084AF00B7A3AF /* libbz2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D6A1F8084AF00B7A3AF /* libbz2.a */; };
-		CB023D6C1F8092C700B7A3AF /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CE51F80586300B7A3AF /* libfreetype.a */; };
-		CB023D6D1F80A3C100B7A3AF /* libfontconfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CE41F80586300B7A3AF /* libfontconfig.a */; };
-		CB023D6E1F80A3E500B7A3AF /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CF41F80586300B7A3AF /* libtiff.a */; };
-		CB023D711F80A42B00B7A3AF /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D6F1F80A42B00B7A3AF /* libwebp.a */; };
-		CB023D721F80A42B00B7A3AF /* libwebpdecoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D701F80A42B00B7A3AF /* libwebpdecoder.a */; };
-		CB023D731F80A45F00B7A3AF /* libexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D5C1F80631E00B7A3AF /* libexpat.a */; };
-		CB023D761F80A49800B7A3AF /* libwebpdemux.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D741F80A49800B7A3AF /* libwebpdemux.a */; };
-		CB023D771F80A49800B7A3AF /* libwebpmux.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D751F80A49800B7A3AF /* libwebpmux.a */; };
-		CB023D781F80A53800B7A3AF /* libcairo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CE11F80586300B7A3AF /* libcairo.a */; };
-		CB023D7A1F80A53800B7A3AF /* libcairo-gobject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D791F80A53800B7A3AF /* libcairo-gobject.a */; };
-		CB023D7E1F80A5D500B7A3AF /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D7D1F80A5D500B7A3AF /* libz.a */; };
-		CB023D811F80A65300B7A3AF /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D321F805C7000B7A3AF /* libjpeg.a */; };
-		CB023D821F80A6CB00B7A3AF /* libpango-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CEF1F80586300B7A3AF /* libpango-1.0.a */; };
-		CB023D831F80A6CB00B7A3AF /* libpangocairo-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CF01F80586300B7A3AF /* libpangocairo-1.0.a */; };
-		CB023D841F80A74200B7A3AF /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D281F805B2F00B7A3AF /* libmp3lame.a */; };
-		CB023D851F80A77200B7A3AF /* libopenjp2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D601F80666000B7A3AF /* libopenjp2.a */; };
-		CB023D861F80A7C400B7A3AF /* libpangoft2-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D501F80605E00B7A3AF /* libpangoft2-1.0.a */; };
-		CB023D871F80A7DA00B7A3AF /* libpixman-1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D4C1F80602400B7A3AF /* libpixman-1.a */; };
-		CB023D891F80A8B200B7A3AF /* libgio-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CE61F80586300B7A3AF /* libgio-2.0.a */; };
-		CB023D8A1F80A8B200B7A3AF /* libglib-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D481F80600600B7A3AF /* libglib-2.0.a */; };
-		CB023D8B1F80A8B200B7A3AF /* libgmodule-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D491F80600600B7A3AF /* libgmodule-2.0.a */; };
-		CB023D8C1F80A8B200B7A3AF /* libgobject-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CE71F80586300B7A3AF /* libgobject-2.0.a */; };
-		CB023D8D1F80A8B200B7A3AF /* libgthread-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CE81F80586300B7A3AF /* libgthread-2.0.a */; };
-		CB023D8E1F80A8DB00B7A3AF /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CF51F80586300B7A3AF /* libvorbis.a */; };
-		CB023D8F1F80A90800B7A3AF /* libtheora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D201F805A2500B7A3AF /* libtheora.a */; };
-		CB023D921F80A90900B7A3AF /* libtheoradec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D901F80A90800B7A3AF /* libtheoradec.a */; };
-		CB023D931F80A90900B7A3AF /* libtheoraenc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D911F80A90900B7A3AF /* libtheoraenc.a */; };
-		CB023D941F80A92600B7A3AF /* libpng16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CF11F80586300B7A3AF /* libpng16.a */; };
-		CB023D951F80A93C00B7A3AF /* libpcre.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D4E1F80603A00B7A3AF /* libpcre.a */; };
-		CB023D961F80A95200B7A3AF /* libopus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CEE1F80586300B7A3AF /* libopus.a */; };
-		CB023D981F80A97C00B7A3AF /* libasprintf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D971F80A97C00B7A3AF /* libasprintf.a */; };
-		CB023D9A1F80A98000B7A3AF /* libgettextpo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D991F80A98000B7A3AF /* libgettextpo.a */; };
-		CB023D9B1F80A98500B7A3AF /* libintl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D5E1F8063EC00B7A3AF /* libintl.a */; };
-		CB023D9C1F80A9A100B7A3AF /* libxvidcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D1E1F8059DF00B7A3AF /* libxvidcore.a */; };
-		CB023D9D1F80A9B000B7A3AF /* libxml2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D541F8060AE00B7A3AF /* libxml2.a */; };
-		CB023D9E1F80A9C000B7A3AF /* libx264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CF91F80586300B7A3AF /* libx264.a */; };
-		CB023D9F1F80A9D900B7A3AF /* libvorbisenc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CF61F80586300B7A3AF /* libvorbisenc.a */; };
-		CB023DA01F80A9D900B7A3AF /* libvorbisfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CF71F80586300B7A3AF /* libvorbisfile.a */; };
-		CB023DA11F80AA1500B7A3AF /* libogg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D261F805B1400B7A3AF /* libogg.a */; };
-		CB023DA21F80AA3100B7A3AF /* libharfbuzz-gobject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D581F80619000B7A3AF /* libharfbuzz-gobject.a */; };
-		CB023DA31F80AA3100B7A3AF /* libharfbuzz-icu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D591F80619000B7A3AF /* libharfbuzz-icu.a */; };
-		CB023DA41F80AA3100B7A3AF /* libharfbuzz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D561F8060FA00B7A3AF /* libharfbuzz.a */; };
-		CB023DA51F80AA4200B7A3AF /* libffi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D521F80609600B7A3AF /* libffi.a */; };
-		CB023DA81F813ADB00B7A3AF /* liblz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D7B1F80A59800B7A3AF /* liblz.a */; };
 		CB03BFEA1DA417180053E4CB /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03BFE91DA417180053E4CB /* PreviewViewController.swift */; };
 		CB03BFF51DA44D860053E4CB /* ImageCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03BFF31DA44D860053E4CB /* ImageCollectionViewItem.swift */; };
 		CB03BFF61DA44D860053E4CB /* ImageCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB03BFF41DA44D860053E4CB /* ImageCollectionViewItem.xib */; };
@@ -65,6 +20,18 @@
 		CB0828BB1DA0C4D900CD4C36 /* ContactSheetzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0828BA1DA0C4D900CD4C36 /* ContactSheetzTests.swift */; };
 		CB0828C61DA0D0AE00CD4C36 /* GifCreationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0828C51DA0D0AE00CD4C36 /* GifCreationHelper.swift */; };
 		CB0828D11DA0DA3500CD4C36 /* VideoFrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0828D01DA0DA3500CD4C36 /* VideoFrameExtractor.swift */; };
+		CB115D6124608AEC0033D8B1 /* libavcodec.58.54.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB115D4524607DB80033D8B1 /* libavcodec.58.54.100.dylib */; };
+		CB115D6224608AEC0033D8B1 /* libavcodec.58.54.100.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CB115D4524607DB80033D8B1 /* libavcodec.58.54.100.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CB115D6324608AEC0033D8B1 /* libavformat.58.29.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB115D4624607DB80033D8B1 /* libavformat.58.29.100.dylib */; };
+		CB115D6424608AEC0033D8B1 /* libavformat.58.29.100.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CB115D4624607DB80033D8B1 /* libavformat.58.29.100.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CB115D6524608AEC0033D8B1 /* libavutil.56.31.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB115D4324607DB80033D8B1 /* libavutil.56.31.100.dylib */; };
+		CB115D6624608AEC0033D8B1 /* libavutil.56.31.100.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CB115D4324607DB80033D8B1 /* libavutil.56.31.100.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CB115D6724608AEC0033D8B1 /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB115D4724607DB80033D8B1 /* libmediainfo.0.dylib */; };
+		CB115D6824608AEC0033D8B1 /* libmediainfo.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CB115D4724607DB80033D8B1 /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CB115D6924608AEC0033D8B1 /* libswscale.5.5.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB115D4824607DB80033D8B1 /* libswscale.5.5.100.dylib */; };
+		CB115D6A24608AEC0033D8B1 /* libswscale.5.5.100.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CB115D4824607DB80033D8B1 /* libswscale.5.5.100.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CB115D6D24608AEC0033D8B1 /* libMagickWand-7.Q16HDRI.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB115D6C24608AEC0033D8B1 /* libMagickWand-7.Q16HDRI.7.dylib */; };
+		CB115D6E24608AEC0033D8B1 /* libMagickWand-7.Q16HDRI.7.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CB115D6C24608AEC0033D8B1 /* libMagickWand-7.Q16HDRI.7.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CB243BB61DD0EDE300933617 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB243BB51DD0EDE300933617 /* SettingsController.swift */; };
 		CB245FCA1DC140CB00DBE5FA /* ContactSheetCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB245FC91DC140CB00DBE5FA /* ContactSheetCreator.swift */; };
 		CB245FCC1DC185E900DBE5FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB245FCB1DC185E900DBE5FA /* QuartzCore.framework */; };
@@ -94,15 +61,6 @@
 		CB8174F91DC972BC00D8A89E /* NonNegativeIntegerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8174F81DC972BC00D8A89E /* NonNegativeIntegerTextField.swift */; };
 		CB8174FB1DC98A9200D8A89E /* PositiveIntegerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8174FA1DC98A9200D8A89E /* PositiveIntegerTextField.swift */; };
 		CB8174FD1DC98C1500D8A89E /* AdjustorViewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8174FC1DC98C1500D8A89E /* AdjustorViewTextField.swift */; };
-		CB8699E81F81400B0065E7E5 /* liblzma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8699E71F81400B0065E7E5 /* liblzma.a */; };
-		CB8699F81F8142D60065E7E5 /* liblcms2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8699F71F8142D60065E7E5 /* liblcms2.a */; };
-		CB8699FC1F814D4F0065E7E5 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CDC1F80586300B7A3AF /* libavcodec.a */; };
-		CB8699FD1F814D4F0065E7E5 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CDE1F80586300B7A3AF /* libavformat.a */; };
-		CB8699FE1F814D4F0065E7E5 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CDF1F80586300B7A3AF /* libavutil.a */; };
-		CB8699FF1F814D5A0065E7E5 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CF21F80586300B7A3AF /* libswresample.a */; };
-		CB869A001F814D5A0065E7E5 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023CF31F80586300B7A3AF /* libswscale.a */; };
-		CB869A011F814E180065E7E5 /* libschroedinger-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D241F805A6800B7A3AF /* libschroedinger-1.0.a */; };
-		CB869A441F8297970065E7E5 /* liborc-0.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB869A431F8297970065E7E5 /* liborc-0.4.a */; };
 		CB8FD3BE1DCC055000D6F5D7 /* ImageCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8FD3BD1DCC055000D6F5D7 /* ImageCollectionViewHeader.swift */; };
 		CB90245C1DE51BEB00D5CC36 /* BatchTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB90245B1DE51BEB00D5CC36 /* BatchTableViewHeader.xib */; };
 		CB90245E1DE51C0800D5CC36 /* BatchTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90245D1DE51C0800D5CC36 /* BatchTableViewHeader.swift */; };
@@ -110,12 +68,6 @@
 		CB9BF4791DD3B2C800F7DF40 /* ImageCollectionViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9BF4781DD3B2C800F7DF40 /* ImageCollectionViewHeader.xib */; };
 		CBA2EBC81DA81D8D00EE3131 /* ParameterAdjustorDraggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA2EBC71DA81D8D00EE3131 /* ParameterAdjustorDraggerView.swift */; };
 		CBAF48521DE651F6008D3FC9 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF48511DE651F6008D3FC9 /* ImageHelper.swift */; };
-		CBB4DD791F829E2200FB3A06 /* libgraphite2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB4DD781F829E2200FB3A06 /* libgraphite2.a */; };
-		CBB4DD7A1F82A75500FB3A06 /* libiconv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8699EC1F8140750065E7E5 /* libiconv.a */; };
-		CBB4DD7D1F82A84B00FB3A06 /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB4DD7C1F82A84B00FB3A06 /* libiconv.2.tbd */; };
-		CBB4DD7E1F82D07A00FB3A06 /* libMagick++-7.Q16HDRI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D421F805FAC00B7A3AF /* libMagick++-7.Q16HDRI.a */; };
-		CBB4DD7F1F82D07A00FB3A06 /* libMagickCore-7.Q16HDRI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D431F805FAC00B7A3AF /* libMagickCore-7.Q16HDRI.a */; };
-		CBB4DD801F82D07A00FB3A06 /* libMagickWand-7.Q16HDRI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB023D441F805FAC00B7A3AF /* libMagickWand-7.Q16HDRI.a */; };
 		CBB816611E0DC14B00D96A83 /* TooltipImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB816601E0DC14B00D96A83 /* TooltipImageView.swift */; };
 		CBBF4FFB1DA17AEA00908FFE /* AudioVideoBridging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBF4FFA1DA17AEA00908FFE /* AudioVideoBridging.framework */; };
 		CBBF4FFE1DA17AFE00908FFE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBF4FFC1DA17AFE00908FFE /* AVFoundation.framework */; };
@@ -147,85 +99,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CB115D6B24608AEC0033D8B1 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CB115D6224608AEC0033D8B1 /* libavcodec.58.54.100.dylib in Embed Libraries */,
+				CB115D6624608AEC0033D8B1 /* libavutil.56.31.100.dylib in Embed Libraries */,
+				CB115D6E24608AEC0033D8B1 /* libMagickWand-7.Q16HDRI.7.dylib in Embed Libraries */,
+				CB115D6424608AEC0033D8B1 /* libavformat.58.29.100.dylib in Embed Libraries */,
+				CB115D6A24608AEC0033D8B1 /* libswscale.5.5.100.dylib in Embed Libraries */,
+				CB115D6824608AEC0033D8B1 /* libmediainfo.0.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		CB023CDC1F80586300B7A3AF /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = StaticLibs/libavcodec.a; sourceTree = "<group>"; };
-		CB023CDD1F80586300B7A3AF /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavfilter.a; path = StaticLibs/libavfilter.a; sourceTree = "<group>"; };
-		CB023CDE1F80586300B7A3AF /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = StaticLibs/libavformat.a; sourceTree = "<group>"; };
-		CB023CDF1F80586300B7A3AF /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = StaticLibs/libavutil.a; sourceTree = "<group>"; };
-		CB023CE01F80586300B7A3AF /* libbz2.1.0.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.1.0.5.tbd; path = StaticLibs/libbz2.1.0.5.tbd; sourceTree = "<group>"; };
-		CB023CE11F80586300B7A3AF /* libcairo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcairo.a; path = StaticLibs/libcairo.a; sourceTree = "<group>"; };
-		CB023CE21F80586300B7A3AF /* libexslt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libexslt.a; path = StaticLibs/libexslt.a; sourceTree = "<group>"; };
-		CB023CE31F80586300B7A3AF /* libfdk-aac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libfdk-aac.a"; path = "StaticLibs/libfdk-aac.a"; sourceTree = "<group>"; };
-		CB023CE41F80586300B7A3AF /* libfontconfig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfontconfig.a; path = StaticLibs/libfontconfig.a; sourceTree = "<group>"; };
-		CB023CE51F80586300B7A3AF /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = StaticLibs/libfreetype.a; sourceTree = "<group>"; };
-		CB023CE61F80586300B7A3AF /* libgio-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgio-2.0.a"; path = "StaticLibs/libgio-2.0.a"; sourceTree = "<group>"; };
-		CB023CE71F80586300B7A3AF /* libgobject-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgobject-2.0.a"; path = "StaticLibs/libgobject-2.0.a"; sourceTree = "<group>"; };
-		CB023CE81F80586300B7A3AF /* libgthread-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgthread-2.0.a"; path = "StaticLibs/libgthread-2.0.a"; sourceTree = "<group>"; };
-		CB023CE91F80586300B7A3AF /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = StaticLibs/libiconv.2.4.0.tbd; sourceTree = "<group>"; };
-		CB023CEA1F80586300B7A3AF /* liblzma.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = liblzma.5.tbd; path = StaticLibs/liblzma.5.tbd; sourceTree = "<group>"; };
-		CB023CEB1F80586300B7A3AF /* libMagick++-6.Q16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMagick++-6.Q16.a"; path = "StaticLibs/libMagick++-6.Q16.a"; sourceTree = "<group>"; };
-		CB023CEC1F80586300B7A3AF /* libMagickCore-6.Q16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMagickCore-6.Q16.a"; path = "StaticLibs/libMagickCore-6.Q16.a"; sourceTree = "<group>"; };
-		CB023CED1F80586300B7A3AF /* libMagickWand-6.Q16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMagickWand-6.Q16.a"; path = "StaticLibs/libMagickWand-6.Q16.a"; sourceTree = "<group>"; };
-		CB023CEE1F80586300B7A3AF /* libopus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopus.a; path = StaticLibs/libopus.a; sourceTree = "<group>"; };
-		CB023CEF1F80586300B7A3AF /* libpango-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpango-1.0.a"; path = "StaticLibs/libpango-1.0.a"; sourceTree = "<group>"; };
-		CB023CF01F80586300B7A3AF /* libpangocairo-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpangocairo-1.0.a"; path = "StaticLibs/libpangocairo-1.0.a"; sourceTree = "<group>"; };
-		CB023CF11F80586300B7A3AF /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = StaticLibs/libpng16.a; sourceTree = "<group>"; };
-		CB023CF21F80586300B7A3AF /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = StaticLibs/libswresample.a; sourceTree = "<group>"; };
-		CB023CF31F80586300B7A3AF /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = StaticLibs/libswscale.a; sourceTree = "<group>"; };
-		CB023CF41F80586300B7A3AF /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtiff.a; path = StaticLibs/libtiff.a; sourceTree = "<group>"; };
-		CB023CF51F80586300B7A3AF /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = StaticLibs/libvorbis.a; sourceTree = "<group>"; };
-		CB023CF61F80586300B7A3AF /* libvorbisenc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisenc.a; path = StaticLibs/libvorbisenc.a; sourceTree = "<group>"; };
-		CB023CF71F80586300B7A3AF /* libvorbisfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisfile.a; path = StaticLibs/libvorbisfile.a; sourceTree = "<group>"; };
-		CB023CF81F80586300B7A3AF /* libvpx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvpx.a; path = StaticLibs/libvpx.a; sourceTree = "<group>"; };
-		CB023CF91F80586300B7A3AF /* libx264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libx264.a; path = StaticLibs/libx264.a; sourceTree = "<group>"; };
-		CB023CFA1F80586300B7A3AF /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = StaticLibs/libxml2.2.tbd; sourceTree = "<group>"; };
-		CB023CFB1F80586300B7A3AF /* libxslt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxslt.a; path = StaticLibs/libxslt.a; sourceTree = "<group>"; };
-		CB023CFC1F80586300B7A3AF /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = StaticLibs/libz.1.2.8.tbd; sourceTree = "<group>"; };
-		CB023D1E1F8059DF00B7A3AF /* libxvidcore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxvidcore.a; path = StaticLibs/libxvidcore.a; sourceTree = "<group>"; };
-		CB023D201F805A2500B7A3AF /* libtheora.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtheora.a; path = StaticLibs/libtheora.a; sourceTree = "<group>"; };
-		CB023D221F805A4E00B7A3AF /* libspeex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspeex.a; path = StaticLibs/libspeex.a; sourceTree = "<group>"; };
-		CB023D241F805A6800B7A3AF /* libschroedinger-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libschroedinger-1.0.a"; path = "StaticLibs/libschroedinger-1.0.a"; sourceTree = "<group>"; };
-		CB023D261F805B1400B7A3AF /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libogg.a; path = StaticLibs/libogg.a; sourceTree = "<group>"; };
-		CB023D281F805B2F00B7A3AF /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmp3lame.a; path = StaticLibs/libmp3lame.a; sourceTree = "<group>"; };
-		CB023D2A1F805B8B00B7A3AF /* librtmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librtmp.a; path = StaticLibs/librtmp.a; sourceTree = "<group>"; };
-		CB023D2C1F805BDB00B7A3AF /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = StaticLibs/libssl.a; sourceTree = "<group>"; };
-		CB023D2E1F805C0100B7A3AF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = StaticLibs/libcrypto.a; sourceTree = "<group>"; };
-		CB023D301F805C4E00B7A3AF /* liborc-0.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "liborc-0.4.0.dylib"; path = "../../../../usr/local/Cellar/orc/0.4.27/lib/liborc-0.4.0.dylib"; sourceTree = "<group>"; };
-		CB023D321F805C7000B7A3AF /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = StaticLibs/libjpeg.a; sourceTree = "<group>"; };
-		CB023D341F805C9600B7A3AF /* libopenjp2.2.1.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenjp2.2.1.2.dylib; path = ../../../../usr/local/Cellar/openjpeg/2.1.2_1/lib/libopenjp2.2.1.2.dylib; sourceTree = "<group>"; };
-		CB023D361F805CC700B7A3AF /* libltdl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libltdl.a; path = StaticLibs/libltdl.a; sourceTree = "<group>"; };
-		CB023D381F805D1200B7A3AF /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavdevice.a; path = StaticLibs/libavdevice.a; sourceTree = "<group>"; };
-		CB023D391F805D1200B7A3AF /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavresample.a; path = StaticLibs/libavresample.a; sourceTree = "<group>"; };
-		CB023D421F805FAC00B7A3AF /* libMagick++-7.Q16HDRI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMagick++-7.Q16HDRI.a"; path = "StaticLibs/libMagick++-7.Q16HDRI.a"; sourceTree = "<group>"; };
-		CB023D431F805FAC00B7A3AF /* libMagickCore-7.Q16HDRI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMagickCore-7.Q16HDRI.a"; path = "StaticLibs/libMagickCore-7.Q16HDRI.a"; sourceTree = "<group>"; };
-		CB023D441F805FAC00B7A3AF /* libMagickWand-7.Q16HDRI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMagickWand-7.Q16HDRI.a"; path = "StaticLibs/libMagickWand-7.Q16HDRI.a"; sourceTree = "<group>"; };
-		CB023D481F80600600B7A3AF /* libglib-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libglib-2.0.a"; path = "StaticLibs/libglib-2.0.a"; sourceTree = "<group>"; };
-		CB023D491F80600600B7A3AF /* libgmodule-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgmodule-2.0.a"; path = "StaticLibs/libgmodule-2.0.a"; sourceTree = "<group>"; };
-		CB023D4C1F80602400B7A3AF /* libpixman-1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpixman-1.a"; path = "StaticLibs/libpixman-1.a"; sourceTree = "<group>"; };
-		CB023D4E1F80603A00B7A3AF /* libpcre.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcre.a; path = StaticLibs/libpcre.a; sourceTree = "<group>"; };
-		CB023D501F80605E00B7A3AF /* libpangoft2-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpangoft2-1.0.a"; path = "StaticLibs/libpangoft2-1.0.a"; sourceTree = "<group>"; };
-		CB023D521F80609600B7A3AF /* libffi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libffi.a; path = StaticLibs/libffi.a; sourceTree = "<group>"; };
-		CB023D541F8060AE00B7A3AF /* libxml2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxml2.a; path = StaticLibs/libxml2.a; sourceTree = "<group>"; };
-		CB023D561F8060FA00B7A3AF /* libharfbuzz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libharfbuzz.a; path = StaticLibs/libharfbuzz.a; sourceTree = "<group>"; };
-		CB023D581F80619000B7A3AF /* libharfbuzz-gobject.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libharfbuzz-gobject.a"; path = "StaticLibs/libharfbuzz-gobject.a"; sourceTree = "<group>"; };
-		CB023D591F80619000B7A3AF /* libharfbuzz-icu.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libharfbuzz-icu.a"; path = "StaticLibs/libharfbuzz-icu.a"; sourceTree = "<group>"; };
-		CB023D5C1F80631E00B7A3AF /* libexpat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libexpat.a; path = StaticLibs/libexpat.a; sourceTree = "<group>"; };
-		CB023D5E1F8063EC00B7A3AF /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = StaticLibs/libintl.a; sourceTree = "<group>"; };
-		CB023D601F80666000B7A3AF /* libopenjp2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenjp2.a; path = StaticLibs/libopenjp2.a; sourceTree = "<group>"; };
-		CB023D6A1F8084AF00B7A3AF /* libbz2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbz2.a; path = StaticLibs/libbz2.a; sourceTree = "<group>"; };
-		CB023D6F1F80A42B00B7A3AF /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp.a; path = StaticLibs/libwebp.a; sourceTree = "<group>"; };
-		CB023D701F80A42B00B7A3AF /* libwebpdecoder.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebpdecoder.a; path = StaticLibs/libwebpdecoder.a; sourceTree = "<group>"; };
-		CB023D741F80A49800B7A3AF /* libwebpdemux.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebpdemux.a; path = StaticLibs/libwebpdemux.a; sourceTree = "<group>"; };
-		CB023D751F80A49800B7A3AF /* libwebpmux.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebpmux.a; path = StaticLibs/libwebpmux.a; sourceTree = "<group>"; };
-		CB023D791F80A53800B7A3AF /* libcairo-gobject.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcairo-gobject.a"; path = "StaticLibs/libcairo-gobject.a"; sourceTree = "<group>"; };
-		CB023D7B1F80A59800B7A3AF /* liblz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblz.a; path = StaticLibs/liblz.a; sourceTree = "<group>"; };
-		CB023D7D1F80A5D500B7A3AF /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = StaticLibs/libz.a; sourceTree = "<group>"; };
-		CB023D7F1F80A61900B7A3AF /* libgirepository-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgirepository-1.0.a"; path = "StaticLibs/libgirepository-1.0.a"; sourceTree = "<group>"; };
-		CB023D901F80A90800B7A3AF /* libtheoradec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtheoradec.a; path = StaticLibs/libtheoradec.a; sourceTree = "<group>"; };
-		CB023D911F80A90900B7A3AF /* libtheoraenc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtheoraenc.a; path = StaticLibs/libtheoraenc.a; sourceTree = "<group>"; };
-		CB023D971F80A97C00B7A3AF /* libasprintf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libasprintf.a; path = StaticLibs/libasprintf.a; sourceTree = "<group>"; };
-		CB023D991F80A98000B7A3AF /* libgettextpo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgettextpo.a; path = StaticLibs/libgettextpo.a; sourceTree = "<group>"; };
-		CB023DA61F80AADF00B7A3AF /* libgraphite2.3.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgraphite2.3.0.1.dylib; path = ../../../../usr/local/Cellar/graphite2/1.3.10/lib/libgraphite2.3.0.1.dylib; sourceTree = "<group>"; };
 		CB03BFE91DA417180053E4CB /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		CB03BFF31DA44D860053E4CB /* ImageCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewItem.swift; sourceTree = "<group>"; };
 		CB03BFF41DA44D860053E4CB /* ImageCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -243,6 +136,16 @@
 		CB0828BA1DA0C4D900CD4C36 /* ContactSheetzTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSheetzTests.swift; sourceTree = "<group>"; };
 		CB0828C51DA0D0AE00CD4C36 /* GifCreationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifCreationHelper.swift; sourceTree = "<group>"; };
 		CB0828D01DA0DA3500CD4C36 /* VideoFrameExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFrameExtractor.swift; sourceTree = "<group>"; };
+		CB115D4324607DB80033D8B1 /* libavutil.56.31.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavutil.56.31.100.dylib; path = Libs/libavutil.56.31.100.dylib; sourceTree = "<group>"; };
+		CB115D4524607DB80033D8B1 /* libavcodec.58.54.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.58.54.100.dylib; path = Libs/libavcodec.58.54.100.dylib; sourceTree = "<group>"; };
+		CB115D4624607DB80033D8B1 /* libavformat.58.29.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavformat.58.29.100.dylib; path = Libs/libavformat.58.29.100.dylib; sourceTree = "<group>"; };
+		CB115D4724607DB80033D8B1 /* libmediainfo.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmediainfo.0.dylib; path = Libs/libmediainfo.0.dylib; sourceTree = "<group>"; };
+		CB115D4824607DB80033D8B1 /* libswscale.5.5.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libswscale.5.5.100.dylib; path = Libs/libswscale.5.5.100.dylib; sourceTree = "<group>"; };
+		CB115D592460891D0033D8B1 /* libMagickCore-7.Q16HDRI.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libMagickCore-7.Q16HDRI.7.dylib"; path = "../../../../usr/local/Cellar/imagemagick/7.0.9-27/lib/libMagickCore-7.Q16HDRI.7.dylib"; sourceTree = "<group>"; };
+		CB115D5E246089D30033D8B1 /* libMagickWand-7.Q16HDRI.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libMagickWand-7.Q16HDRI.7.dylib"; path = "../../../../usr/local/Cellar/imagemagick/7.0.9-27/lib/libMagickWand-7.Q16HDRI.7.dylib"; sourceTree = "<group>"; };
+		CB115D6C24608AEC0033D8B1 /* libMagickWand-7.Q16HDRI.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libMagickWand-7.Q16HDRI.7.dylib"; path = "Libs/libMagickWand-7.Q16HDRI.7.dylib"; sourceTree = "<group>"; };
+		CB115D6F246093040033D8B1 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = Libs/libpng16.16.dylib; sourceTree = "<group>"; };
+		CB115D732460A1580033D8B1 /* ImageMagick */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ImageMagick; path = Libs/ImageMagick; sourceTree = "<group>"; };
 		CB22C2C11DC7E533003F2E1D /* ContactSheetz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ContactSheetz-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		CB243BB51DD0EDE300933617 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		CB245FC91DC140CB00DBE5FA /* ContactSheetCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSheetCreator.swift; sourceTree = "<group>"; };
@@ -273,16 +176,6 @@
 		CB8174F81DC972BC00D8A89E /* NonNegativeIntegerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonNegativeIntegerTextField.swift; sourceTree = "<group>"; };
 		CB8174FA1DC98A9200D8A89E /* PositiveIntegerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositiveIntegerTextField.swift; sourceTree = "<group>"; };
 		CB8174FC1DC98C1500D8A89E /* AdjustorViewTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustorViewTextField.swift; sourceTree = "<group>"; };
-		CB8699E71F81400B0065E7E5 /* liblzma.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblzma.a; path = StaticLibs/liblzma.a; sourceTree = "<group>"; };
-		CB8699EC1F8140750065E7E5 /* libiconv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiconv.a; path = StaticLibs/libiconv.a; sourceTree = "<group>"; };
-		CB8699EE1F8140930065E7E5 /* libcharset.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcharset.a; path = StaticLibs/libcharset.a; sourceTree = "<group>"; };
-		CB8699F01F8141190065E7E5 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
-		CB8699F51F81429D0065E7E5 /* liblcms.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblcms.a; path = StaticLibs/liblcms.a; sourceTree = "<group>"; };
-		CB8699F71F8142D60065E7E5 /* liblcms2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblcms2.a; path = StaticLibs/liblcms2.a; sourceTree = "<group>"; };
-		CB8699FA1F8143880065E7E5 /* libpostproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpostproc.a; path = StaticLibs/libpostproc.a; sourceTree = "<group>"; };
-		CB869A021F814E5C0065E7E5 /* liborc-0.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "liborc-0.4.0.dylib"; path = "StaticLibs/liborc-0.4.0.dylib"; sourceTree = "<group>"; };
-		CB869A411F8175980065E7E5 /* libgraphite2.3.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgraphite2.3.0.1.dylib; path = StaticLibs/libgraphite2.3.0.1.dylib; sourceTree = "<group>"; };
-		CB869A431F8297970065E7E5 /* liborc-0.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "liborc-0.4.a"; path = "StaticLibs/liborc-0.4.a"; sourceTree = "<group>"; };
 		CB8FD3BD1DCC055000D6F5D7 /* ImageCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewHeader.swift; sourceTree = "<group>"; };
 		CB90245B1DE51BEB00D5CC36 /* BatchTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BatchTableViewHeader.xib; sourceTree = "<group>"; };
 		CB90245D1DE51C0800D5CC36 /* BatchTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatchTableViewHeader.swift; sourceTree = "<group>"; };
@@ -290,8 +183,6 @@
 		CB9BF4781DD3B2C800F7DF40 /* ImageCollectionViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionViewHeader.xib; sourceTree = "<group>"; };
 		CBA2EBC71DA81D8D00EE3131 /* ParameterAdjustorDraggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterAdjustorDraggerView.swift; sourceTree = "<group>"; };
 		CBAF48511DE651F6008D3FC9 /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
-		CBB4DD781F829E2200FB3A06 /* libgraphite2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgraphite2.a; path = StaticLibs/libgraphite2.a; sourceTree = "<group>"; };
-		CBB4DD7C1F82A84B00FB3A06 /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
 		CBB816601E0DC14B00D96A83 /* TooltipImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TooltipImageView.swift; sourceTree = "<group>"; };
 		CBBF4FFA1DA17AEA00908FFE /* AudioVideoBridging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioVideoBridging.framework; path = System/Library/Frameworks/AudioVideoBridging.framework; sourceTree = SDKROOT; };
 		CBBF4FFC1DA17AFE00908FFE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -319,78 +210,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBB4DD7D1F82A84B00FB3A06 /* libiconv.2.tbd in Frameworks */,
-				CBB4DD7E1F82D07A00FB3A06 /* libMagick++-7.Q16HDRI.a in Frameworks */,
-				CBB4DD7F1F82D07A00FB3A06 /* libMagickCore-7.Q16HDRI.a in Frameworks */,
-				CBB4DD801F82D07A00FB3A06 /* libMagickWand-7.Q16HDRI.a in Frameworks */,
-				CB8699FC1F814D4F0065E7E5 /* libavcodec.a in Frameworks */,
-				CB8699FD1F814D4F0065E7E5 /* libavformat.a in Frameworks */,
-				CB8699FE1F814D4F0065E7E5 /* libavutil.a in Frameworks */,
-				CB8699FF1F814D5A0065E7E5 /* libswresample.a in Frameworks */,
-				CB869A001F814D5A0065E7E5 /* libswscale.a in Frameworks */,
-				CB023D6B1F8084AF00B7A3AF /* libbz2.a in Frameworks */,
-				CB023D6C1F8092C700B7A3AF /* libfreetype.a in Frameworks */,
-				CB023D6D1F80A3C100B7A3AF /* libfontconfig.a in Frameworks */,
-				CB023D6E1F80A3E500B7A3AF /* libtiff.a in Frameworks */,
-				CB023D711F80A42B00B7A3AF /* libwebp.a in Frameworks */,
-				CB023D721F80A42B00B7A3AF /* libwebpdecoder.a in Frameworks */,
-				CB023D731F80A45F00B7A3AF /* libexpat.a in Frameworks */,
-				CB023D761F80A49800B7A3AF /* libwebpdemux.a in Frameworks */,
-				CB023D771F80A49800B7A3AF /* libwebpmux.a in Frameworks */,
-				CB023D7A1F80A53800B7A3AF /* libcairo-gobject.a in Frameworks */,
-				CB023D781F80A53800B7A3AF /* libcairo.a in Frameworks */,
-				CB023D811F80A65300B7A3AF /* libjpeg.a in Frameworks */,
-				CB023D821F80A6CB00B7A3AF /* libpango-1.0.a in Frameworks */,
-				CB023D861F80A7C400B7A3AF /* libpangoft2-1.0.a in Frameworks */,
-				CB023D831F80A6CB00B7A3AF /* libpangocairo-1.0.a in Frameworks */,
-				CB023D891F80A8B200B7A3AF /* libgio-2.0.a in Frameworks */,
-				CB023D8A1F80A8B200B7A3AF /* libglib-2.0.a in Frameworks */,
-				CB023D8B1F80A8B200B7A3AF /* libgmodule-2.0.a in Frameworks */,
-				CB023D8C1F80A8B200B7A3AF /* libgobject-2.0.a in Frameworks */,
-				CB023D8D1F80A8B200B7A3AF /* libgthread-2.0.a in Frameworks */,
-				CB023D841F80A74200B7A3AF /* libmp3lame.a in Frameworks */,
-				CB023D851F80A77200B7A3AF /* libopenjp2.a in Frameworks */,
-				CB023D871F80A7DA00B7A3AF /* libpixman-1.a in Frameworks */,
-				CB023D8E1F80A8DB00B7A3AF /* libvorbis.a in Frameworks */,
-				CB023D921F80A90900B7A3AF /* libtheoradec.a in Frameworks */,
-				CB023D931F80A90900B7A3AF /* libtheoraenc.a in Frameworks */,
-				CB023D8F1F80A90800B7A3AF /* libtheora.a in Frameworks */,
-				CB023D941F80A92600B7A3AF /* libpng16.a in Frameworks */,
-				CB023D951F80A93C00B7A3AF /* libpcre.a in Frameworks */,
-				CB023D961F80A95200B7A3AF /* libopus.a in Frameworks */,
-				CB023D981F80A97C00B7A3AF /* libasprintf.a in Frameworks */,
-				CB023D9A1F80A98000B7A3AF /* libgettextpo.a in Frameworks */,
-				CB023D9B1F80A98500B7A3AF /* libintl.a in Frameworks */,
-				CB023D9C1F80A9A100B7A3AF /* libxvidcore.a in Frameworks */,
-				CB023D9E1F80A9C000B7A3AF /* libx264.a in Frameworks */,
-				CB023D9F1F80A9D900B7A3AF /* libvorbisenc.a in Frameworks */,
-				CB023DA01F80A9D900B7A3AF /* libvorbisfile.a in Frameworks */,
-				CB023DA11F80AA1500B7A3AF /* libogg.a in Frameworks */,
-				CB023DA21F80AA3100B7A3AF /* libharfbuzz-gobject.a in Frameworks */,
-				CB023DA31F80AA3100B7A3AF /* libharfbuzz-icu.a in Frameworks */,
-				CB023DA41F80AA3100B7A3AF /* libharfbuzz.a in Frameworks */,
-				CB023DA51F80AA4200B7A3AF /* libffi.a in Frameworks */,
-				CB023D9D1F80A9B000B7A3AF /* libxml2.a in Frameworks */,
-				CB023DA81F813ADB00B7A3AF /* liblz.a in Frameworks */,
-				CB023D7E1F80A5D500B7A3AF /* libz.a in Frameworks */,
-				CB8699E81F81400B0065E7E5 /* liblzma.a in Frameworks */,
-				CB8699F81F8142D60065E7E5 /* liblcms2.a in Frameworks */,
-				CB869A011F814E180065E7E5 /* libschroedinger-1.0.a in Frameworks */,
-				CB869A441F8297970065E7E5 /* liborc-0.4.a in Frameworks */,
-				CBB4DD791F829E2200FB3A06 /* libgraphite2.a in Frameworks */,
-				CBB4DD7A1F82A75500FB3A06 /* libiconv.a in Frameworks */,
 				CB245FCC1DC185E900DBE5FA /* QuartzCore.framework in Frameworks */,
+				CB115D6524608AEC0033D8B1 /* libavutil.56.31.100.dylib in Frameworks */,
 				CBBF501B1DA17CB100908FFE /* VideoToolbox.framework in Frameworks */,
 				CBBF50191DA17C7400908FFE /* CoreFoundation.framework in Frameworks */,
 				CBBF50171DA17C6A00908FFE /* VideoDecodeAcceleration.framework in Frameworks */,
+				CB115D6724608AEC0033D8B1 /* libmediainfo.0.dylib in Frameworks */,
 				CBBF50121DA17C3E00908FFE /* CoreAudio.framework in Frameworks */,
 				CBBF50131DA17C3E00908FFE /* CoreAudioKit.framework in Frameworks */,
 				CBBF50141DA17C3E00908FFE /* CoreMedia.framework in Frameworks */,
+				CB115D6324608AEC0033D8B1 /* libavformat.58.29.100.dylib in Frameworks */,
+				CB115D6124608AEC0033D8B1 /* libavcodec.58.54.100.dylib in Frameworks */,
 				CBBF50151DA17C3E00908FFE /* CoreVideo.framework in Frameworks */,
+				CB115D6D24608AEC0033D8B1 /* libMagickWand-7.Q16HDRI.7.dylib in Frameworks */,
 				CBBF50031DA17B3200908FFE /* AudioUnit.framework in Frameworks */,
 				CBBF4FFE1DA17AFE00908FFE /* AVFoundation.framework in Frameworks */,
 				CBBF4FFF1DA17AFE00908FFE /* AVKit.framework in Frameworks */,
 				CBBF4FFB1DA17AEA00908FFE /* AudioVideoBridging.framework in Frameworks */,
+				CB115D6924608AEC0033D8B1 /* libswscale.5.5.100.dylib in Frameworks */,
 				CBBF50021DA17B3200908FFE /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +245,7 @@
 		CB0828991DA0C4D900CD4C36 = {
 			isa = PBXGroup;
 			children = (
+				CB115D732460A1580033D8B1 /* ImageMagick */,
 				CB0828A41DA0C4D900CD4C36 /* ContactSheetz */,
 				CB0828B71DA0C4D900CD4C36 /* ContactSheetzTests */,
 				CB0828A31DA0C4D900CD4C36 /* Products */,
@@ -555,96 +393,15 @@
 		CBBF4FF91DA17AEA00908FFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CBB4DD7C1F82A84B00FB3A06 /* libiconv.2.tbd */,
-				CBB4DD781F829E2200FB3A06 /* libgraphite2.a */,
-				CB869A431F8297970065E7E5 /* liborc-0.4.a */,
-				CB869A411F8175980065E7E5 /* libgraphite2.3.0.1.dylib */,
-				CB869A021F814E5C0065E7E5 /* liborc-0.4.0.dylib */,
-				CB8699FA1F8143880065E7E5 /* libpostproc.a */,
-				CB8699F71F8142D60065E7E5 /* liblcms2.a */,
-				CB8699F51F81429D0065E7E5 /* liblcms.a */,
-				CB8699F01F8141190065E7E5 /* libiconv.2.4.0.tbd */,
-				CB8699EE1F8140930065E7E5 /* libcharset.a */,
-				CB8699EC1F8140750065E7E5 /* libiconv.a */,
-				CB8699E71F81400B0065E7E5 /* liblzma.a */,
-				CB023DA61F80AADF00B7A3AF /* libgraphite2.3.0.1.dylib */,
-				CB023D991F80A98000B7A3AF /* libgettextpo.a */,
-				CB023D971F80A97C00B7A3AF /* libasprintf.a */,
-				CB023D901F80A90800B7A3AF /* libtheoradec.a */,
-				CB023D911F80A90900B7A3AF /* libtheoraenc.a */,
-				CB023D7F1F80A61900B7A3AF /* libgirepository-1.0.a */,
-				CB023D7D1F80A5D500B7A3AF /* libz.a */,
-				CB023D7B1F80A59800B7A3AF /* liblz.a */,
-				CB023D791F80A53800B7A3AF /* libcairo-gobject.a */,
-				CB023D741F80A49800B7A3AF /* libwebpdemux.a */,
-				CB023D751F80A49800B7A3AF /* libwebpmux.a */,
-				CB023D6F1F80A42B00B7A3AF /* libwebp.a */,
-				CB023D701F80A42B00B7A3AF /* libwebpdecoder.a */,
-				CB023D6A1F8084AF00B7A3AF /* libbz2.a */,
-				CB023D601F80666000B7A3AF /* libopenjp2.a */,
-				CB023D5E1F8063EC00B7A3AF /* libintl.a */,
-				CB023D5C1F80631E00B7A3AF /* libexpat.a */,
-				CB023D581F80619000B7A3AF /* libharfbuzz-gobject.a */,
-				CB023D591F80619000B7A3AF /* libharfbuzz-icu.a */,
-				CB023D561F8060FA00B7A3AF /* libharfbuzz.a */,
-				CB023D541F8060AE00B7A3AF /* libxml2.a */,
-				CB023D521F80609600B7A3AF /* libffi.a */,
-				CB023D501F80605E00B7A3AF /* libpangoft2-1.0.a */,
-				CB023D4E1F80603A00B7A3AF /* libpcre.a */,
-				CB023D4C1F80602400B7A3AF /* libpixman-1.a */,
-				CB023D481F80600600B7A3AF /* libglib-2.0.a */,
-				CB023D491F80600600B7A3AF /* libgmodule-2.0.a */,
-				CB023D421F805FAC00B7A3AF /* libMagick++-7.Q16HDRI.a */,
-				CB023D431F805FAC00B7A3AF /* libMagickCore-7.Q16HDRI.a */,
-				CB023D441F805FAC00B7A3AF /* libMagickWand-7.Q16HDRI.a */,
-				CB023D381F805D1200B7A3AF /* libavdevice.a */,
-				CB023D391F805D1200B7A3AF /* libavresample.a */,
-				CB023D361F805CC700B7A3AF /* libltdl.a */,
-				CB023D341F805C9600B7A3AF /* libopenjp2.2.1.2.dylib */,
-				CB023D321F805C7000B7A3AF /* libjpeg.a */,
-				CB023D301F805C4E00B7A3AF /* liborc-0.4.0.dylib */,
-				CB023D2E1F805C0100B7A3AF /* libcrypto.a */,
-				CB023D2C1F805BDB00B7A3AF /* libssl.a */,
-				CB023D2A1F805B8B00B7A3AF /* librtmp.a */,
-				CB023D281F805B2F00B7A3AF /* libmp3lame.a */,
-				CB023D261F805B1400B7A3AF /* libogg.a */,
-				CB023D241F805A6800B7A3AF /* libschroedinger-1.0.a */,
-				CB023D221F805A4E00B7A3AF /* libspeex.a */,
-				CB023D201F805A2500B7A3AF /* libtheora.a */,
-				CB023D1E1F8059DF00B7A3AF /* libxvidcore.a */,
-				CB023CDC1F80586300B7A3AF /* libavcodec.a */,
-				CB023CDD1F80586300B7A3AF /* libavfilter.a */,
-				CB023CDE1F80586300B7A3AF /* libavformat.a */,
-				CB023CDF1F80586300B7A3AF /* libavutil.a */,
-				CB023CE01F80586300B7A3AF /* libbz2.1.0.5.tbd */,
-				CB023CE11F80586300B7A3AF /* libcairo.a */,
-				CB023CE21F80586300B7A3AF /* libexslt.a */,
-				CB023CE31F80586300B7A3AF /* libfdk-aac.a */,
-				CB023CE41F80586300B7A3AF /* libfontconfig.a */,
-				CB023CE51F80586300B7A3AF /* libfreetype.a */,
-				CB023CE61F80586300B7A3AF /* libgio-2.0.a */,
-				CB023CE71F80586300B7A3AF /* libgobject-2.0.a */,
-				CB023CE81F80586300B7A3AF /* libgthread-2.0.a */,
-				CB023CE91F80586300B7A3AF /* libiconv.2.4.0.tbd */,
-				CB023CEA1F80586300B7A3AF /* liblzma.5.tbd */,
-				CB023CEB1F80586300B7A3AF /* libMagick++-6.Q16.a */,
-				CB023CEC1F80586300B7A3AF /* libMagickCore-6.Q16.a */,
-				CB023CED1F80586300B7A3AF /* libMagickWand-6.Q16.a */,
-				CB023CEE1F80586300B7A3AF /* libopus.a */,
-				CB023CEF1F80586300B7A3AF /* libpango-1.0.a */,
-				CB023CF01F80586300B7A3AF /* libpangocairo-1.0.a */,
-				CB023CF11F80586300B7A3AF /* libpng16.a */,
-				CB023CF21F80586300B7A3AF /* libswresample.a */,
-				CB023CF31F80586300B7A3AF /* libswscale.a */,
-				CB023CF41F80586300B7A3AF /* libtiff.a */,
-				CB023CF51F80586300B7A3AF /* libvorbis.a */,
-				CB023CF61F80586300B7A3AF /* libvorbisenc.a */,
-				CB023CF71F80586300B7A3AF /* libvorbisfile.a */,
-				CB023CF81F80586300B7A3AF /* libvpx.a */,
-				CB023CF91F80586300B7A3AF /* libx264.a */,
-				CB023CFA1F80586300B7A3AF /* libxml2.2.tbd */,
-				CB023CFB1F80586300B7A3AF /* libxslt.a */,
-				CB023CFC1F80586300B7A3AF /* libz.1.2.8.tbd */,
+				CB115D6F246093040033D8B1 /* libpng16.16.dylib */,
+				CB115D5E246089D30033D8B1 /* libMagickWand-7.Q16HDRI.7.dylib */,
+				CB115D6C24608AEC0033D8B1 /* libMagickWand-7.Q16HDRI.7.dylib */,
+				CB115D592460891D0033D8B1 /* libMagickCore-7.Q16HDRI.7.dylib */,
+				CB115D4524607DB80033D8B1 /* libavcodec.58.54.100.dylib */,
+				CB115D4624607DB80033D8B1 /* libavformat.58.29.100.dylib */,
+				CB115D4324607DB80033D8B1 /* libavutil.56.31.100.dylib */,
+				CB115D4724607DB80033D8B1 /* libmediainfo.0.dylib */,
+				CB115D4824607DB80033D8B1 /* libswscale.5.5.100.dylib */,
 				CB245FCB1DC185E900DBE5FA /* QuartzCore.framework */,
 				CBBF501A1DA17CB100908FFE /* VideoToolbox.framework */,
 				CBBF50181DA17C7400908FFE /* CoreFoundation.framework */,
@@ -681,6 +438,7 @@
 				CB08289E1DA0C4D900CD4C36 /* Sources */,
 				CB08289F1DA0C4D900CD4C36 /* Frameworks */,
 				CB0828A01DA0C4D900CD4C36 /* Resources */,
+				CB115D6B24608AEC0033D8B1 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -715,7 +473,7 @@
 		CB08289A1DA0C4D900CD4C36 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "James Hicklin";
 				TargetAttributes = {
 					CB0828A11DA0C4D900CD4C36 = {
@@ -736,6 +494,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -863,18 +622,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -901,7 +669,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.12;
+				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -910,18 +678,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -941,7 +718,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = ContactSheetz;
-				SDKROOT = macosx10.12;
+				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
@@ -951,7 +728,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 562NVM37S5;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
@@ -959,26 +736,28 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/Users/jameshicklin/Downloads/ffmpeg-3.3.4/**",
-					"/Users/jameshicklin/Downloads/ImageMagick-7.0.6-8",
+					"/usr/local/Cellar/ffmpeg/4.2.2_2/**",
+					"/usr/local/Cellar/media-info/20.03/include/MediaInfoDLL",
+					"/usr/local/Cellar/imagemagick/7.0.9-27/include/ImageMagick-7",
 				);
 				INFOPLIST_FILE = ContactSheetz/Info.plist;
 				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/StaticLibs",
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Libs",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-headerpad_max_install_names";
 				PRODUCT_BUNDLE_IDENTIFIER = "James-Hicklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "ContactSheetz-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -987,7 +766,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 562NVM37S5;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
@@ -995,27 +774,30 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/Users/jameshicklin/Downloads/ffmpeg-3.3.4/**",
-					"/Users/jameshicklin/Downloads/ImageMagick-7.0.6-8",
+					"/usr/local/Cellar/ffmpeg/4.2.2_2/**",
+					"/usr/local/Cellar/media-info/20.03/include/MediaInfoDLL",
+					"/usr/local/Cellar/imagemagick/7.0.9-27/include/ImageMagick-7",
 				);
 				INFOPLIST_FILE = ContactSheetz/Info.plist;
 				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
 				"LD_DYLIB_INSTALL_NAME[arch=*]" = "";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/StaticLibs",
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Libs",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-headerpad_max_install_names";
 				PRODUCT_BUNDLE_IDENTIFIER = "James-Hicklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "ContactSheetz-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1032,12 +814,17 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = ContactSheetzTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "James-Hicklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ContactSheetz.app/Contents/MacOS/ContactSheetz";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/StaticLibs";
 			};
 			name = Debug;
 		};
@@ -1050,12 +837,17 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = ContactSheetzTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "James-Hicklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ContactSheetz.app/Contents/MacOS/ContactSheetz";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/StaticLibs";
 			};
 			name = Release;
 		};

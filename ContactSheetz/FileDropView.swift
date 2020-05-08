@@ -42,7 +42,7 @@ class FileDropView: NSView {
         NSColor.init(red: noColor.0, green: noColor.1, blue: noColor.2, alpha: 1).setFill()
         //}
         
-        NSRectFill(dirtyRect)
+        dirtyRect.fill()
         super.draw(dirtyRect)
         drawBorder(rect: dirtyRect)
         // Drawing code here.
@@ -83,11 +83,11 @@ class FileDropView: NSView {
         
     }
     
-    func drawAnimatedBorder(timer: Cocoa.Timer) {
+    @objc func drawAnimatedBorder(timer: Cocoa.Timer) {
         //NSLog("Drawing animated border!")
-        DispatchQueue.main.async( execute: {
-            self.display()
-        })
+        //DispatchQueue.main.async( execute: {
+        self.display()
+        //})
 //        if let frame = timer.userInfo as? NSRect {
 //            NSLog("Redrawing border!")
 //            drawBorder(rect: frame, incrementBorder: true)
@@ -95,7 +95,7 @@ class FileDropView: NSView {
     }
     
     override func awakeFromNib() {
-        self.register(forDraggedTypes: [NSFilenamesPboardType])
+        self.registerForDraggedTypes([NSPasteboard.PasteboardType.fileURL])
     }
     
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
@@ -131,7 +131,7 @@ class FileDropView: NSView {
         //self.currentIncrement = 0
         self.drawingAnimated = false
         let pasteBoard = sender.draggingPasteboard()
-        let fileNames = pasteBoard.propertyList(forType: NSFilenamesPboardType)
+        let fileNames = pasteBoard.propertyList(forType: NSPasteboard.PasteboardType(rawValue: "NSFilenamesPboardType")) as? NSArray
         if let _files = fileNames as? [String] {
             if (_files.count == 1) {
                 let file = URL.init(fileURLWithPath: _files[0])

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
@@ -15,7 +14,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="F55-mJ-bYw">
-                    <rect key="frame" x="41" y="12" width="228" height="31"/>
+                    <rect key="frame" x="41" y="24" width="228" height="31"/>
                     <subviews>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zUW-OC-Hgi">
                             <rect key="frame" x="66" y="-2" width="96" height="32"/>
@@ -36,14 +35,14 @@
                     </constraints>
                 </customView>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y4h-ED-9mT">
-                    <rect key="frame" x="133" y="87" width="123" height="26"/>
+                    <rect key="frame" x="133" y="99" width="123" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="KWG-fS-HjX"/>
                         <constraint firstAttribute="width" constant="118" id="u4f-fg-daS"/>
                     </constraints>
                     <popUpButtonCell key="cell" type="push" title="PNG (*.png)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="3AL-To-Ll1" id="8aS-qf-87b">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
+                        <font key="font" metaFont="system"/>
                         <menu key="menu" id="LgN-ni-DXT">
                             <items>
                                 <menuItem title="PNG (*.png)" state="on" id="3AL-To-Ll1"/>
@@ -54,119 +53,119 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ax5-sF-SVe">
-                    <rect key="frame" x="33" y="92" width="97" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ax5-sF-SVe">
+                    <rect key="frame" x="33" y="104" width="97" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Output Format:" id="BeN-gr-cNj">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zex-w3-xPp">
-                    <rect key="frame" x="7" y="532" width="123" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zex-w3-xPp">
+                    <rect key="frame" x="7" y="533" width="123" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Horizontal Padding:" id="QHb-fe-giD">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEX-zJ-tEh">
-                    <rect key="frame" x="23" y="505" width="107" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VEX-zJ-tEh">
+                    <rect key="frame" x="23" y="507" width="107" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vertical Padding:" id="LhF-zz-o4K">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHM-nq-ewt" customClass="NonNegativeIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="135" y="529" width="51" height="22"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rHM-nq-ewt" customClass="NonNegativeIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="135" y="530" width="51" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="51" id="oGo-ed-iD7"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="2" drawsBackground="YES" id="vGD-J3-McM">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1I-f6-hvA" customClass="NonNegativeIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="135" y="502" width="51" height="22"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A1I-f6-hvA" customClass="NonNegativeIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="135" y="504" width="51" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="51" id="ja5-Fv-2gq"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="2" drawsBackground="YES" id="bh6-VQ-zZd">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RO6-VZ-xhY">
-                    <rect key="frame" x="22" y="145" width="108" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RO6-VZ-xhY">
+                    <rect key="frame" x="22" y="155" width="108" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Width Per Image:" id="vWW-vs-mBt">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khW-LH-fuf" customClass="PositiveIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="135" y="142" width="51" height="22"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="khW-LH-fuf" customClass="PositiveIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="135" y="152" width="51" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="51" id="Lwg-tL-0JC"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Oxf-zl-7m7">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0c-jr-8SE">
-                    <rect key="frame" x="45" y="172" width="85" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P0c-jr-8SE">
+                    <rect key="frame" x="45" y="181" width="85" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Aspect Ratio:" id="ZRa-uw-KWh">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKh-lf-jeK">
-                    <rect key="frame" x="17" y="119" width="113" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XKh-lf-jeK">
+                    <rect key="frame" x="17" y="130" width="113" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Height Per Image:" id="AOC-kP-spc">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyJ-eg-xkd" customClass="PositiveIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="135" y="116" width="51" height="22"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iyJ-eg-xkd" customClass="PositiveIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="135" y="127" width="51" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="51" id="Vpm-U0-XaQ"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="gNP-cL-daQ">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yew-NZ-K51">
-                    <rect key="frame" x="69" y="478" width="61" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yew-NZ-K51">
+                    <rect key="frame" x="69" y="481" width="61" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Columns:" id="nUQ-5K-qh8">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52X-p4-Anp" customClass="PositiveIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="135" y="475" width="77" height="22"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="52X-p4-Anp" customClass="PositiveIntegerTextField" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="135" y="478" width="77" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="77" id="1E9-in-vEp"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="3" drawsBackground="YES" id="gE5-aw-41E">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="DqN-vl-nw5">
-                    <rect key="frame" x="133" y="171" width="22" height="18"/>
+                    <rect key="frame" x="133" y="180" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jKX-aZ-4Bi">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -175,8 +174,8 @@
                         <action selector="aspectRatioButtonPushed:" target="rrO-6a-UGE" id="hVr-Yn-vKB"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19y-B5-Frm">
-                    <rect key="frame" x="48" y="199" width="82" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="19y-B5-Frm">
+                    <rect key="frame" x="48" y="207" width="82" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Timestamps:" id="C1M-hp-GDU">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -184,7 +183,7 @@
                     </textFieldCell>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="VIi-UH-e84">
-                    <rect key="frame" x="133" y="198" width="22" height="18"/>
+                    <rect key="frame" x="133" y="206" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kbF-VY-Xum">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -193,8 +192,8 @@
                         <action selector="includeTimestampsButtonPushed:" target="rrO-6a-UGE" id="voB-dX-uJT"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkx-YK-R8N">
-                    <rect key="frame" x="13" y="451" width="117" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rkx-YK-R8N">
+                    <rect key="frame" x="13" y="455" width="117" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Background Color:" id="ihC-U6-Cwg">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -202,7 +201,7 @@
                     </textFieldCell>
                 </textField>
                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="ifH-eT-Xwt">
-                    <rect key="frame" x="135" y="447" width="77" height="23"/>
+                    <rect key="frame" x="135" y="451" width="77" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="RpY-Hr-H2f"/>
                         <constraint firstAttribute="width" constant="77" id="Tgr-M2-Xue"/>
@@ -212,7 +211,7 @@
                         <action selector="colorChanged:" target="rrO-6a-UGE" id="oHL-Hq-UyQ"/>
                     </connections>
                 </colorWell>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UQ3-Kz-2HB" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UQ3-Kz-2HB" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
                     <rect key="frame" x="217" y="532" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="18" id="EK6-up-WYp"/>
@@ -220,24 +219,24 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="D4e-h4-WRq"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zeE-w7-Qjg" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="217" y="505" width="18" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zeE-w7-Qjg" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="506" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="18" id="A1p-e6-E38"/>
                         <constraint firstAttribute="height" constant="17" id="Ur3-T1-q1a"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="cOM-6C-BMN"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfn-56-JLa">
-                    <rect key="frame" x="38" y="424" width="92" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pfn-56-JLa">
+                    <rect key="frame" x="38" y="429" width="92" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Header Fields:" id="j1C-Pm-hVA">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQA-ZU-SRU">
-                    <rect key="frame" x="87" y="399" width="30" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EQA-ZU-SRU">
+                    <rect key="frame" x="87" y="404" width="29" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Title" id="Gx8-Ej-G8S">
                         <font key="font" metaFont="systemUltraLight" size="13"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -245,7 +244,7 @@
                     </textFieldCell>
                 </textField>
                 <button identifier="includeDuration" translatesAutoresizingMaskIntoConstraints="NO" id="XpH-Vq-SBK" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="66" y="374" width="22" height="18"/>
+                    <rect key="frame" x="66" y="379" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ywa-5i-aHI">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -254,8 +253,8 @@
                         <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="Lzn-Ie-CkB"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50k-0g-uFF">
-                    <rect key="frame" x="87" y="375" width="56" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="50k-0g-uFF">
+                    <rect key="frame" x="87" y="380" width="54" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Duration" id="OEg-2Q-shE">
                         <font key="font" metaFont="systemUltraLight" size="13"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -263,7 +262,7 @@
                     </textFieldCell>
                 </textField>
                 <button identifier="includeTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TEr-sC-cKN" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="66" y="398" width="22" height="18"/>
+                    <rect key="frame" x="66" y="403" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fvG-Qz-mWk">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -273,7 +272,7 @@
                     </connections>
                 </button>
                 <button identifier="includeCodec" translatesAutoresizingMaskIntoConstraints="NO" id="l7o-DF-cpV" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="66" y="350" width="22" height="18"/>
+                    <rect key="frame" x="66" y="355" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yOb-DL-vni">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -282,8 +281,8 @@
                         <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="v4r-yD-e1b"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tba-pN-Lbj">
-                    <rect key="frame" x="87" y="351" width="44" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tba-pN-Lbj">
+                    <rect key="frame" x="87" y="356" width="44" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Codec" id="dQu-ko-x0F">
                         <font key="font" metaFont="systemUltraLight" size="13"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -291,7 +290,7 @@
                     </textFieldCell>
                 </textField>
                 <button identifier="includeResolution" translatesAutoresizingMaskIntoConstraints="NO" id="lpe-oO-RrQ" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="66" y="326" width="22" height="18"/>
+                    <rect key="frame" x="66" y="331" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="t0h-CD-UWZ">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -300,8 +299,8 @@
                         <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="CpG-kR-WDs"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40E-Xy-mQH">
-                    <rect key="frame" x="87" y="327" width="67" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="40E-Xy-mQH">
+                    <rect key="frame" x="87" y="332" width="65" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resolution" id="3iP-gA-tDs">
                         <font key="font" metaFont="systemUltraLight" size="13"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -309,7 +308,7 @@
                     </textFieldCell>
                 </textField>
                 <button identifier="includeBitrate" translatesAutoresizingMaskIntoConstraints="NO" id="Svf-6A-sCo" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="66" y="302" width="22" height="18"/>
+                    <rect key="frame" x="66" y="307" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Jrz-wv-E2b">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -318,8 +317,8 @@
                         <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="RKZ-9X-roq"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oft-Wv-BxM">
-                    <rect key="frame" x="87" y="303" width="44" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oft-Wv-BxM">
+                    <rect key="frame" x="87" y="308" width="42" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bitrate" id="4kJ-G0-sa4">
                         <font key="font" metaFont="systemUltraLight" size="13"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -327,7 +326,7 @@
                     </textFieldCell>
                 </textField>
                 <button identifier="includeSize" translatesAutoresizingMaskIntoConstraints="NO" id="86h-dC-1RO" customClass="GroupedHeaderButton" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="66" y="278" width="22" height="18"/>
+                    <rect key="frame" x="66" y="283" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="pHX-Co-OFa">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -336,16 +335,16 @@
                         <action selector="headerItemButtonPushed:" target="rrO-6a-UGE" id="8z8-Jy-bMF"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rul-E0-pd8">
-                    <rect key="frame" x="87" y="279" width="29" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rul-E0-pd8">
+                    <rect key="frame" x="87" y="284" width="29" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Size" id="Fdh-2I-zLd">
                         <font key="font" metaFont="systemUltraLight" size="13"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qff-IU-LFe">
-                    <rect key="frame" x="186" y="529" width="26" height="22"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qff-IU-LFe">
+                    <rect key="frame" x="186" y="530" width="26" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="26" id="OnT-pK-qBP"/>
                     </constraints>
@@ -355,8 +354,8 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTc-WV-Sdo">
-                    <rect key="frame" x="186" y="502" width="26" height="22"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qTc-WV-Sdo">
+                    <rect key="frame" x="186" y="504" width="26" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="26" id="nAc-BN-Rec"/>
                     </constraints>
@@ -366,32 +365,32 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Qn-Tk-Xoz" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="217" y="478" width="18" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Qn-Tk-Xoz" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="480" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="Z6y-S2-y6Y"/>
                         <constraint firstAttribute="width" priority="999" constant="18" id="uAH-5l-SVn"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="K95-ze-rQw"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xYD-Dg-xHW" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="217" y="450" width="18" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYD-Dg-xHW" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="454" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="Of0-JG-Pfy"/>
                         <constraint firstAttribute="width" priority="999" constant="18" id="f8d-di-Wsl"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="pCW-n7-YmX"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GCc-Y7-Qyy" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="133" y="424" width="18" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GCc-Y7-Qyy" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="133" y="429" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="C7V-Xo-vyY"/>
                         <constraint firstAttribute="width" priority="999" constant="18" id="cGo-js-dnf"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="gZm-5N-R8l"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-KX-mTG" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="158" y="199" width="18" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-KX-mTG" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="158" y="207" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="6KN-MH-f7C"/>
                         <constraint firstAttribute="width" priority="999" constant="18" id="gE0-o9-w16"/>
@@ -399,27 +398,27 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="qgb-K2-QqE"/>
                 </imageView>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3zw-PX-Xwn">
-                    <rect key="frame" x="133" y="248" width="152" height="26"/>
+                    <rect key="frame" x="133" y="254" width="152" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="147" id="A89-Ew-14O"/>
                         <constraint firstAttribute="height" constant="21" id="rjY-Wm-7Jk"/>
                     </constraints>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" id="BMa-5B-7gX">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
+                        <font key="font" metaFont="system"/>
                         <menu key="menu" id="Q8h-OY-H9c"/>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We8-bG-bS0">
-                    <rect key="frame" x="50" y="253" width="80" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="We8-bG-bS0">
+                    <rect key="frame" x="50" y="259" width="80" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Header font:" id="dVY-V4-AZ8">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" red="0.22248100879999999" green="0.952368506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ki-9y-LTO">
-                    <rect key="frame" x="17" y="226" width="113" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Ki-9y-LTO">
+                    <rect key="frame" x="17" y="233" width="113" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Header text color:" id="tie-xG-5Ov">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -427,7 +426,7 @@
                     </textFieldCell>
                 </textField>
                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="2pz-Gs-JPG">
-                    <rect key="frame" x="135" y="222" width="77" height="23"/>
+                    <rect key="frame" x="135" y="229" width="77" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="LbK-2g-NrU"/>
                         <constraint firstAttribute="width" constant="77" id="rlJ-pb-7oh"/>
@@ -437,48 +436,48 @@
                         <action selector="colorChanged:" target="rrO-6a-UGE" id="Hfo-8t-PQM"/>
                     </connections>
                 </colorWell>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pf6-bp-Yew" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="287" y="253" width="18" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pf6-bp-Yew" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="287" y="259" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" priority="999" constant="18" id="IDu-vG-Hka"/>
                         <constraint firstAttribute="height" constant="17" id="x70-1p-p28"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="rpo-1O-PFB"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D1C-Gl-do4" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="217" y="225" width="18" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D1C-Gl-do4" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="232" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="Cyw-kh-qf5"/>
                         <constraint firstAttribute="width" priority="999" constant="18" id="Hfh-Ah-79c"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="uUh-a8-3gB"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lq2-vt-Hjh" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="158" y="172" width="18" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lq2-vt-Hjh" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="158" y="181" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="7pk-of-OAD"/>
                         <constraint firstAttribute="width" priority="999" constant="18" id="u4Y-9j-FON"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="q6A-ho-2wX"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="swk-2e-9Qu" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="217" y="145" width="18" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="swk-2e-9Qu" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="154" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="Pla-9V-Iun"/>
                         <constraint firstAttribute="width" priority="999" constant="18" id="eaE-g3-tn6"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="xdp-Uq-a9s"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UM9-cT-Ief" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
-                    <rect key="frame" x="217" y="119" width="18" height="17"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UM9-cT-Ief" customClass="TooltipImageView" customModule="ContactSheetz" customModuleProvider="target">
+                    <rect key="frame" x="217" y="129" width="18" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" priority="999" constant="18" id="YaJ-7M-rj4"/>
                         <constraint firstAttribute="height" constant="17" id="af9-05-Rza"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="info" id="GMn-EZ-VDP"/>
                 </imageView>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejR-R0-1Tt">
-                    <rect key="frame" x="186" y="142" width="26" height="22"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ejR-R0-1Tt">
+                    <rect key="frame" x="186" y="152" width="26" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="26" id="1Ab-ns-XuU"/>
                     </constraints>
@@ -488,8 +487,8 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8S-25-Lua">
-                    <rect key="frame" x="186" y="116" width="26" height="22"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y8S-25-Lua">
+                    <rect key="frame" x="186" y="127" width="26" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="26" id="NzA-OG-dU1"/>
                     </constraints>
@@ -499,14 +498,14 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Exh-Zl-iTY">
-                    <rect key="frame" x="31" y="51" width="261" height="30"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Exh-Zl-iTY">
+                    <rect key="frame" x="31" y="63" width="261" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Hdb-sO-qor"/>
                         <constraint firstAttribute="width" constant="257" id="yjA-dp-DXf"/>
                     </constraints>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Contact sheets will be saved in the same folder as the input video." id="57j-2y-DG0">
-                        <font key="font" metaFont="smallSystem"/>
+                        <font key="font" metaFont="label" size="11"/>
                         <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

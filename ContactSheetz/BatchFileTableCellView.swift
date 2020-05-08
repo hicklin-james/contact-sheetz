@@ -25,9 +25,12 @@ class BatchFileTableCellView: NSTableCellView {
         super.draw(dirtyRect)
         if isGrey {
             //NSColor.lightGray.setFill()
-            NSColor.init(red: 0.9686, green: 0.9686, blue: 0.9686, alpha: 1).setFill()
-            NSRectFill(dirtyRect)
+//            NSColor.init(red: 0.9686, green: 0.9686, blue: 0.9686, alpha: 1).setFill()
+            NSColor.gray.setFill()
+        } else {
+            NSColor.lightGray.setFill()
         }
+        dirtyRect.fill()
         
         // Drawing code here.
     }

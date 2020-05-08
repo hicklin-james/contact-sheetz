@@ -10,11 +10,11 @@ import Cocoa
 
 class ImageHelper: NSObject {
     
-    static func saveAsFormat(image: NSImage, path: URL, format: NSBitmapImageFileType) {
+    static func saveAsFormat(image: NSImage, path: URL, format: NSBitmapImageRep.FileType) {
         let reps = image.representations
         let compressionFactor = 1
-        let imageProps = NSDictionary.init(object: compressionFactor, forKey: NSImageCompressionFactor as NSCopying)
-        guard let bitmapData = NSBitmapImageRep.representationOfImageReps(in: reps, using: format, properties: imageProps as! [String : Any]) else {
+        let imageProps = NSDictionary.init(object: compressionFactor, forKey: NSBitmapImageRep.PropertyKey.compressionFactor as NSCopying)
+        guard let bitmapData = NSBitmapImageRep.representationOfImageReps(in: reps, using: format, properties: imageProps as! [NSBitmapImageRep.PropertyKey : Any]) else {
             return
         }
         do {

@@ -28,18 +28,20 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
         numFramesTooltipView.setTooltipValue(value: "The number of individual frames to use in the contact sheets")
         
         NotificationCenter.default.addObserver(self, selector: #selector(BatchTableViewController.updateProgressFromFrameGeneration), name: NSNotification.Name(rawValue: Constants.NotificationKeys.VideoFrameGenerated), object: nil)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(BatchTableViewController.updateProgressFromContactSheetGeneration), name: NSNotification.Name(rawValue: Constants.NotificationKeys.ContactSheetProgress), object: nil)
-        
+
         batchItemsTableView.batchFileDelegate = self
-        
-        var nibObjects:NSArray = NSArray()
-        Bundle.main.loadNibNamed("BatchTableViewHeader", owner: self, topLevelObjects: &nibObjects)
-        for i in 0..<nibObjects.count {
-            if let headerView = nibObjects[i] as? BatchTableViewHeader {
-                headerView.delegate = self
-                batchItemsTableView.headerView = headerView
-                batchItemsTableView.headerView?.frame.size.height = 34
+
+        var nibObjects:NSArray? = NSArray()
+        Bundle.main.loadNibNamed(NSNib.Name(rawValue: "BatchTableViewHeader"), owner: self, topLevelObjects: &nibObjects)
+        if let _nibObjects = nibObjects {
+            for i in 0..<_nibObjects.count {
+                if let headerView = _nibObjects[i] as? BatchTableViewHeader {
+                    headerView.delegate = self
+                    batchItemsTableView.headerView = headerView
+                    batchItemsTableView.headerView?.frame.size.height = 34
+                }
             }
         }
     }
@@ -65,7 +67,7 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if batchFiles.count > 0 {
-            let cell = batchItemsTableView.make(withIdentifier: "BatchFileTableCell", owner: self) as! BatchFileTableCellView
+            let cell = batchItemsTableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "BatchFileTableCell"), owner: self) as! BatchFileTableCellView
             cell.delegate = self
             if row % 2 != 0 {
                 cell.isGrey = true
@@ -75,7 +77,7 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
             return cell
         }
         else {
-            let cell = batchItemsTableView.make(withIdentifier: "NoFilesCell", owner: self)
+            let cell = batchItemsTableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "NoFilesCell"), owner: self)
             return cell
         }
     }
@@ -94,10 +96,10 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
         let indexSet: IndexSet = IndexSet.init(integersIn: indexRange)
         // don't add duplicates
         if batchFiles.count == 0 && filesWithoutDupes.count > 0 {
-            batchItemsTableView.removeRows(at: IndexSet.init(integer: 0), withAnimation: NSTableViewAnimationOptions.slideRight)
+            batchItemsTableView.removeRows(at: IndexSet.init(integer: 0), withAnimation: NSTableView.AnimationOptions.slideRight)
         }
         batchFiles += filesWithoutDupes
-        batchItemsTableView.insertRows(at: indexSet, withAnimation: NSTableViewAnimationOptions.slideLeft)
+        batchItemsTableView.insertRows(at: indexSet, withAnimation: NSTableView.AnimationOptions.slideLeft)
         //batchItemsTableView.insertRows(at: indexSet, withAnimation: NSTableViewAnimation.)
     }
     
@@ -111,7 +113,8 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
         let dialog = NSOpenPanel()
         dialog.allowsMultipleSelection = true
         dialog.title = "Choose video files"
-        if (dialog.runModal() == NSModalResponseOK) {
+        dialog.allowedFileTypes = Constants.AcceptedFileTypes
+        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             let result = dialog.urls
             let resultStrs = result.map({
                 return $0.path
@@ -138,9 +141,9 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
             }
         }
         batchFiles = []
-        batchItemsTableView.removeRows(at: indexSet, withAnimation: NSTableViewAnimationOptions.slideLeft)
+        batchItemsTableView.removeRows(at: indexSet, withAnimation: NSTableView.AnimationOptions.slideLeft)
         if batchFiles.count == 0 {
-            batchItemsTableView.insertRows(at: IndexSet.init(integer: 0), withAnimation: NSTableViewAnimationOptions.slideLeft)
+            batchItemsTableView.insertRows(at: IndexSet.init(integer: 0), withAnimation: NSTableView.AnimationOptions.slideLeft)
         }
     }
     
@@ -155,12 +158,12 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
         //NSLog("Deleting row: " + String(row))
         batchFiles.remove(at: row)
         let indexSet = IndexSet.init(integer: row)
-        batchItemsTableView.removeRows(at: indexSet, withAnimation: NSTableViewAnimationOptions.slideLeft)
+        batchItemsTableView.removeRows(at: indexSet, withAnimation: NSTableView.AnimationOptions.slideLeft)
         if row != batchFiles.count {
             adjustRowColors(row: row, initialCell: from)
         }
         if batchFiles.count == 0 {
-            batchItemsTableView.insertRows(at: IndexSet.init(integer: 0), withAnimation: NSTableViewAnimationOptions.slideLeft)
+            batchItemsTableView.insertRows(at: IndexSet.init(integer: 0), withAnimation: NSTableView.AnimationOptions.slideLeft)
         }
     }
     
@@ -168,7 +171,7 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
         
         let visibleRect = batchItemsTableView.enclosingScrollView!.visibleRect
         let visibleRows = batchItemsTableView.rows(in: visibleRect)
-        let range = Range.init(uncheckedBounds: (lower: row, upper: visibleRows.toRange()!.upperBound))
+        let range = Range.init(uncheckedBounds: (lower: row, upper: Range.init(visibleRows)!.upperBound))
         var c = initialCell.isGrey
         for r in range.lowerBound..<range.upperBound {
             let cell = batchItemsTableView.view(atColumn: 0, row: r, makeIfNecessary: false) as! BatchFileTableCellView
@@ -180,43 +183,45 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
     
     @IBAction func openBatchProcessSettings(_ sender: Any) {
         guard let i = Int(self.numFramesField.stringValue), i > 0 else {
-            displayAlert(message: "Must have one or more frames", alertStyle: NSAlertStyle.critical)
+            displayAlert(message: "Must have one or more frames", alertStyle: NSAlert.Style.critical)
             return
         }
         guard batchFiles.count > 0 else {
-            displayAlert(message: "Must have at least one file", alertStyle: NSAlertStyle.critical)
+            displayAlert(message: "Must have at least one file", alertStyle: NSAlert.Style.critical)
             return
         }
-        var nibObjects:NSArray = NSArray()
-        Bundle.main.loadNibNamed("BatchSettingsView", owner: self, topLevelObjects: &nibObjects)
-        for i in 0..<nibObjects.count {
-            if let _settingsView = nibObjects[i] as? BatchSettingsView {
-                _settingsView.delegate = self
-                //_settingsView.toggleOverlay()
-                
-                let vc = NSViewController.init()
-                vc.view = _settingsView
-                self.presentViewControllerAsModalWindow(vc)
-                vc.view.window?.maxSize = NSSize.init(width: 310, height: 591)
-                vc.view.window?.minSize = NSSize.init(width: 310, height: 591)
-                let zoomButton = vc.view.window?.standardWindowButton(NSWindowButton.zoomButton)
-                if let _zb = zoomButton {
-                    _zb.isEnabled = false
+        var nibObjects:NSArray? = NSArray()
+        Bundle.main.loadNibNamed(NSNib.Name(rawValue: "BatchSettingsView"), owner: self, topLevelObjects: &nibObjects)
+        if let _nibObjects = nibObjects {
+            for i in 0..<_nibObjects.count {
+                if let _settingsView = _nibObjects[i] as? BatchSettingsView {
+                    _settingsView.delegate = self
+                    //_settingsView.toggleOverlay()
+                    
+                    let vc = NSViewController.init()
+                    vc.view = _settingsView
+                    self.presentViewControllerAsModalWindow(vc)
+                    vc.view.window?.maxSize = NSSize.init(width: 310, height: 591)
+                    vc.view.window?.minSize = NSSize.init(width: 310, height: 591)
+                    let zoomButton = vc.view.window?.standardWindowButton(NSWindow.ButtonType.zoomButton)
+                    if let _zb = zoomButton {
+                        _zb.isEnabled = false
+                    }
+                    vc.view.window?.title = "Batch Settings"
+                    self.settingsView = _settingsView
+                    let heightConstraint = NSLayoutConstraint.init(item: _settingsView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 536)
+                    _settingsView.addConstraint(heightConstraint)
+                    self.modalViewController = vc
                 }
-                vc.view.window?.title = "Batch Settings"
-                self.settingsView = _settingsView
-                let heightConstraint = NSLayoutConstraint.init(item: _settingsView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.greaterThanOrEqual, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 536)
-                _settingsView.addConstraint(heightConstraint)
-                self.modalViewController = vc
             }
         }
     }
     
-    func displayAlert(message: String, alertStyle: NSAlertStyle) {
+    func displayAlert(message: String, alertStyle: NSAlert.Style) {
         let alertSheet = NSAlert.init()
         alertSheet.alertStyle = alertStyle
         alertSheet.messageText = message
-        alertSheet.beginSheetModal(for: self.view.window!) {(r: NSModalResponse) in
+        alertSheet.beginSheetModal(for: self.view.window!) {(r: NSApplication.ModalResponse) in
             NSLog("Alert closed")
         }
     }
@@ -224,7 +229,7 @@ class BatchTableViewController: NSViewController, NSTableViewDelegate, NSTableVi
 
 extension BatchTableViewController: ParameterAdjustorViewDelegate {
     
-    func updateProgressFromFrameGeneration(notification: NSNotification) {
+    @objc func updateProgressFromFrameGeneration(notification: NSNotification) {
         DispatchQueue.main.async {
             if let _vfe = notification.object as? VideoFrameExtractor, let rowIndex = self.batchFiles.index(of: _vfe.filePath) {
                 if let viewCell = self.batchItemsTableView.view(atColumn: 0, row: rowIndex, makeIfNecessary: false) as? BatchFileTableCellView {
@@ -235,7 +240,7 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
         }
     }
     
-    func updateProgressFromContactSheetGeneration(notification: NSNotification) {
+    @objc func updateProgressFromContactSheetGeneration(notification: NSNotification) {
         DispatchQueue.main.async {
             if let _csc = notification.object as? ContactSheetCreator, let fileName = _csc.file?.path, let rowIndex = self.batchFiles.index(of: fileName) {
                 if let viewCell = self.batchItemsTableView.view(atColumn: 0, row: rowIndex, makeIfNecessary: false) as? BatchFileTableCellView {
@@ -259,7 +264,7 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
         DispatchQueue.main.async {
             if let rowIndex = self.batchFiles.index(of: file), let viewCell = self.batchItemsTableView.view(atColumn: 0, row: rowIndex, makeIfNecessary: false) as? BatchFileTableCellView {
                 viewCell.statusLabel.isHidden = false
-                viewCell.statusLabel.textColor = NSColor.red
+                viewCell.statusLabel.textColor = NSColor.init(red: 1, green: 0.839, blue: 0.863, alpha: 1)
                 viewCell.statusLabel.stringValue = errorMessage
                 viewCell.removeItemButton.isEnabled = true
             }
@@ -270,7 +275,7 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
         DispatchQueue.main.async {
             if let rowIndex = self.batchFiles.index(of: file), let viewCell = self.batchItemsTableView.view(atColumn: 0, row: rowIndex, makeIfNecessary: false) as? BatchFileTableCellView {
                 viewCell.statusLabel.isHidden = false
-                viewCell.statusLabel.textColor = NSColor.init(red: 0.1686, green: 0.5686, blue: 0.1451, alpha: 1)
+                viewCell.statusLabel.textColor = NSColor.init(red: 0.871, green: 1, blue: 0.878, alpha: 1)
                 viewCell.statusLabel.stringValue = "Completed"
                 viewCell.removeItemButton.isEnabled = true
             }
@@ -278,7 +283,6 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
     }
     
     func createContactSheetForFile(file: String, params: [String: AnyObject]) {
-        let s = Date()
         let numFrames = params["numFrames"] as! Int
         let hPadding = params["hPadding"] as! CGFloat
         let vPadding = params["vPadding"] as! CGFloat
@@ -294,11 +298,12 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
         let headerFont = params["headerFont"] as! String
         let headerColor = params["headerColor"] as! NSColor
         
-        guard let vfe = VideoFrameExtractor(filePath: file, _numFrames: numFrames) else {
-            self.setError(file: file, errorMessage: "Frame extractor not properly initialized")
+        var errorString = ""
+        guard let vfe = VideoFrameExtractor(filePath: file, _numFrames: numFrames, errorString: &errorString) else {
+            self.setError(file: file, errorMessage: errorString)
             return
         }
-        
+                
         guard let images = vfe.generateFrames() else {
             self.setError(file: file, errorMessage: "Unable to extract frames from file")
             return
@@ -324,10 +329,6 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
             self.setError(file: file, errorMessage: "Couldn't create contact sheet")
             return
         }
-        let e = Date()
-        let timeElapsed: Double = e.timeIntervalSince(s)
-        //NSLog("Time taken: ")
-        //NSLog(String(describing: timeElapsed))
         
         DispatchQueue.main.async {
             let fp = URL.init(fileURLWithPath: file)
@@ -336,19 +337,19 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
                 switch formatIndex {
                 case 0:
                     let imURL = URL.init(fileURLWithPath: fpNoExt.path + " Contact Sheet.png")
-                    ImageHelper.saveAsFormat(image: image, path: imURL, format: NSPNGFileType)
+                    ImageHelper.saveAsFormat(image: image, path: imURL, format: NSBitmapImageRep.FileType.png)
                     self.setSuccess(file: file)
                 case 1:
                     let imURL = URL.init(fileURLWithPath: fpNoExt.path + " Contact Sheet.jpg")
-                    ImageHelper.saveAsFormat(image: image, path: imURL, format: NSJPEGFileType)
+                    ImageHelper.saveAsFormat(image: image, path: imURL, format: NSBitmapImageRep.FileType.jpeg)
                     self.setSuccess(file: file)
                 case 2:
                     let imURL = URL.init(fileURLWithPath: fpNoExt.path + " Contact Sheet.tiff")
-                    ImageHelper.saveAsFormat(image: image, path: imURL, format: NSTIFFFileType)
+                    ImageHelper.saveAsFormat(image: image, path: imURL, format: NSBitmapImageRep.FileType.tiff)
                     self.setSuccess(file: file)
                 case 3:
                     let imURL = URL.init(fileURLWithPath: fpNoExt.path + " Contact Sheet.bmp")
-                    ImageHelper.saveAsFormat(image: image, path: imURL, format: NSBMPFileType)
+                    ImageHelper.saveAsFormat(image: image, path: imURL, format: NSBitmapImageRep.FileType.bmp)
                     self.setSuccess(file: file)
                 default:
                     self.setError(file: file, errorMessage: "Something bad happened - no file format selected")
@@ -358,7 +359,7 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
     }
 
     func generatePushed() {
-        NSApplication.shared().keyWindow?.makeFirstResponder(nil)
+        NSApplication.shared.keyWindow?.makeFirstResponder(nil)
         if let _mc = self.modalViewController {
             self.dismissViewController(_mc)
         }
@@ -383,16 +384,16 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
             }
             //let height = Int(_settingsView.heightField.stringValue)!
             params["height"] = height as AnyObject?
-            let keepAr = (_settingsView.maintainAspectRatioField.state == NSOnState)
+            let keepAr = (_settingsView.maintainAspectRatioField.state == NSControl.StateValue.on)
             params["keepAr"] = keepAr as AnyObject?
             let headerFont = _settingsView.headerFontField.titleOfSelectedItem
             params["headerFont"] = headerFont as AnyObject?
-            let includeTitle = ( _settingsView.headerTitleButton.state == NSOnState)
-            let includeResolution = ( _settingsView.headerResolutionButton.state == NSOnState)
-            let includeCodec = ( _settingsView.headerCodecButton.state == NSOnState)
-            let includeDuration = ( _settingsView.headerDurationButton.state == NSOnState)
-            let includeSize = ( _settingsView.headerSizeButton.state == NSOnState)
-            let includeBitrate = ( _settingsView.headerBitrateButton.state == NSOnState)
+            let includeTitle = ( _settingsView.headerTitleButton.state == NSControl.StateValue.on)
+            let includeResolution = ( _settingsView.headerResolutionButton.state == NSControl.StateValue.on)
+            let includeCodec = ( _settingsView.headerCodecButton.state == NSControl.StateValue.on)
+            let includeDuration = ( _settingsView.headerDurationButton.state == NSControl.StateValue.on)
+            let includeSize = ( _settingsView.headerSizeButton.state == NSControl.StateValue.on)
+            let includeBitrate = ( _settingsView.headerBitrateButton.state == NSControl.StateValue.on)
             params["headerInformation"] = ["includeTitle": includeTitle,
                                            "includeCodec": includeCodec,
                                            "includeResolution": includeResolution,
@@ -401,7 +402,7 @@ extension BatchTableViewController: ParameterAdjustorViewDelegate {
                                            "includeBitrate": includeBitrate
                                           ] as AnyObject?
             
-            let includeTimestamps = (_settingsView.keepTimestampsField.state == NSOnState)
+            let includeTimestamps = (_settingsView.keepTimestampsField.state == NSControl.StateValue.on)
             params["includeTimestamps"] = includeTimestamps as AnyObject?
             let backgroundColor = _settingsView.backgroundColorField.color
             params["backgroundColor"] = backgroundColor as AnyObject?

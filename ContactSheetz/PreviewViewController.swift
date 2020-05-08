@@ -94,27 +94,29 @@ class PreviewViewController: NSViewController, NSCollectionViewDataSource, Image
     
     func setupSettingsOverlay() {
         
-        var nibObjects:NSArray = NSArray()
-        Bundle.main.loadNibNamed("ParameterAdjustorView", owner: self, topLevelObjects: &nibObjects)
-        for i in 0..<nibObjects.count {
-            if let _adjustorView = nibObjects[i] as? ParameterAdjustorView, let parentVC = parent as? TabbedPreviewViewController, let _vfe = parentVC.vfe {
+        var nibObjects:NSArray? = NSArray()
+        Bundle.main.loadNibNamed(NSNib.Name(rawValue: "ParameterAdjustorView"), owner: self, topLevelObjects: &nibObjects)
+        if let _nibObjects = nibObjects {
+            for i in 0..<_nibObjects.count {
+                if let _adjustorView = _nibObjects[i] as? ParameterAdjustorView, let parentVC = parent as? TabbedPreviewViewController, let _vfe = parentVC.vfe {
 
-                _adjustorView.frame = NSRect.init(x: 0, y: self.view.frame.size.height - _adjustorView.frame.size.height, width: _adjustorView.frame.size.width, height: _adjustorView.frame.size.height)
-                _adjustorView.setNeedsDisplay(_adjustorView.frame)
+                    _adjustorView.frame = NSRect.init(x: 0, y: self.view.frame.size.height - _adjustorView.frame.size.height, width: _adjustorView.frame.size.width, height: _adjustorView.frame.size.height)
+                    _adjustorView.setNeedsDisplay(_adjustorView.frame)
+                    
+                    _adjustorView.delegate = self
                 
-                _adjustorView.delegate = self
-            
-                setAdjustorViewFieldDelegates(av: _adjustorView)
-                
-                self.adjustorView = _adjustorView
-                
-                videoInformation = _vfe.getVideoInformation()
-                if let info = videoInformation {
-                    setVideoInfo(info: info)
-                    _adjustorView.performInitialDelegateSetters()
+                    setAdjustorViewFieldDelegates(av: _adjustorView)
+                    
+                    self.adjustorView = _adjustorView
+                    
+                    videoInformation = _vfe.getVideoInformation()
+                    if let info = videoInformation {
+                        setVideoInfo(info: info)
+                        _adjustorView.performInitialDelegateSetters()
+                    }
+                    
+                    break
                 }
-                
-                break
             }
         }
     }
@@ -175,13 +177,13 @@ class PreviewViewController: NSViewController, NSCollectionViewDataSource, Image
     }
     
     
-    func updateImageCollection(notification: NSNotification) {
+    @objc func updateImageCollection(notification: NSNotification) {
         DispatchQueue.main.async {
             self.loadingBar.increment(by: 1)
         }
     }
     
-    func updateProgressFromContactSheetGeneration(notification: NSNotification) {
+    @objc func updateProgressFromContactSheetGeneration(notification: NSNotification) {
         DispatchQueue.main.async {
             self.loadingBar.increment(by: 1)
         }
@@ -211,7 +213,7 @@ class PreviewViewController: NSViewController, NSCollectionViewDataSource, Image
     **/
     
     public func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = imageCollectionView.makeItem(withIdentifier: "ImageCollectionViewItem", for: indexPath) as! ImageCollectionViewItem
+        let item = imageCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewItem"), for: indexPath) as! ImageCollectionViewItem
         
         item.customImageView.image = imageSet[indexPath.item].image
         
@@ -291,7 +293,7 @@ class PreviewViewController: NSViewController, NSCollectionViewDataSource, Image
                     saveDialog.allowedFileTypes = ["png", "jpg", "jpeg"]
                     saveDialog.nameFieldStringValue = "Contact Sheet.png"
                     saveDialog.beginSheetModal(for: win) {(result) -> Void in
-                        if (result == NSFileHandlingPanelOKButton) {
+                        if (result == NSApplication.ModalResponse.OK) {
                             let r = saveDialog.url
                             if let url = r {
                                 let ext = url.pathExtension
@@ -316,7 +318,7 @@ class PreviewViewController: NSViewController, NSCollectionViewDataSource, Image
             return
         }
         let bmpImgRef = NSBitmapImageRep(cgImage: cgImgRef)
-        let pngData = bmpImgRef.representation(using: NSBitmapImageFileType.PNG, properties: [:])!
+        let pngData = bmpImgRef.representation(using: NSBitmapImageRep.FileType.png, properties: [:])!
         do {
             //let path = URL.init(fileURLWithPath: path)
             try pngData.write(to: path)
@@ -328,8 +330,8 @@ class PreviewViewController: NSViewController, NSCollectionViewDataSource, Image
     func saveAsJpg(image: NSImage, path: URL) {
         let reps = image.representations
         let compressionFactor = 1
-        let imageProps = NSDictionary.init(object: compressionFactor, forKey: NSImageCompressionFactor as NSCopying)
-        guard let bitmapData = NSBitmapImageRep.representationOfImageReps(in: reps, using: NSJPEGFileType, properties: imageProps as! [String : Any]) else {
+        let imageProps = NSDictionary.init(object: compressionFactor, forKey: NSBitmapImageRep.PropertyKey.compressionFactor as NSCopying)
+        guard let bitmapData = NSBitmapImageRep.representationOfImageReps(in: reps, using: NSBitmapImageRep.FileType.jpeg, properties: imageProps as! [NSBitmapImageRep.PropertyKey : Any]) else {
             return
         }
         do {
@@ -339,8 +341,7 @@ class PreviewViewController: NSViewController, NSCollectionViewDataSource, Image
         }
     }
     
-    
-    func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> NSView {
+    private func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> NSView {
         let a = NSView.init(frame: NSMakeRect(0, 0, 500, 100))
         return a
     }
@@ -378,7 +379,7 @@ class PreviewViewController: NSViewController, NSCollectionViewDataSource, Image
             //}
         }
         else if editor == adjustorView.widthField {
-            if adjustorView.maintainAspectRatioField.state == NSOnState {
+            if adjustorView.maintainAspectRatioField.state == NSControl.StateValue.on {
                 let adjustedHeight = getMaintainedARHeight(newWidth: Int(newVal)!)
                 adjustorView.heightField.stringValue = String(adjustedHeight)
             }
@@ -427,7 +428,7 @@ class PreviewViewController: NSViewController, NSCollectionViewDataSource, Image
             
         //}
         else if button == adjustorView.keepTimestampsField {
-            includeTimestamps = (button.state == NSOnState)
+            includeTimestamps = (button.state == NSControl.StateValue.on)
             self.redrawTimestamps()
         }
     }

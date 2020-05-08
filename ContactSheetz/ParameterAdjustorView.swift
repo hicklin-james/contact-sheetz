@@ -67,8 +67,8 @@ class ParameterAdjustorView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        NSColor.white.setFill()
-        NSRectFill(dirtyRect)
+        NSColor.darkGray.setFill()
+        dirtyRect.fill()
         //NSColor.gray.set()
         //let path = NSBezierPath.init(rect: dirtyRect)
         //path.lineWidth = 1.0
@@ -96,7 +96,7 @@ class ParameterAdjustorView: NSView {
 //    }
     
     func initializeDropdowns() {
-        headerFontField.addItems(withTitles: NSFontManager.shared().availableFontFamilies)
+        headerFontField.addItems(withTitles: NSFontManager.shared.availableFontFamilies)
     }
     
     func performInitialDelegateSetters() {
@@ -106,19 +106,19 @@ class ParameterAdjustorView: NSView {
         widthField.adjustorViewDelegate.textDidChangeInTextField(textField: widthField, value: widthField.stringValue)
         
         // header buttons
-        delegate.inputButtonClicked(enabled: (headerTitleButton.state == NSOnState ? true : false), button: headerTitleButton)
-        delegate.inputButtonClicked(enabled: (headerDurationButton.state == NSOnState ? true : false), button: headerDurationButton)
-        delegate.inputButtonClicked(enabled: (headerCodecButton.state == NSOnState ? true : false), button: headerCodecButton)
-        delegate.inputButtonClicked(enabled: (headerResolutionButton.state == NSOnState ? true : false), button: headerResolutionButton)
-        delegate.inputButtonClicked(enabled: (headerBitrateButton.state == NSOnState ? true : false), button: headerBitrateButton)
-        delegate.inputButtonClicked(enabled: (headerSizeButton.state == NSOnState ? true : false), button: headerSizeButton)
+        delegate.inputButtonClicked(enabled: (headerTitleButton.state == NSControl.StateValue.on ? true : false), button: headerTitleButton)
+        delegate.inputButtonClicked(enabled: (headerDurationButton.state == NSControl.StateValue.on ? true : false), button: headerDurationButton)
+        delegate.inputButtonClicked(enabled: (headerCodecButton.state == NSControl.StateValue.on ? true : false), button: headerCodecButton)
+        delegate.inputButtonClicked(enabled: (headerResolutionButton.state == NSControl.StateValue.on ? true : false), button: headerResolutionButton)
+        delegate.inputButtonClicked(enabled: (headerBitrateButton.state == NSControl.StateValue.on ? true : false), button: headerBitrateButton)
+        delegate.inputButtonClicked(enabled: (headerSizeButton.state == NSControl.StateValue.on ? true : false), button: headerSizeButton)
         
-        delegate.inputButtonClicked(enabled: (keepTimestampsField.state == NSOnState ? true : false), button: keepTimestampsField)
-        delegate.inputButtonClicked(enabled: (maintainAspectRatioField.state == NSOnState ? true : false), button: maintainAspectRatioField)
+        delegate.inputButtonClicked(enabled: (keepTimestampsField.state == NSControl.StateValue.on ? true : false), button: keepTimestampsField)
+        delegate.inputButtonClicked(enabled: (maintainAspectRatioField.state == NSControl.StateValue.on ? true : false), button: maintainAspectRatioField)
         delegate.colorChanged(well: backgroundColorField)
         delegate.colorChanged(well: headerTextColorField)
         
-        if maintainAspectRatioField.state == NSOffState {
+        if maintainAspectRatioField.state == NSControl.StateValue.off {
             heightField.adjustorViewDelegate.textDidChangeInTextField(textField: heightField, value: heightField.stringValue)
         }
         
@@ -175,56 +175,56 @@ class ParameterAdjustorView: NSView {
         }
         
         if let value = defaults.value(forKey: Constants.SettingsKeys.IncludeTimestamps) as? Bool {
-            keepTimestampsField.state = (value == true ? NSOnState : NSOffState)
+            keepTimestampsField.state = (value == true ? NSControl.StateValue.on : NSControl.StateValue.off)
         }
         else {
             keepTimestampsField.state = Constants.DefaultValuesForParameters.IncludeTimestamps
         }
         
         if let value = defaults.value(forKey: Constants.SettingsKeys.IncludeTitle) as? Bool {
-            headerTitleButton.state = (value == true ? NSOnState : NSOffState)
+            headerTitleButton.state = (value == true ? NSControl.StateValue.on : NSControl.StateValue.off)
         }
         else {
             headerTitleButton.state = Constants.DefaultValuesForParameters.IncludeTitle
         }
         
         if let value = defaults.value(forKey: Constants.SettingsKeys.IncludeDuration) as? Bool {
-            headerDurationButton.state = (value == true ? NSOnState : NSOffState)
+            headerDurationButton.state = (value == true ? NSControl.StateValue.on : NSControl.StateValue.off)
         }
         else {
             headerDurationButton.state = Constants.DefaultValuesForParameters.IncludeDuration
         }
         
         if let value = defaults.value(forKey: Constants.SettingsKeys.IncludeResolution) as? Bool {
-            headerResolutionButton.state = (value == true ? NSOnState : NSOffState)
+            headerResolutionButton.state = (value == true ? NSControl.StateValue.on : NSControl.StateValue.off)
         }
         else {
             headerResolutionButton.state = Constants.DefaultValuesForParameters.IncludeResolution
         }
         
         if let value = defaults.value(forKey: Constants.SettingsKeys.IncludeCodec) as? Bool {
-            headerCodecButton.state = (value == true ? NSOnState : NSOffState)
+            headerCodecButton.state = (value == true ? NSControl.StateValue.on : NSControl.StateValue.off)
         }
         else {
             headerCodecButton.state = Constants.DefaultValuesForParameters.IncludeCodec
         }
         
         if let value = defaults.value(forKey: Constants.SettingsKeys.IncludeBitrate) as? Bool {
-            headerBitrateButton.state = (value == true ? NSOnState : NSOffState)
+            headerBitrateButton.state = (value == true ? NSControl.StateValue.on : NSControl.StateValue.off)
         }
         else {
             headerBitrateButton.state = Constants.DefaultValuesForParameters.IncludeBitrate
         }
         
         if let value = defaults.value(forKey: Constants.SettingsKeys.IncludeSize) as? Bool {
-            headerSizeButton.state = (value == true ? NSOnState : NSOffState)
+            headerSizeButton.state = (value == true ? NSControl.StateValue.on : NSControl.StateValue.off)
         }
         else {
             headerSizeButton.state = Constants.DefaultValuesForParameters.IncludeSize
         }
         
         if let value = defaults.value(forKey: Constants.SettingsKeys.MaintainAR) as? Bool {
-            maintainAspectRatioField.state = (value == true ? NSOnState : NSOffState)
+            maintainAspectRatioField.state = (value == true ? NSControl.StateValue.on : NSControl.StateValue.off)
             heightField.isEnabled = !value
         }
         else {
@@ -277,7 +277,7 @@ class ParameterAdjustorView: NSView {
     
     @IBAction func aspectRatioButtonPushed(_ sender: AnyObject) {
         if let _button = sender as? NSButton {
-            if maintainAspectRatioField.state == NSOnState {
+            if maintainAspectRatioField.state == NSControl.StateValue.on {
                 delegate.inputButtonClicked(enabled: true, button: _button)
             }
             else {
@@ -297,7 +297,7 @@ class ParameterAdjustorView: NSView {
     
     @IBAction func includeTimestampsButtonPushed(_ sender: AnyObject) {
         if let _button = sender as? NSButton {
-            if _button.state == NSOnState {
+            if _button.state == NSControl.StateValue.on {
                 delegate.inputButtonClicked(enabled: true, button: _button)
             }
             else {
@@ -308,7 +308,7 @@ class ParameterAdjustorView: NSView {
     
     @IBAction func headerItemButtonPushed(_ sender: AnyObject) {
         if let _button = sender as? NSButton {
-            if _button.state == NSOnState {
+            if _button.state == NSControl.StateValue.on {
                 delegate.inputButtonClicked(enabled: true, button: _button)
             }
             else {

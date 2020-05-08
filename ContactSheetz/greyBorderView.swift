@@ -13,7 +13,7 @@ class greyBorderView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         NSColor.lightGray.setFill()
-        NSRectFill(dirtyRect)
+        dirtyRect.fill()
         // Drawing code here.
     }
     

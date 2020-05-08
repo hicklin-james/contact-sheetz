@@ -18,29 +18,27 @@ class VideoFrameExtractor: NSObject {
     let filePath: String
     var decoder:UnsafeMutablePointer<AVCodec>?
     
-    init?(filePath: String, _numFrames: Int) {
+    init?(filePath: String, _numFrames: Int, errorString: inout String) {
         self.filePath = filePath
-        av_register_all()
         
         numFrames = _numFrames
-        
-        //av_register_all()
-        
+                
         // set input path to ascii encoded string C string for ffmpeg
         guard let address = filePath.cString(using: String.Encoding(rawValue: String.Encoding.ascii.rawValue)) else {
-            NSLog("Unable to initialize file path - check that file exists")
+            errorString = "Unable to convert file path to C string."
             return nil
         }
         
+        // Check that file is a video file
         // open the path
         guard(avformat_open_input(&pFormatCtx, address, nil, nil) >= 0) else {
-            NSLog("Error opening input")
+            errorString = "Error opening input. Check that file name didn't change and that file is actually a video file."
             return nil
         }
         
         // populate pFormatCtx->streams
         guard avformat_find_stream_info(pFormatCtx, nil) >= 0 else {
-            NSLog("Unable to populate streams")
+            errorString = "Unable to populate streams. Check that this is a valid video file."
             return nil
         }
         
@@ -48,10 +46,32 @@ class VideoFrameExtractor: NSObject {
         // we could do this manually but this probably works better
         videoStreamIndex = Int(av_find_best_stream(pFormatCtx, AVMEDIA_TYPE_VIDEO, Int32(-1), Int32(-1), &decoder, 0))
         
-        // set the video duration in seconds
-        let vidDuration = Double(pFormatCtx!.pointee.duration)
-        //let timeBase = params.
-        duration = vidDuration / Double(AV_TIME_BASE)
+        var tempDuration: Double? = nil
+        if videoStreamIndex >= 0, let videoStream = pFormatCtx!.pointee.streams[videoStreamIndex]{
+            let vidDuration = videoStream.pointee.duration
+            let vidFps = Double(videoStream.pointee.r_frame_rate.num) / Double(videoStream.pointee.r_frame_rate.den)
+            if vidDuration > 0 && videoStream.pointee.time_base.num > 0 && videoStream.pointee.time_base.den > 0 {
+                tempDuration = Double(vidDuration) * Double(videoStream.pointee.time_base.num)/Double(videoStream.pointee.time_base.den)
+            } else if vidFps > 0 && videoStream.pointee.nb_frames > 0  {
+                tempDuration = Double(videoStream.pointee.nb_frames) / vidFps
+            }
+        }
+        
+        if tempDuration == nil, pFormatCtx!.pointee.duration > 0 {
+            let vidDuration = Double(pFormatCtx!.pointee.duration)
+            tempDuration = Double(vidDuration) / Double(AV_TIME_BASE)
+        }
+        
+        if tempDuration == nil, let foundDuration = VideoFrameExtractor.getDuration(filePath: filePath) {
+            tempDuration = Double(foundDuration) / 1000
+        }
+        
+        if let _tempDuration = tempDuration {
+            self.duration = _tempDuration
+        } else {
+            errorString = "Unable to get video duration. This could be a corrupted video file."
+            return nil
+        }
     }
     
     deinit {
@@ -59,7 +79,6 @@ class VideoFrameExtractor: NSObject {
     }
     
     static func checkVideoFile(filePath: String) -> Bool {
-        av_register_all()
         var formatCtx:UnsafeMutablePointer<AVFormatContext>?
         var decoderTemp:UnsafeMutablePointer<AVCodec>?
         
@@ -67,19 +86,14 @@ class VideoFrameExtractor: NSObject {
             NSLog("Couldn't open file - probably not a media file")
             return false
         }
-        /**
-        let streams = formatCtx!.pointee.streams
-        NSLog("Number of streams: ")
-        NSLog(String(describing: formatCtx!.pointee.nb_streams))
-        for i in 0..<formatCtx!.pointee.nb_streams {
-            let stream = streams?[Int(i)]
-            NSLog("Stream type: ")
-            NSLog(String(describing: stream!.pointee.stream_identifier))
+        
+        guard avformat_find_stream_info(formatCtx, nil) >= 0 else {
+            NSLog("Unable to populate streams. Check that this is a valid video file.")
+            return false
         }
-        **/
         
         let videoStream = av_find_best_stream(formatCtx, AVMEDIA_TYPE_VIDEO, Int32(-1), Int32(-1), &decoderTemp, 0)
-        //NSLog(String(describing: videoStream))
+
         guard videoStream >= 0 else {
             NSLog("File has no video track")
             return false
@@ -87,7 +101,29 @@ class VideoFrameExtractor: NSObject {
         // Now we have whiddled the options down to image and video files - we still need some way
         // to determine whether the file is a video file or not!
         avformat_close_input(&formatCtx)
+        
         return true
+    }
+    
+    // This function is only used as a last resort if FFMPEG can't find
+    // the duration in an efficient way. It uses the MediaInfo libs instead
+    static func getDuration(filePath: String) -> Int? {
+        let mediaInfoHandle = MediaInfoA_New()
+        
+        // Free up memory. Called before return
+        defer {
+            MediaInfoA_Delete(mediaInfoHandle)
+        }
+        
+        MediaInfoA_Open(mediaInfoHandle, filePath.cString(using: String.Encoding.utf8))
+        MediaInfoA_Option(mediaInfoHandle, "Inform", "Video;%Duration%")
+        let duration = MediaInfoA_Inform(mediaInfoHandle, 0)
+        if let _duration = duration {
+            if let intDuration = Int(String.init(cString: _duration)) {
+                return intDuration
+            }
+        }
+        return nil
     }
     
     
@@ -105,7 +141,7 @@ class VideoFrameExtractor: NSObject {
         defer {
             // do any cleanup code here
             // IMPORTANT - this will be called if something goes wrong, so
-            // it is not safe to assume that everything is already allocatedx
+            // it is not safe to assume that everything is already allocated
             if let _pFrame = pFrame {
                 //av_free(pFrame!.pointee.data.0)
                 av_frame_unref(pFrame)
@@ -169,6 +205,11 @@ class VideoFrameExtractor: NSObject {
         }
         
         usableCtx!.pointee.time_base = av_stream_get_codec_timebase(origAvStream)
+        
+        if usableCtx!.pointee.time_base.num == 0 {
+            usableCtx!.pointee.time_base = origAvStream.pointee.time_base
+        }
+        
         usableCtx!.pointee.refcounted_frames = 1
         
         guard avcodec_open2(usableCtx!, decoder, nil) >= 0 else {
@@ -203,17 +244,17 @@ class VideoFrameExtractor: NSObject {
             return nil
         }
 
-        let tp = Double(AV_TIME_BASE) * 10.0 // 10.0
+        // let tp = Double(AV_TIME_BASE) * 10.0 // 10.0
+        let tp = Int64(AV_TIME_BASE) + pFormatCtx!.pointee.start_time // 1 second into the video
         
-        let timeBetweenFrames = (Int64(Double(AV_TIME_BASE) * duration) - pFormatCtx!.pointee.start_time - Int64(tp)) / Int64(numFrames)
-        
+        let timeBetweenFrames = (Int64(Double(AV_TIME_BASE) * duration) - pFormatCtx!.pointee.start_time - Int64(2*tp)) / Int64(numFrames)
+                
         var seekPos = Int64(tp)
-        var tempSeekPos = Int64(tp)
+                
         // seek to first frame we want to grab
-        let flag = AVSEEK_FLAG_FRAME
-        avformat_seek_file(pFormatCtx, -1, 0, Int64(seekPos), Int64.max, flag)
+        let flag: Int32 = 0
+        avformat_seek_file(pFormatCtx, -1, 0, seekPos, Int64.max, flag)
         avcodec_flush_buffers(usableCtx)
-        var last_ts: String? = nil
         var images:[FrameWrapper] = []
         
         // while we haven't reached max frames
@@ -241,13 +282,20 @@ class VideoFrameExtractor: NSObject {
                 if f == 0 {
                     // scale the frame from pFrame into pFrameRgb
                     scaleFrame(srcFrame: pFrame!, dstFrame: pFrameRgb!, ctx: swsContext!)
+                    
                     // find the png encoder
-                    guard let outCodec = avcodec_find_encoder(AV_CODEC_ID_PNG), var usablePngCtx: UnsafeMutablePointer<AVCodecContext>?  = avcodec_alloc_context3(outCodec) else {
+                    guard let outCodec = avcodec_find_encoder(AV_CODEC_ID_PNG) else {
                         NSLog("Unable to get PNG codex and context")
                         return nil
                     }
+                                        
+                    guard var usablePngCtx: UnsafeMutablePointer<AVCodecContext> = avcodec_alloc_context3(outCodec) else {
+                        NSLog("Unable to get PNG context")
+                        return nil
+                    }
+                    
                     // set the needed parameters on the png encoder context
-                    setPngContextParams(pngCtx: &usablePngCtx!, videoCtx: &usableCtx!)
+                    setPngContextParams(pngCtx: &usablePngCtx, videoCtx: &usableCtx!)
                     
                     // open the png codec
                     guard avcodec_open2(usablePngCtx, outCodec, nil) >= 0 else {
@@ -286,17 +334,17 @@ class VideoFrameExtractor: NSObject {
                     images.append(frameWrapper)
                     
                     seekPos = (seekPos + timeBetweenFrames)
-                    tempSeekPos = seekPos
-                    avformat_seek_file(pFormatCtx, -1, 0, Int64(seekPos), Int64.max, flag)
+                    avformat_seek_file(pFormatCtx, -1, 0, seekPos, Int64.max, flag)
                     NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.NotificationKeys.VideoFrameGenerated), object: self, userInfo: nil)
                     
                     ind = ind + 1
-                        
-                    last_ts = timestamp
+                                        
                     avcodec_flush_buffers(usableCtx)
                     
                     avcodec_close(usablePngCtx)
-                    avcodec_free_context(&usablePngCtx)
+                    
+                    var optionalRef = usablePngCtx as UnsafeMutablePointer<AVCodecContext>?
+                    avcodec_free_context(&optionalRef)
                 }
             }
             av_packet_free(&packet)
@@ -335,7 +383,12 @@ class VideoFrameExtractor: NSObject {
             
             av_stream_get_codec_timebase(origAvStream)
             
-            guard avcodec_parameters_copy(dstParams, origAvStream.pointee.codecpar) >= 0 else {
+            guard let codecParams = origAvStream.pointee.codecpar else {
+                NSLog("Couldn't get codec parameters from input stream")
+                return nil
+            }
+            
+            guard avcodec_parameters_copy(dstParams, codecParams) >= 0 else {
                 NSLog("Failed to copy orig parameters to new parameters")
                 return nil
             }

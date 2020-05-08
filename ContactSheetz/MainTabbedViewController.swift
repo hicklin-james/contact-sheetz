@@ -20,9 +20,9 @@ class MainTabbedViewController: NSTabViewController {
     func setViewEnabled(enabled: Bool) {
         viewEnabled = enabled
         setViewEnabledHelper(enabled: enabled, theView: self.view)
-        let closeButton = self.view.window?.standardWindowButton(NSWindowButton.closeButton)
-        let zoomButton = self.view.window?.standardWindowButton(NSWindowButton.zoomButton)
-        let miniButton = self.view.window?.standardWindowButton(NSWindowButton.miniaturizeButton)
+        let closeButton = self.view.window?.standardWindowButton(NSWindow.ButtonType.closeButton)
+        let zoomButton = self.view.window?.standardWindowButton(NSWindow.ButtonType.zoomButton)
+        let miniButton = self.view.window?.standardWindowButton(NSWindow.ButtonType.miniaturizeButton)
         if let _cb = closeButton {
             _cb.isEnabled = enabled
         }

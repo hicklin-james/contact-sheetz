@@ -7,4 +7,4 @@
 #import "libavutil/imgutils.h"
 #import "libavfilter/avfilter.h"
 #import "MagickWand/MagickWand.h"
-#import "MagickCore/magick-config.h"
+#import "MediaInfoDLL_Static.h"

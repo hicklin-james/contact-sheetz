@@ -4,15 +4,10 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ContactSheetz.xcscheme</key>
+		<key>ContactSheetz.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
-		</dict>
-		<key>ImageMagick.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -23,11 +18,6 @@
 			<true/>
 		</dict>
 		<key>CB0828B31DA0C4D900CD4C36</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CB9BF4621DD3977400F7DF40</key>
 		<dict>
 			<key>primary</key>
 			<true/>

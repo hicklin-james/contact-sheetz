@@ -16,12 +16,12 @@ class MainWindowView: NSClipView {
         super.draw(dirtyRect)
         if enabled {
             NSColor.white.setFill()
-            NSRectFill(dirtyRect)
+            dirtyRect.fill()
         }
         else {
             let color = NSColor.init(red: 0.804, green: 0.788, blue: 0.788, alpha: 0.5)
             color.setFill()
-            NSRectFill(dirtyRect)
+            dirtyRect.fill()
         }
 
         // Drawing code here.

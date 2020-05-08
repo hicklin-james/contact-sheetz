@@ -83,9 +83,9 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
                 DispatchQueue.main.async {
                     self.spinner.stopAnimation(self)
                     let alertSheet = NSAlert.init()
-                    alertSheet.alertStyle = NSAlertStyle.critical
+                    alertSheet.alertStyle = NSAlert.Style.critical
                     alertSheet.messageText = "Something bad happened while generating frames!"
-                    alertSheet.beginSheetModal(for: self.view.window!, completionHandler: {(res: NSModalResponse) -> Void in
+                    alertSheet.beginSheetModal(for: self.view.window!, completionHandler: {(res: NSApplication.ModalResponse) -> Void in
                         self.cancelAction(self)
                     })
                     //alertSheet.beginSheetModal(for: self.view.window!, {() -> in
@@ -105,37 +105,39 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
     
     func setupSettingsView() {
         
-        var nibObjects:NSArray = NSArray()
-        Bundle.main.loadNibNamed("ParameterAdjustorView", owner: self, topLevelObjects: &nibObjects)
-        for i in 0..<nibObjects.count {
-            if let _adjustorView = nibObjects[i] as? ParameterAdjustorView {
-                
-                _adjustorView.frame = NSRect.init(x: 0, y: adjustorViewWrapper.frame.size.height, width: adjustorViewWrapper.frame.size.width, height: adjustorViewWrapper.frame.size.height)
-                _adjustorView.needsDisplay = true
-                
-                _adjustorView.delegate = self
-                
-                setAdjustorViewFieldDelegates(av: _adjustorView)
-                
-                self.adjustorView = _adjustorView
-                
-                videoInformation = vfe.getVideoInformation()
-                if let info = videoInformation {
-                    setVideoInfo(info: info)
-                    _adjustorView.performInitialDelegateSetters()
+        var nibObjects:NSArray? = NSArray()
+        Bundle.main.loadNibNamed(NSNib.Name(rawValue: "ParameterAdjustorView"), owner: self, topLevelObjects: &nibObjects)
+        if let _nibObjects = nibObjects {
+            for i in 0..<_nibObjects.count {
+                if let _adjustorView = _nibObjects[i] as? ParameterAdjustorView {
+                    
+                    _adjustorView.frame = NSRect.init(x: 0, y: adjustorViewWrapper.frame.size.height, width: adjustorViewWrapper.frame.size.width, height: adjustorViewWrapper.frame.size.height)
+                    _adjustorView.needsDisplay = true
+                    
+                    _adjustorView.delegate = self
+                    
+                    setAdjustorViewFieldDelegates(av: _adjustorView)
+                    
+                    self.adjustorView = _adjustorView
+                    
+                    videoInformation = vfe.getVideoInformation()
+                    if let info = videoInformation {
+                        setVideoInfo(info: info)
+                        _adjustorView.performInitialDelegateSetters()
+                    }
+                    
+                    adjustorViewWrapper.addSubview(self.adjustorView)
+                    
+                    let c1 = NSLayoutConstraint.init(item: adjustorView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: adjustorViewWrapper, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
+                    let c2 = NSLayoutConstraint.init(item: adjustorView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: adjustorViewWrapper, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
+                    let c3 = NSLayoutConstraint.init(item: adjustorView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: adjustorViewWrapper, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
+                    let c4 = NSLayoutConstraint.init(item: adjustorView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: adjustorViewWrapper, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
+                    
+                    adjustorViewWrapper.addConstraints([c1,c2,c3,c4])
+                    
+                    //adjustorViewWrapper.addSubview(self.adjustorView)
+                    break
                 }
-                
-                adjustorViewWrapper.addSubview(self.adjustorView)
-                
-                let c1 = NSLayoutConstraint.init(item: adjustorView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: adjustorViewWrapper, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
-                let c2 = NSLayoutConstraint.init(item: adjustorView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: adjustorViewWrapper, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
-                let c3 = NSLayoutConstraint.init(item: adjustorView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: adjustorViewWrapper, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
-                let c4 = NSLayoutConstraint.init(item: adjustorView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: adjustorViewWrapper, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
-                
-                adjustorViewWrapper.addConstraints([c1,c2,c3,c4])
-                
-                //adjustorViewWrapper.addSubview(self.adjustorView)
-                break
             }
         }
     }
@@ -185,16 +187,16 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
     
     @IBAction func toggleHiddenSettingsView(_ sender: Any) {
         NSAnimationContext.runAnimationGroup({_ in
-            NSAnimationContext.current().duration = 0.3
+            NSAnimationContext.current.duration = 0.3
             
             if (hiddenSettings) {
                 settingsViewTrailingConstraint.animator().constant = 0
-                previewPanelDisclosureButton.state = NSOffState
+                previewPanelDisclosureButton.state = NSControl.StateValue.off
                 previewPanelDisclosureButton.isHidden = true
                 settingsPanelDisclosureButton.isHidden = false
             } else {
                 settingsViewTrailingConstraint.animator().constant = -settingsViewWidthConstraint.constant
-                settingsPanelDisclosureButton.state = NSOnState
+                settingsPanelDisclosureButton.state = NSControl.StateValue.on
                 previewPanelDisclosureButton.isHidden = false
                 settingsPanelDisclosureButton.isHidden = true
             }
@@ -224,13 +226,13 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
     }
     
     
-    func updateImageCollection(notification: NSNotification) {
+    @objc func updateImageCollection(notification: NSNotification) {
         DispatchQueue.main.async {
             self.loadingBar.increment(by: 1)
         }
     }
     
-    func updateProgressFromContactSheetGeneration(notification: NSNotification) {
+    @objc func updateProgressFromContactSheetGeneration(notification: NSNotification) {
         DispatchQueue.main.async {
             self.loadingBar.increment(by: 1)
         }
@@ -325,7 +327,7 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
     
     func setChangedParam(editor: AdjustorViewTextField, newVal: String) {
         if editor == adjustorView.widthField {
-            if adjustorView.maintainAspectRatioField.state == NSOnState {
+            if adjustorView.maintainAspectRatioField.state == NSControl.StateValue.on {
                 let adjustedHeight = getMaintainedARHeight(newWidth: Int(newVal)!)
                 adjustorView.heightField.stringValue = String(adjustedHeight)
             }
@@ -345,14 +347,14 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
         }
         else if (String(describing: type(of: button)) == "GroupedHeaderButton") {
             if let id = button.identifier {
-                headerItems[id] = (button.state == NSOnState)
+                headerItems[id.rawValue] = (button.state == NSControl.StateValue.on)
             }
         }
 //        else if button == adjustorView.keepHeaderField {
 //            self.includeHeader = enabled
 //        }
         else if button == adjustorView.keepTimestampsField {
-            includeTimestamps = (button.state == NSOnState)
+            includeTimestamps = (button.state == NSControl.StateValue.on)
         }
     }
     
@@ -368,7 +370,7 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
             saveDialog.allowedFileTypes = ["png", "jpg", "tiff", "bmp"]
             saveDialog.nameFieldStringValue = "Contact Sheet"
             saveDialog.beginSheetModal(for: win) {(result) -> Void in
-                if (result == NSFileHandlingPanelOKButton) {
+                if (result == NSApplication.ModalResponse.OK) {
                     guard var r = saveDialog.url else {
                         NSLog("Path invalid")
                         return
@@ -379,13 +381,13 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
                     if let _image = self.previewImage.image {
                         switch self.selectedFileExt {
                         case "png":
-                            ImageHelper.saveAsFormat(image: _image, path: fileUrl, format: NSPNGFileType)
+                            ImageHelper.saveAsFormat(image: _image, path: fileUrl, format: NSBitmapImageRep.FileType.png)
                         case "jpg":
-                            ImageHelper.saveAsFormat(image: _image, path: fileUrl, format: NSJPEGFileType)
+                            ImageHelper.saveAsFormat(image: _image, path: fileUrl, format: NSBitmapImageRep.FileType.jpeg)
                         case "tiff":
-                            ImageHelper.saveAsFormat(image: _image, path: fileUrl, format: NSTIFFFileType)
+                            ImageHelper.saveAsFormat(image: _image, path: fileUrl, format: NSBitmapImageRep.FileType.tiff)
                         case "bmp":
-                            ImageHelper.saveAsFormat(image: _image, path: fileUrl, format: NSBMPFileType)
+                            ImageHelper.saveAsFormat(image: _image, path: fileUrl, format: NSBitmapImageRep.FileType.bmp)
                         default:
                             return
                         }
@@ -419,7 +421,7 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
         savePanel.accessoryView = accessoryView
     }
     
-    func setFileFormat(_ sender: AnyObject) {
+    @objc func setFileFormat(_ sender: AnyObject) {
         if let button = sender as? NSPopUpButton {
             let selectedItemIndex = button.indexOfSelectedItem
             switch selectedItemIndex {
@@ -438,7 +440,7 @@ class ContactSheetViewController: NSViewController, NSTextFieldDelegate, Paramet
     }
     
     internal func generatePushed() {
-        NSApplication.shared().keyWindow?.makeFirstResponder(nil)
+        NSApplication.shared.keyWindow?.makeFirstResponder(nil)
         
 //        if let textfield = fr as? AdjustorViewTextField {
 //            NSLog("Found a text field that needs updating")
