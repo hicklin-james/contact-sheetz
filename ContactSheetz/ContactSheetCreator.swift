@@ -87,8 +87,8 @@ class ContactSheetCreator: NSObject {
             // defer will only do this after leaving scope
             defer {
                 DestroyDrawingWand(drawingWand)
-                DestroyMagickWand(montageWand)
                 DestroyPixelWand(mainPixelWand)
+                DestroyMagickWand(montageWand)
                 DestroyMagickWand(contactSheetWand)
             }
             
@@ -96,6 +96,10 @@ class ContactSheetCreator: NSObject {
             MagickSetBackgroundColor(mainWand, mainPixelWand)
             
             montageWand = MagickMontageImage(mainWand, drawingWand, geometryString, sizeString, UnframeMode, frameString)
+            
+            let fontString = "/Library/Fonts/Arial Unicode.ttf"
+            DrawSetFont(drawingWand, fontString)
+            
             NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.NotificationKeys.ContactSheetProgress), object: self, userInfo: nil)
             
             if (checkMagickWandError(wand: mainWand) != UndefinedException || checkMagickWandError(wand: montageWand) != UndefinedException) {
@@ -178,6 +182,8 @@ class ContactSheetCreator: NSObject {
         
         let pw = NewPixelWand()
         let wand = createDrawingWand()
+        let fontString = "/Library/Fonts/Arial Unicode.ttf"
+        DrawSetFont(wand, fontString)
         
         var spliceHeight = 0.0
         
@@ -291,6 +297,8 @@ class ContactSheetCreator: NSObject {
     func drawLabels(magickWand: OpaquePointer?) {
         let pw = NewPixelWand()
         let wand = createDrawingWand()
+        let fontString = "/Library/Fonts/Arial Unicode.ttf"
+        DrawSetFont(wand, fontString)
         
         DrawSetFontSize(wand, fontPointSize)
         DrawSetTextAlignment(wand, CenterAlign)
@@ -322,9 +330,8 @@ class ContactSheetCreator: NSObject {
         let drawingWand = NewDrawingWand()
         // TODO default font changed in new Mac OS versions... should dynamically
         // find the right one.
-        let fontString = "/Library/Fonts/Arial Unicode.ttf"
-        DrawSetFont(drawingWand, fontString)
-        
+        //let fontString = "/Library/Fonts/Arial Unicode.ttf"
+        //DrawSetFont(drawingWand, fontString)
         return drawingWand
     }
     
@@ -365,6 +372,7 @@ class ContactSheetCreator: NSObject {
             if let _cStr = cStr {
                 let string = String.init(cString: _cStr)
                 if !string.isEmpty {
+                    NSLog("Exception type: " + String(et.rawValue))
                     NSLog("MagickWandError: " + string)
                 }
             } else {
@@ -372,6 +380,11 @@ class ContactSheetCreator: NSObject {
             }
             MagickClearException(wand)
             MagickRelinquishMemory(cStr)
+        }
+        // This is some font error. If I set the font before calling MagickMontageImage
+        // there is a memory leak and this is a bad buffix.
+        if et.rawValue == 405 {
+            et = UndefinedException
         }
         return et
     }
