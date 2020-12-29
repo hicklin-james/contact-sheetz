@@ -736,9 +736,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/usr/local/Cellar/ffmpeg/4.2.2_2/**",
+					"/usr/local/Cellar/ffmpeg/4.3.1_1/**",
 					"/usr/local/Cellar/media-info/20.03/include/MediaInfoDLL",
-					"/usr/local/Cellar/imagemagick/7.0.9-27/include/ImageMagick-7",
+					"$(SRCROOT)/Libs/ImageMagick/include/ImageMagick-7/**",
 				);
 				INFOPLIST_FILE = ContactSheetz/Info.plist;
 				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
@@ -774,9 +774,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/usr/local/Cellar/ffmpeg/4.2.2_2/**",
+					"/usr/local/Cellar/ffmpeg/4.3.1_1/**",
 					"/usr/local/Cellar/media-info/20.03/include/MediaInfoDLL",
-					"/usr/local/Cellar/imagemagick/7.0.9-27/include/ImageMagick-7",
+					"$(SRCROOT)/Libs/ImageMagick/include/ImageMagick-7",
 				);
 				INFOPLIST_FILE = ContactSheetz/Info.plist;
 				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
